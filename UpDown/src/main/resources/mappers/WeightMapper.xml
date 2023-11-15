@@ -4,4 +4,23 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.updown.model.dao.WeightDao">
 
+	<!-- 체중 등록 -->
+	<insert id="upload" parameterType="Weight">
+		INSERT INTO weight (now_weight, remain_weight, reg_date, user_id)
+		VALUES(#{nowWeight}, #{remainWeight}, date_format(now(), '%Y-%m-%d'), #{userId} )
+	</insert>
+	
+	<!-- 체중 수정 -->
+	<update id="modify" parameterType="Weight">
+		UPDATE weight
+		SET now_weight=#{nowWeight}, remain_weight=#{remainWeight}
+		WHERE no = #{no}
+	</update>
+	
+	<!-- 당일 체중 조회 -->
+	<select id="select" resultType="Weight">
+		SELECT no, now_weight as nowWeight, remain_weight as remainWeight, reg_date as regDate, user_id as userId
+		FROM weight
+		WHERE reg_date = date_format(now(), '%Y-%m-%d')
+	</select>
 </mapper>
