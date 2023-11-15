@@ -15,7 +15,7 @@ public interface ExerciseDao {
 	public Exercise selectOne(int exerciseNo);
 	
 	//선택한 운동 기록 수정 
-	public void update(int exerciseNo);
+	public void update(Exercise exercise);
 	
 	//선택한 운동 기록 삭제 
 	public void delete(int exerciseNo);

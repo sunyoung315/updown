@@ -15,7 +15,7 @@ public interface ExerciseService {
 	public Exercise getOne(int exerciseNo);
 	
 	//선택한 운동 기록 수정 
-	public void modify(int exerciseNo);
+	public void modify(Exercise exercise);
 	
 	//선택한 운동 기록 삭제 
 	public void remove(int exerciseNo);

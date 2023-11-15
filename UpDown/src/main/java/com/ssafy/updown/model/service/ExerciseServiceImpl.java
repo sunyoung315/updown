@@ -30,8 +30,8 @@ public class ExerciseServiceImpl implements ExerciseService {
 	}
 
 	@Override
-	public void modify(int exerciseNo) {
-		eDao.update(exerciseNo);
+	public void modify(Exercise exercise) {
+		eDao.update(exercise);
 	}
 
 	@Override

@@ -41,12 +41,14 @@ public class ExerciseController {
 	}
 	
 	@PutMapping("/exercise")
-	public ResponseEntity<Void> modify(int exerciseNo) {
+	public ResponseEntity<Void> modify(Exercise exercise) {
+		eService.modify(exercise);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/exercise")
 	public ResponseEntity<Void> remove(int exerciseNo) {
+		eService.remove(exerciseNo);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
