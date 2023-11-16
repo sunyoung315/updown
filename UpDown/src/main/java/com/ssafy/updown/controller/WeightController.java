@@ -15,7 +15,7 @@ import com.ssafy.updown.model.service.WeightService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
-@RequestMapping("/updown/weight")
+@RequestMapping("/updown")
 public class WeightController {
 
 	@Autowired
@@ -38,7 +38,7 @@ public class WeightController {
 		return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 	}
 
-	// 당일 체중 조회
+	// 하루 체중 기록 조회
 	@GetMapping("/weight")
 	public ResponseEntity<Weight> detailWeight(String loginUserId, String regDate){
 		Weight weight =  weightService.getWeight(loginUserId, regDate);
