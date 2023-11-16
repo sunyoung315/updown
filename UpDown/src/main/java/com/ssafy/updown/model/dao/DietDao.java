@@ -16,7 +16,7 @@ public interface DietDao {
 	void deleteDiet(int no);
 
 	// 하루 식단 기록 조회
-	List<Diet> getDietOneday(String regDate);
+	List<Diet> getDietOneday(String loginUserId, String regDate);
 
 	// 식단 하나 조회
 	Diet getDietOne(int no);

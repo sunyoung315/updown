@@ -8,6 +8,6 @@ public interface WeightService {
 
 	boolean modifyWeight(Weight weight);
 
-	Weight getWeight();
+	Weight getWeight(String loginUserId, String regDate);
 
 }

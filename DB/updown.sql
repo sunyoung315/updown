@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `diet` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
-SELECT * FROM weight;
+SELECT * FROM diet;
 
 -- -----------------------------------------------------
 -- Table `updown`.`exercise`

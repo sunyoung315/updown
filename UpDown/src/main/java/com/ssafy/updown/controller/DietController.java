@@ -19,21 +19,21 @@ import com.ssafy.updown.model.service.DietService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
-@RequestMapping("/updown/diet")
+@RequestMapping("/updown")
 public class DietController {
 
 	@Autowired
 	DietService dietService;
 
 	// 식단 등록
-	@PostMapping("/")
+	@PostMapping("/diet/regist")
 	public ResponseEntity<Void> uploadDiet(@RequestBody Diet diet) {
 		dietService.uploadDiet(diet);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 
 	// 식단 수정
-	@PutMapping("/")
+	@PutMapping("/diet/modify")
 	public ResponseEntity<?> modifyDiet(@RequestBody Diet diet) {
 		// 만약 식단이 잘 수정되었다면
 		if (dietService.modifyDiet(diet)) {
@@ -44,21 +44,21 @@ public class DietController {
 	}
 
 	// 식단 삭제
-	@DeleteMapping("/")
+	@DeleteMapping("/diet/delete")
 	public ResponseEntity<Void> removeDiet(int no){
 		dietService.removeDiet(no);
 		return new ResponseEntity<Void>(HttpStatus.OK);		
 	}
 
 	// 하루 식단 기록 조회
-	@GetMapping("/list/{regDate}")
-	public ResponseEntity<List<Diet>> getDietOneday(@PathVariable String regDate){
-		List<Diet> dietList = dietService.getDietOneday(regDate);
+	@GetMapping("/diet/")
+	public ResponseEntity<List<Diet>> getDietOneday(String loginUserId, String regDate){
+		List<Diet> dietList = dietService.getDietOneday(loginUserId, regDate);
 		return new ResponseEntity<List<Diet>>(dietList, HttpStatus.OK);		
 	}
 
 	// 식단 하나 조회
-	@GetMapping("/{no}")
+	@GetMapping("/diet/{no}")
 	public ResponseEntity<Diet> getDietOne(@PathVariable int no){
 		Diet diet = dietService.getDietOne(no);
 		return new ResponseEntity<Diet>(diet, HttpStatus.OK);
