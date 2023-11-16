@@ -56,7 +56,35 @@ public class DietController {
 		List<Diet> dietList = dietService.getDietOneday(loginUserId, regDate);
 		return new ResponseEntity<List<Diet>>(dietList, HttpStatus.OK);		
 	}
-
+	
+	// 하루 중 아침 식단 기록 조회
+	@GetMapping("/diet/breakfast")
+	public ResponseEntity<List<Diet>> getDietOnedayBreakfast(String loginUserId, String regDate){
+		List<Diet> dietList = dietService.getDietOnedayBreakfast(loginUserId, regDate);
+		return new ResponseEntity<List<Diet>>(dietList, HttpStatus.OK);		
+	}
+	
+	// 하루 중 점심 식단 기록 조회
+	@GetMapping("/diet/lunch")
+	public ResponseEntity<List<Diet>> getDietOnedayLunch(String loginUserId, String regDate){
+		List<Diet> dietList = dietService.getDietOnedayLunch(loginUserId, regDate);
+		return new ResponseEntity<List<Diet>>(dietList, HttpStatus.OK);		
+	}
+	
+	// 하루 중 저녁 식단 기록 조회
+	@GetMapping("/diet/dinner")
+	public ResponseEntity<List<Diet>> getDietOnedayDinner(String loginUserId, String regDate){
+		List<Diet> dietList = dietService.getDietOnedayDinner(loginUserId, regDate);
+		return new ResponseEntity<List<Diet>>(dietList, HttpStatus.OK);		
+	}
+	
+	// 하루 중 간식 식단 기록 조회
+	@GetMapping("/diet/snack")
+	public ResponseEntity<List<Diet>> getDietOnedaySnack(String loginUserId, String regDate){
+		List<Diet> dietList = dietService.getDietOnedaySnack(loginUserId, regDate);
+		return new ResponseEntity<List<Diet>>(dietList, HttpStatus.OK);		
+	}
+		
 	// 식단 하나 조회
 	@GetMapping("/diet/{no}")
 	public ResponseEntity<Diet> getDietOne(@PathVariable int no){
