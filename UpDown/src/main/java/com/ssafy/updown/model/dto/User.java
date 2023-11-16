@@ -11,7 +11,7 @@ public class User {
 	//하루 목표 운동 시간
 	private int targetTime; 
 	//증,감량 희망 여부
-	private String upDown;
+	private String updown;
 	//계정 공개 여부(Following 기능 추가 시 사용)
 	private boolean isSecret;
 	private String img;
@@ -21,7 +21,7 @@ public class User {
 	}
 
 	public User(String id, String password, String nickname, String name, String email, int targetWeight,
-			int targetTime, String upDown, boolean isSecret, String img, String orgImg) {
+			int targetTime, String updown, boolean isSecret, String img, String orgImg) {
 		this.id = id;
 		this.password = password;
 		this.nickname = nickname;
@@ -29,7 +29,7 @@ public class User {
 		this.email = email;
 		this.targetWeight = targetWeight;
 		this.targetTime = targetTime;
-		this.upDown = upDown;
+		this.updown = updown;
 		this.isSecret = isSecret;
 		this.img = img;
 		this.orgImg = orgImg;
@@ -91,12 +91,12 @@ public class User {
 		this.targetTime = targetTime;
 	}
 
-	public String getUpDown() {
-		return upDown;
+	public String getUpdown() {
+		return updown;
 	}
 
-	public void setUpDown(String upDown) {
-		this.upDown = upDown;
+	public void setUpdown(String updown) {
+		this.updown = updown;
 	}
 
 	public boolean isSecret() {
@@ -126,7 +126,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", password=" + password + ", nickname=" + nickname + ", name=" + name + ", email="
-				+ email + ", targetWeight=" + targetWeight + ", targetTime=" + targetTime + ", upDown=" + upDown
+				+ email + ", targetWeight=" + targetWeight + ", targetTime=" + targetTime + ", updown=" + updown
 				+ ", isSecret=" + isSecret + ", img=" + img + ", orgImg=" + orgImg + "]";
 	}
 	

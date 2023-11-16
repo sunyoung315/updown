@@ -6,17 +6,17 @@ import com.ssafy.updown.model.dto.Exercise;
 
 public interface ExerciseService {
 	//오늘의 운동 등록하기
-	public void upload(Exercise exercise);
+	public void uploadExercise(Exercise exercise);
 	
 	//해당 일자에 등록된 운동 기록 리스트 가져오기 
-	public List<Exercise> getList(String loginUserId);
+	public List<Exercise> getExerciseList(String loginUserId, String regDate);
 	
 	//선택한 운동 기록 1개 가져오기
-	public Exercise getOne(int exerciseNo);
+	public Exercise getOneExercise(int exerciseNo);
 	
 	//선택한 운동 기록 수정 
-	public void modify(Exercise exercise);
+	public void modifyExercise(Exercise exercise);
 	
 	//선택한 운동 기록 삭제 
-	public void remove(int exerciseNo);
+	public void removeExercise(int exerciseNo);
 }

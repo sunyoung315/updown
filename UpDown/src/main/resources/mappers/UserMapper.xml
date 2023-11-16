@@ -3,5 +3,35 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.updown.model.dao.UserDao">
-
+	<!-- 전체 사용자 가져오기 -->
+	<select id="selectAllUsers" resultType="User">
+		SELECT id, password, name, email, target_weight as targetWeight, target_time as targetTime, updown, is_secret as isSecret, img, org_img as orgImg
+		FROM user
+	</select>
+	
+	<!-- 사용자 1명 가져오기 -->
+	<select id="selectOneUser" parameterType="String" resultType="User">
+		SELECT id, password, name, email, target_weight as targetWeight, target_time as targetTime, updown, is_secret as isSecret, img, org_img as orgImg
+		FROM user
+		WHERE id = #{id};
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterType="User">
+		INSERT INTO user (id, password, nickname, name, email, target_weight, target_time, img, org_img, updown, is_secret)
+		VALUES (#{id}, #{password}, #{nickname}, #{name}, #{email}, #{targetWeight}, #{targetTime}, #{img}, #{orgImg}, #{updown}, #{isSecret});
+	</insert>
+	
+	<!-- 사용자 정보 수정 -->
+	<update id="updateUser" parameterType="User">
+		UPDATE user
+		SET password = #{password}, target_weight = #{targetWeight}, target_time = #{targetTime}, img = #{img}, org_img = #{orgImg}, updown = #{updown}, is_secret = #{isSecret}
+		WHERE id = #{id};
+	</update>
+	
+	<!-- 사용자 삭제 -->
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM user
+		WHERE id = #{id};
+	</delete>
 </mapper>

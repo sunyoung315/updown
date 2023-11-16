@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,33 +23,33 @@ public class ExerciseController {
 	@Autowired
 	private ExerciseService eService;
 	
-	@PostMapping("/exercise")
-	public ResponseEntity<Void> upload(Exercise exercise) {
-		eService.upload(exercise);
+	@PostMapping("/exercise/upload")
+	public ResponseEntity<Void> uploadExercise(Exercise exercise) {
+		eService.uploadExercise(exercise);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/exercise")
-	public ResponseEntity<List<Exercise>> getList(String loginUserId) {
-		List<Exercise> eList = eService.getList(loginUserId);
+	public ResponseEntity<List<Exercise>> getExerciseList(String loginUserId, String regDate) {
+		List<Exercise> eList = eService.getExerciseList(loginUserId, regDate);
 		return new ResponseEntity<List<Exercise>>(eList, HttpStatus.OK);
 	}
 	
 	@GetMapping("/exercise/{no}")
-	public ResponseEntity<Exercise> getOne(int exerciseNo) {
-		Exercise exercise = eService.getOne(exerciseNo);
+	public ResponseEntity<Exercise> getOneExercise(@PathVariable int exerciseNo) {
+		Exercise exercise = eService.getOneExercise(exerciseNo);
 		return new ResponseEntity<Exercise>(exercise, HttpStatus.OK);
 	}
 	
-	@PutMapping("/exercise")
-	public ResponseEntity<Void> modify(Exercise exercise) {
-		eService.modify(exercise);
+	@PutMapping("/exercise/modify")
+	public ResponseEntity<Void> modifyExercise(Exercise exercise) {
+		eService.modifyExercise(exercise);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/exercise")
-	public ResponseEntity<Void> remove(int exerciseNo) {
-		eService.remove(exerciseNo);
+	@DeleteMapping("/exercise/remove")
+	public ResponseEntity<Void> removeExercise(int exerciseNo) {
+		eService.removeExercise(exerciseNo);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
