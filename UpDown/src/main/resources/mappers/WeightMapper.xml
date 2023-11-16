@@ -18,9 +18,9 @@
 	</update>
 	
 	<!-- 당일 체중 조회 -->
-	<select id="selectWeight" resultType="Weight">
+	<select id="selectWeight" parameterType="map" resultType="Weight">
 		SELECT no, now_weight as nowWeight, remain_weight as remainWeight, reg_date as regDate, user_id as userId
 		FROM weight
-		WHERE reg_date = date_format(now(), '%Y-%m-%d')
+		WHERE reg_date = #{regDate} AND user_id = #{loginUserId}
 	</select>
 </mapper>

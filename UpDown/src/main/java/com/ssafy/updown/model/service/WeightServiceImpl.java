@@ -27,8 +27,8 @@ public class WeightServiceImpl implements WeightService {
 
 	// 당일 체중 조회
 	@Override
-	public Weight getWeight() {
-		Weight weight = weightDao.selectWeight();
+	public Weight getWeight(String loginUserId, String regDate) {
+		Weight weight = weightDao.selectWeight(loginUserId, regDate);
 		return weight;
 	}
 

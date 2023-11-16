@@ -5,13 +5,13 @@
 <mapper namespace="com.ssafy.updown.model.dao.UserDao">
 	<!-- 전체 사용자 가져오기 -->
 	<select id="selectAllUsers" resultType="User">
-		SELECT id, password, name, email, target_weight as targetWeight, target_time as targetTime, updown, is_secret as isSecret, img, org_img as orgImg
+		SELECT id, password, name, nickname, email, target_weight as targetWeight, target_time as targetTime, updown, is_secret as isSecret, img, org_img as orgImg
 		FROM user
 	</select>
 	
 	<!-- 사용자 1명 가져오기 -->
 	<select id="selectOneUser" parameterType="String" resultType="User">
-		SELECT id, password, name, email, target_weight as targetWeight, target_time as targetTime, updown, is_secret as isSecret, img, org_img as orgImg
+		SELECT id, password, name, nickname, email, target_weight as targetWeight, target_time as targetTime, updown, is_secret as isSecret, img, org_img as orgImg
 		FROM user
 		WHERE id = #{id};
 	</select>

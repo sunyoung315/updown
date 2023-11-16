@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +25,7 @@ public class ExerciseController {
 	private ExerciseService eService;
 	
 	@PostMapping("/exercise/upload")
-	public ResponseEntity<Void> uploadExercise(Exercise exercise) {
+	public ResponseEntity<Void> uploadExercise(@RequestBody Exercise exercise) {
 		eService.uploadExercise(exercise);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
@@ -36,13 +37,13 @@ public class ExerciseController {
 	}
 	
 	@GetMapping("/exercise/{no}")
-	public ResponseEntity<Exercise> getOneExercise(@PathVariable int exerciseNo) {
-		Exercise exercise = eService.getOneExercise(exerciseNo);
+	public ResponseEntity<Exercise> getOneExercise(@PathVariable int no) {
+		Exercise exercise = eService.getOneExercise(no);
 		return new ResponseEntity<Exercise>(exercise, HttpStatus.OK);
 	}
 	
 	@PutMapping("/exercise/modify")
-	public ResponseEntity<Void> modifyExercise(Exercise exercise) {
+	public ResponseEntity<Void> modifyExercise(@RequestBody Exercise exercise) {
 		eService.modifyExercise(exercise);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}

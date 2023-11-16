@@ -36,8 +36,8 @@ public class DietServiceImpl implements DietService {
 
 	// 하루 식단 기록 조회
 	@Override
-	public List<Diet> getDietOneday(String regDate) {
-		return dietDao.getDietOneday(regDate);
+	public List<Diet> getDietOneday(String loginUserId, String regDate) {
+		return dietDao.getDietOneday(loginUserId, regDate);
 	}
 
 	// 식단 하나 조회
