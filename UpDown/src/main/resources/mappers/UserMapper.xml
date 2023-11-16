@@ -7,6 +7,7 @@
 	<select id="selectAllUsers" resultType="User">
 		SELECT id, password, name, nickname, email, target_weight as targetWeight, target_time as targetTime, updown, is_secret as isSecret, img, org_img as orgImg
 		FROM user
+		WHERE is_secret = false;
 	</select>
 	
 	<!-- 사용자 1명 가져오기 -->

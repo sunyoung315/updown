@@ -26,7 +26,7 @@ public class DietController {
 	DietService dietService;
 
 	// 식단 등록
-	@PostMapping("/diet/regist")
+	@PostMapping("/diet/upload")
 	public ResponseEntity<Void> uploadDiet(@RequestBody Diet diet) {
 		dietService.uploadDiet(diet);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
@@ -44,7 +44,7 @@ public class DietController {
 	}
 
 	// 식단 삭제
-	@DeleteMapping("/diet/delete")
+	@DeleteMapping("/diet/remove")
 	public ResponseEntity<Void> removeDiet(int no){
 		dietService.removeDiet(no);
 		return new ResponseEntity<Void>(HttpStatus.OK);		
