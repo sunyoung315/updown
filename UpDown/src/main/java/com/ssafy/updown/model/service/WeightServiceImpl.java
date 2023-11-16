@@ -14,21 +14,21 @@ public class WeightServiceImpl implements WeightService {
 
 	// 체중 등록
 	@Override
-	public void upload(Weight weight) {
-		weightDao.upload(weight);
+	public void uploadWeight(Weight weight) {
+		weightDao.insertWeight(weight);
 	}
 
 	// 체중 수정
 	@Override
-	public boolean modify(Weight weight) {
+	public boolean modifyWeight(Weight weight) {
 		// 잘 수정 되었다면 true 반환
-		return weightDao.modify(weight) > 0;
+		return weightDao.updateWeight(weight) > 0;
 	}
 
 	// 당일 체중 조회
 	@Override
 	public Weight getWeight() {
-		Weight weight = weightDao.select();
+		Weight weight = weightDao.selectWeight();
 		return weight;
 	}
 

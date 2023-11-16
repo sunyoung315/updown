@@ -4,9 +4,9 @@ import com.ssafy.updown.model.dto.Weight;
 
 public interface WeightService {
 
-	void upload(Weight weight);
+	void uploadWeight(Weight weight);
 
-	boolean modify(Weight weight);
+	boolean modifyWeight(Weight weight);
 
 	Weight getWeight();
 
