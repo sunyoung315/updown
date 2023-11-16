@@ -37,13 +37,37 @@ public class DietServiceImpl implements DietService {
 	// 하루 식단 기록 조회
 	@Override
 	public List<Diet> getDietOneday(String loginUserId, String regDate) {
-		return dietDao.getDietOneday(loginUserId, regDate);
+		return dietDao.selectDietOneday(loginUserId, regDate);
 	}
 
+	// 하루 중 아침 식단 조회
+	@Override
+	public List<Diet> getDietOnedayBreakfast(String loginUserId, String regDate) {
+		return dietDao.selectDietOnedayBreakfast(loginUserId, regDate);
+	}
+
+	// 하루 중 점심 식단 조회
+	@Override
+	public List<Diet> getDietOnedayLunch(String loginUserId, String regDate) {
+		return dietDao.selectDietOnedayLunch(loginUserId, regDate);
+	}
+
+	// 하루 중 저녁 식단 조회
+	@Override
+	public List<Diet> getDietOnedayDinner(String loginUserId, String regDate) {
+		return dietDao.selectDietOnedayDinner(loginUserId, regDate);
+	}
+
+	// 하루 중 간식 식단 조회
+	@Override
+	public List<Diet> getDietOnedaySnack(String loginUserId, String regDate) {
+		return dietDao.selectDietOnedaySnack(loginUserId, regDate);
+	}
+	
 	// 식단 하나 조회
 	@Override
 	public Diet getDietOne(int no) {
-		return dietDao.getDietOne(no);
+		return dietDao.selectDietOne(no);
 	}
 
 }
