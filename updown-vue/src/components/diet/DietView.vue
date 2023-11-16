@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h4>체중</h4>
+        <h4>식단</h4>
         <button @click="change('upload')">등록</button>
         <button @click="change('modify')">수정</button>
         <button @click="change('detail')">상세보기</button>
@@ -11,23 +11,23 @@
 </template>
 
 <script setup>
-import WeightDetail from '@/components/weight/WeightDetail.vue';
-import WeightModify from '@/components/weight/WeightModify.vue';
-import WeightUpload from '@/components/weight/WeightUpload.vue';
+import DietDetail from '@/components/diet/DietDetail.vue';
+import DietModify from '@/components/diet/DietModify.vue';
+import DietUpload from '@/components/diet/DietUpload.vue';
 import { shallowRef } from 'vue'
 
-let choose = shallowRef(WeightDetail);
+let choose = shallowRef(DietDetail);
 
 const change = (val) => {
     switch(val) {
     case 'detail':
-        choose.value = WeightDetail;
+        choose.value = DietDetail;
         break;
     case 'upload':
-        choose.value = WeightUpload;
+        choose.value = DietUpload;
         break;
     case 'modify':
-        choose.value = WeightModify;
+        choose.value = DietModify;
         break;
     }
 }
