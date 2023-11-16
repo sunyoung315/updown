@@ -23,16 +23,16 @@ public class WeightController {
 
 	// 체중 등록
 	@PostMapping("/")
-	public ResponseEntity<Weight> upload(@RequestBody Weight weight) {
-		weightService.upload(weight);
-		return new ResponseEntity<Weight>(weight, HttpStatus.CREATED);
+	public ResponseEntity<Void> uploadWeight(@RequestBody Weight weight) {
+		weightService.uploadWeight(weight);
+		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 
 	// 체중 수정
 	@PutMapping("/")
-	public ResponseEntity<?> modify(@RequestBody Weight weight) {
+	public ResponseEntity<?> modifyWeight(@RequestBody Weight weight) {
 		// 데이터가 잘 수정되었다면
-		if (weightService.modify(weight))
+		if (weightService.modifyWeight(weight))
 			return new ResponseEntity<Weight>(weight, HttpStatus.OK);
 		// 데이터가 잘 수정되지 않았다면
 		return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
@@ -40,7 +40,7 @@ public class WeightController {
 
 	// 당일 체중 조회
 	@GetMapping("/")
-	public ResponseEntity<Weight> detail(){
+	public ResponseEntity<Weight> detailWeight(){
 		Weight weight =  weightService.getWeight();
 		return new ResponseEntity<Weight>(weight, HttpStatus.OK);		
 	}
