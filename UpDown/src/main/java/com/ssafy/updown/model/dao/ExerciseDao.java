@@ -2,6 +2,8 @@ package com.ssafy.updown.model.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.ssafy.updown.model.dto.Exercise;
 
 public interface ExerciseDao {
@@ -9,7 +11,7 @@ public interface ExerciseDao {
 	public void insert(Exercise exercise);
 	
 	//해당 일자에 등록된 운동 기록 리스트 가져오기 
-	public List<Exercise> selectList(String loginUserId);
+	public List<Exercise> selectList(@Param("loginUserId") String loginUserId, @Param("regDate") String regDate);
 	
 	//선택한 운동 기록 1개 가져오기
 	public Exercise selectOne(int exerciseNo);

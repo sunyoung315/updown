@@ -10,10 +10,10 @@
 	</insert>
 	
 	<!-- 해당 일자에 등록된 운동 기록 리스트 가져오기 -->
-	<select id="selectList" parameterType="String" resultType="Exercise">
+	<select id="selectList" parameterType="map" resultType="Exercise">
 		SELECT no, type, time, calorie, reg_date as regDate, user_id as userId 
 		FROM exercise 
-		WHERE reg_date=date_format(now(), '%Y-%m-%d') AND user_id=#{loginUserId};
+		WHERE reg_date = #{regDate} AND user_id = #{loginUserId};
 	</select>
 	
 	<!-- 선택한 운동 기록 1개 가져오기 -->

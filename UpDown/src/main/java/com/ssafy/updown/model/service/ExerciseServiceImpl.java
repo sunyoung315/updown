@@ -20,8 +20,8 @@ public class ExerciseServiceImpl implements ExerciseService {
 	}
 
 	@Override
-	public List<Exercise> getList(String loginUserId) {
-		return eDao.selectList(loginUserId);
+	public List<Exercise> getList(String loginUserId, String regDate) {
+		return eDao.selectList(loginUserId, regDate);
 	}
 
 	@Override

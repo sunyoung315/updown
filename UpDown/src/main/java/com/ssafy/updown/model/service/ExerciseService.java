@@ -9,7 +9,7 @@ public interface ExerciseService {
 	public void upload(Exercise exercise);
 	
 	//해당 일자에 등록된 운동 기록 리스트 가져오기 
-	public List<Exercise> getList(String loginUserId);
+	public List<Exercise> getList(String loginUserId, String regDate);
 	
 	//선택한 운동 기록 1개 가져오기
 	public Exercise getOne(int exerciseNo);
