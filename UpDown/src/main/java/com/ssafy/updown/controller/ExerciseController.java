@@ -24,32 +24,32 @@ public class ExerciseController {
 	private ExerciseService eService;
 	
 	@PostMapping("/exercise/upload")
-	public ResponseEntity<Void> upload(Exercise exercise) {
-		eService.upload(exercise);
+	public ResponseEntity<Void> uploadExercise(Exercise exercise) {
+		eService.uploadExercise(exercise);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/exercise")
-	public ResponseEntity<List<Exercise>> getList(String loginUserId, String regDate) {
-		List<Exercise> eList = eService.getList(loginUserId, regDate);
+	public ResponseEntity<List<Exercise>> getExerciseList(String loginUserId, String regDate) {
+		List<Exercise> eList = eService.getExerciseList(loginUserId, regDate);
 		return new ResponseEntity<List<Exercise>>(eList, HttpStatus.OK);
 	}
 	
 	@GetMapping("/exercise/{no}")
-	public ResponseEntity<Exercise> getOne(@PathVariable int exerciseNo) {
-		Exercise exercise = eService.getOne(exerciseNo);
+	public ResponseEntity<Exercise> getOneExercise(@PathVariable int exerciseNo) {
+		Exercise exercise = eService.getOneExercise(exerciseNo);
 		return new ResponseEntity<Exercise>(exercise, HttpStatus.OK);
 	}
 	
 	@PutMapping("/exercise/modify")
-	public ResponseEntity<Void> modify(Exercise exercise) {
-		eService.modify(exercise);
+	public ResponseEntity<Void> modifyExercise(Exercise exercise) {
+		eService.modifyExercise(exercise);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/exercise/remove")
-	public ResponseEntity<Void> remove(int exerciseNo) {
-		eService.remove(exerciseNo);
+	public ResponseEntity<Void> removeExercise(int exerciseNo) {
+		eService.removeExercise(exerciseNo);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	

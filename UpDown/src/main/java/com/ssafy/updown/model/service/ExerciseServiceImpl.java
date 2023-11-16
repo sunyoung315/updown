@@ -15,28 +15,28 @@ public class ExerciseServiceImpl implements ExerciseService {
 	private ExerciseDao eDao;
 
 	@Override
-	public void upload(Exercise exercise) {
-		eDao.insert(exercise);
+	public void uploadExercise(Exercise exercise) {
+		eDao.insertExercise(exercise);
 	}
 
 	@Override
-	public List<Exercise> getList(String loginUserId, String regDate) {
-		return eDao.selectList(loginUserId, regDate);
+	public List<Exercise> getExerciseList(String loginUserId, String regDate) {
+		return eDao.selectExerciseList(loginUserId, regDate);
 	}
 
 	@Override
-	public Exercise getOne(int exerciseNo) {
-		return eDao.selectOne(exerciseNo);
+	public Exercise getOneExercise(int exerciseNo) {
+		return eDao.selectOneExercise(exerciseNo);
 	}
 
 	@Override
-	public void modify(Exercise exercise) {
-		eDao.update(exercise);
+	public void modifyExercise(Exercise exercise) {
+		eDao.updateExercise(exercise);
 	}
 
 	@Override
-	public void remove(int exerciseNo) {
-		eDao.delete(exerciseNo);
+	public void removeExercise(int exerciseNo) {
+		eDao.deleteExercise(exerciseNo);
 	}
 
 }
