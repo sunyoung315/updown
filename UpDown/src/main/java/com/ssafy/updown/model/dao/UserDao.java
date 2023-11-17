@@ -2,6 +2,8 @@ package com.ssafy.updown.model.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.ssafy.updown.model.dto.User;
 
 public interface UserDao {
@@ -9,7 +11,7 @@ public interface UserDao {
 	public List<User> selectAllUsers();
 	
 	//사용자 1명 가져오기 
-	public User selectOneUser(String id);
+	public User selectOneUser(@Param("id")String id, @Param("password")String password);
 	
 	//회원가입 
 	public void insertUser(User user);

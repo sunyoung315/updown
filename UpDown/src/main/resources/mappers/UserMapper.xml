@@ -11,12 +11,12 @@
 	</select>
 	
 	<!-- 사용자 1명 가져오기 -->
-	<select id="selectOneUser" parameterType="String" resultType="User">
+	<select id="selectOneUser" parameterType="map" resultType="User">
 		SELECT id, password, name, nickname, email, target_weight as targetWeight, target_time as targetTime, updown, is_secret as isSecret, img, org_img as orgImg
 		FROM user
-		WHERE id = #{id};
+		WHERE id = #{id} AND password = #{password};
 	</select>
-	
+
 	<!-- 회원가입 -->
 	<insert id="insertUser" parameterType="User">
 		INSERT INTO user (id, password, nickname, name, email, target_weight, target_time, img, org_img, updown, is_secret)

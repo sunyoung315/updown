@@ -20,8 +20,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getOneUser(String id) {
-		return uDao.selectOneUser(id);
+	public User getOneUser(String id, String password) {
+		return uDao.selectOneUser(id, password);
 	}
 
 	@Override

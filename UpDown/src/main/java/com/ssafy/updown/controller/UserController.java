@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,10 +30,12 @@ public class UserController {
 		return new ResponseEntity<List<User>>(uList, HttpStatus.OK);
 	}
 	
-	@GetMapping("/user/{id}")
-	public ResponseEntity<User> getOneUser(@PathVariable String id) {
-		User user = uService.getOneUser(id);
-		return new ResponseEntity<User>(user, HttpStatus.OK);
+	@PostMapping("user/login")
+	public ResponseEntity<?> login(@RequestBody User user) {
+		User matchedUser = uService.getOneUser(user.getId(), user.getPassword());
+		if(matchedUser == null)
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		return new ResponseEntity<User>(matchedUser, HttpStatus.OK);
 	}
 	
 	@PostMapping("/user/signup")
