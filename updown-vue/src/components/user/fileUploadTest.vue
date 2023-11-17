@@ -1,0 +1,89 @@
+<template>
+    <div>
+        <h1>파일 업로드</h1>
+
+        <form @submit.prevent="submitForm(), goSignup()">
+            <fieldset>
+                <legend>사용자 정보 입력</legend>
+                <label for="id">아이디</label>
+                <input v-model="signupUser.id" type="text" id="id" name="id"><br>
+                <label for="password">비밀번호</label>
+                <input v-model="signupUser.password" autoComplete="off" type="password" id="password" name="password"><br>
+                <label for="name">이름</label>
+                <input v-model="signupUser.name" type="text" id="name" name="name"><br>
+                <label for="nickname">닉네임</label>
+                <input v-model="signupUser.nickname" type="text" id="nickname" name="nickname"><br>
+                <label for="email">이메일</label>
+                <input v-model="signupUser.email" type="text" id="email" name="email"><br>
+                <label for="targetWeight">목표 체중</label>
+                <input v-model="signupUser.targetWeight" type="number" id="targetWeight" name="targetWeight"><br>
+                <label for="targetTime">하루 목표 운동 시간</label>
+                <input v-model="signupUser.targetTime" type="number" id="targetTime" name="targetTime"><br>
+                <label for="isSecret">계정 공개 희망 여부</label>
+                <input v-model="signupUser.isSecret" type="checkbox" id="isSecret" name="isSecret"><br>
+                <div>
+                    <input ref="serveyImage" type="file" accept="image/*">
+                </div>
+                <input type="submit" value="등록">
+                <input type="reset" value="초기화">
+            </fieldset>
+        </form>
+
+    </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { useUserStore } from '@/stores/user'
+import axios from 'axios';
+
+const serveyImage = ref(null);
+
+
+const signupUser = ref({
+    id: '',
+    password: '',
+    name: '',
+    nickname: '',
+    email: '',
+    targetWeight: '',
+    targetTime: '',
+    isSecret: '',
+    image: ''
+})
+
+// 이미지 업로드
+const submitForm = async () => {
+    const formData = new FormData();
+    formData.append('file', serveyImage.value.files[0]);
+    // 유저 정보
+    signupUser.value.image = serveyImage.value.files[0]
+
+    axios({
+        url: `http://localhost:8080/updown/img/regist`,
+        method: 'POST',
+        data: formData,
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        },
+    }).then((res) => {
+        // console.log(res.data.img)
+        signupUser.value.image = res.data.img
+    })
+
+};
+
+
+// 회원가입
+const goSignup = function () {
+    console.log(signupUser);
+    axios.post(`http://localhost:8080/updown/user/signup`, signupUser)
+    .then(() => {
+         router.push({ name: 'mypofile' })
+     })
+}
+
+
+</script>
+
+<style scoped></style>

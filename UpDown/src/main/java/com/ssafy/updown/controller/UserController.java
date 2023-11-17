@@ -40,6 +40,7 @@ public class UserController {
 	
 	@PostMapping("/user/signup")
 	public ResponseEntity<Void> signUp(User user) {
+		System.out.println(user);
 		uService.signUp(user);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
