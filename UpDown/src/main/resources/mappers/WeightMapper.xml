@@ -6,21 +6,21 @@
 
 	<!-- 체중 등록 -->
 	<insert id="insertWeight" parameterType="Weight">
-		INSERT INTO weight (now_weight, remain_weight, reg_date, user_id)
-		VALUES(#{nowWeight}, #{remainWeight}, date_format(now(), '%Y-%m-%d'), #{userId} )
+		INSERT INTO weight (now_weight, reg_date, user_id)
+		VALUES(#{nowWeight}, date_format(now(), '%Y-%m-%d'), #{userId} )
 	</insert>
 	
 	<!-- 체중 수정 -->
 	<update id="updateWeight" parameterType="Weight">
 		UPDATE weight
-		SET now_weight=#{nowWeight}, remain_weight=#{remainWeight}
-		WHERE no = #{no}
+		SET now_weight=#{nowWeight}
+		WHERE reg_date = #{regDate}
 	</update>
 	
 	<!-- 당일 체중 조회 -->
 	<select id="selectWeight" parameterType="map" resultType="Weight">
-		SELECT no, now_weight as nowWeight, remain_weight as remainWeight, reg_date as regDate, user_id as userId
+		SELECT no, now_weight as nowWeight, reg_date as regDate, user_id as userId
 		FROM weight
-		WHERE reg_date = #{regDate} AND user_id = #{loginUserId}
+		WHERE user_id = #{loginUserId} AND reg_date = #{regDate}
 	</select>
 </mapper>
