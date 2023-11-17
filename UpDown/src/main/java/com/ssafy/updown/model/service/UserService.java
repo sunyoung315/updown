@@ -9,7 +9,7 @@ public interface UserService {
 	public List<User> getAllUsers();
 
 	// 사용자 1명 가져오기
-	public User getOneUser(String id);
+	public User getOneUser(String id, String password);
 
 	// 회원가입
 	public void signUp(User user);
