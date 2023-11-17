@@ -21,7 +21,7 @@ public class User {
 	}
 
 	public User(String id, String password, String nickname, String name, String email, int targetWeight,
-			int targetTime, String updown, boolean isSecret, String img, String orgImg) {
+			int targetTime, String updown, boolean isSecret, String img) {
 		this.id = id;
 		this.password = password;
 		this.nickname = nickname;
@@ -31,8 +31,7 @@ public class User {
 		this.targetTime = targetTime;
 		this.updown = updown;
 		this.isSecret = isSecret;
-		this.img = img;
-		this.orgImg = orgImg;
+		this.img = img;		
 	}
 
 	public String getId() {
