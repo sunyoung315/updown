@@ -1,6 +1,7 @@
 <template>
     <div>
-        <h4>몸무게 등록 창</h4>
+        <h2>체중</h2>
+        <h4>오늘의 체중은?</h4>
     </div>
 </template>
 

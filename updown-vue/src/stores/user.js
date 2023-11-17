@@ -11,10 +11,10 @@ export const useUserStore = defineStore('user', () => {
 
     let login = function(loginUser) {
         axios({
-            url: `${REST_USER_API}/user/${loginUser.id}`,
+            url: `${REST_USER_API}/login`,
             method: 'POST',
             data: loginUser,
-            Headers: {
+            headers: {
                 "Content-Type": "application/json"
             },
         })
@@ -22,9 +22,7 @@ export const useUserStore = defineStore('user', () => {
             matchedUser.value = res.data;
             if(matchedUser.value) {
                 alert("로그인 성공!");
-                loginUser.id = '';
-                loginUser.password = '';
-                localStoarge.setItem("loginUser", matchedUser);
+                localStorage.setItem("loginUser", JSON.stringify(matchedUser.value));
                 router.push('/today');
             } else {
                 alert("로그인 실패!");
@@ -33,6 +31,7 @@ export const useUserStore = defineStore('user', () => {
         })
         .catch((err) => {
             alert('서버 에러');
+            console.log(err);
         })
     }
 

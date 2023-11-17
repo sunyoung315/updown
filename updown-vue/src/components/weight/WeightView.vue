@@ -1,11 +1,7 @@
 <template>
     <div class="container">
-        <h4>체중</h4>
-        <button @click="change('upload')">등록</button>
-        <button @click="change('modify')">수정</button>
-        <button @click="change('detail')">상세보기</button>
         <KeepAlive>
-            <component :is="choose"></component>
+            <component :is="choose" :weight="weight" @modify="modify"/>
         </KeepAlive>
     </div>
 </template>
@@ -14,23 +10,50 @@
 import WeightDetail from '@/components/weight/WeightDetail.vue';
 import WeightModify from '@/components/weight/WeightModify.vue';
 import WeightUpload from '@/components/weight/WeightUpload.vue';
-import { shallowRef } from 'vue'
+import { shallowRef, onMounted } from 'vue'
+import { useWeightStore } from '@/stores/weight';
 
 let choose = shallowRef(WeightDetail);
 
-const change = (val) => {
-    switch(val) {
-    case 'detail':
-        choose.value = WeightDetail;
-        break;
-    case 'upload':
-        choose.value = WeightUpload;
-        break;
-    case 'modify':
-        choose.value = WeightModify;
-        break;
-    }
+const modify = function() {
+    choose.value = WeightModify;
 }
+
+const regist = function() {
+    choose.value = WeightUpload;
+}
+
+// const change = (val) => {
+//     switch(val) {
+//     case 'detail':
+//         choose.value = WeightDetail;
+//         break;
+//     case 'upload':
+//         choose.value = WeightUpload;
+//         break;
+//     case 'modify':
+//         choose.value = WeightModify;
+//         break;
+//     }
+// }
+
+const today = new Date();
+
+const year = today.getFullYear();
+const month = ("0" + (1 + today.getMonth())).slice(-2);
+const day = ("0" + today.getDate()).slice(-2);
+
+const regDate = year + '-' + month + '-' + day;
+
+const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
+
+const store = useWeightStore();
+
+onMounted(() => {
+    store.getWeight(loginUserId, regDate);
+})
+
+const weight = store.todayWeight;
 
 </script>
 

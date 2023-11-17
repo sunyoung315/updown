@@ -3,17 +3,15 @@ package com.ssafy.updown.model.dto;
 public class Weight {
 	private int no;
 	private int nowWeight;
-	private int remainWeight;
 	private String regDate;
 	private String userId;
 	
 	public Weight() {
 	}
 
-	public Weight(int no, int nowWeight, int remainWeight, String regDate, String userId) {
+	public Weight(int no, int nowWeight, String regDate, String userId) {
 		this.no = no;
 		this.nowWeight = nowWeight;
-		this.remainWeight = remainWeight;
 		this.regDate = regDate;
 		this.userId = userId;
 	}
@@ -34,14 +32,6 @@ public class Weight {
 		this.nowWeight = nowWeight;
 	}
 
-	public int getRemainWeight() {
-		return remainWeight;
-	}
-
-	public void setRemainWeight(int remainWeight) {
-		this.remainWeight = remainWeight;
-	}
-
 	public String getRegDate() {
 		return regDate;
 	}
@@ -60,8 +50,7 @@ public class Weight {
 
 	@Override
 	public String toString() {
-		return "Weight [no=" + no + ", nowWeight=" + nowWeight + ", remainWeight=" + remainWeight + ", regDate="
-				+ regDate + ", userId=" + userId + "]";
+		return "Weight [no=" + no + ", nowWeight=" + nowWeight + ", regDate=" + regDate + ", userId=" + userId + "]";
 	}
 	
 }

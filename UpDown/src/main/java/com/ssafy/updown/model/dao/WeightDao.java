@@ -1,7 +1,5 @@
 package com.ssafy.updown.model.dao;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.ssafy.updown.model.dto.Weight;
 
 public interface WeightDao {
@@ -13,6 +11,6 @@ public interface WeightDao {
 	int updateWeight(Weight weight);
 
 	// 당일 체중 조회
-	Weight selectWeight(@Param("loginUserId") String loginUserId, @Param("regDate") String regDate);
+	Weight selectWeight(String loginUserId, String regDate);
 	
 }

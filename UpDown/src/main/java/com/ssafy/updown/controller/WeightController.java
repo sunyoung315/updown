@@ -1,5 +1,6 @@
 package com.ssafy.updown.controller;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,16 +32,18 @@ public class WeightController {
 	// 체중 수정
 	@PutMapping("/weight/modify")
 	public ResponseEntity<?> modifyWeight(@RequestBody Weight weight) {
+		System.out.println(weight.toString());
 		// 데이터가 잘 수정되었다면
 		if (weightService.modifyWeight(weight))
 			return new ResponseEntity<Weight>(weight, HttpStatus.OK);
 		// 데이터가 잘 수정되지 않았다면
+		System.out.println("수정안됨");
 		return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 	}
 
 	// 하루 체중 기록 조회
 	@GetMapping("/weight")
-	public ResponseEntity<Weight> detailWeight(String loginUserId, String regDate){
+	public ResponseEntity<?> detailWeight(@Param("loginUserId") String loginUserId, @Param("regDate") String regDate){
 		Weight weight =  weightService.getWeight(loginUserId, regDate);
 		return new ResponseEntity<Weight>(weight, HttpStatus.OK);		
 	}
