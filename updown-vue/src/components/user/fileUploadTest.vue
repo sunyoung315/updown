@@ -55,7 +55,8 @@ const signupUser = ref({
     targetTime: '',
     updown: '',
     isSecret: '',
-    img: ''
+    img: '',
+    orgImg: ''
 })
 
 // 이미지 업로드
@@ -74,7 +75,7 @@ const submitForm = async () => {
         },
     }).then((res) => {
         signupUser.value.img = res.data.img
-        console.log("서버에서 다시 받아온 이미지: "+ res.data.img);
+        signupUser.value.orgImg = res.data.orgImg
     }).then(()=> {
         // 이미지 업로드 후 회원가입 코드 실행
         goSignup();
@@ -96,7 +97,7 @@ const goSignup = function () {
         },
     })
         .then(() => {
-            router.push({ name: 'home' })
+            router.push({ name: 'login' })
         })
 }
 
