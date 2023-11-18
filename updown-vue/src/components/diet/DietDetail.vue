@@ -1,14 +1,28 @@
 <template>
-    <div>    
+    <div>
         <h2>{{ category }}</h2>
-        <div v-if="todayDietBreakFast">
-            <img class="cursor" @click="modify" style="width: 3em;" src="../../asset/icon/edit.png" alt="수정">
-            <img class="cursor" @click="graph" style="width: 3em;" src="../../asset/icon/graph.png" alt="그래프">
+        <div v-if="category == '아침'">
+            <div v-if="todayDietBreakFast">
+                <img class="cursor" @click="modify" style="width: 3em;" src="../../asset/icon/edit.png" alt="수정">
+                <img class="cursor" @click="graph" style="width: 3em;" src="../../asset/icon/graph.png" alt="그래프">
+            </div>
+            <div v-else>
+                <img class="cursor" @click="regist" style="width: 3em;" src="../../asset/icon/add.png" alt="등록">
+               
+            </div>
         </div>
-        <div v-else>    
-            <img class="cursor" @click="regist" style="width: 3em;" src="../../asset/icon/add.png" alt="등록">
-            <h4>0kg</h4>
+        <div v-if="category == '점심'">
+            <div v-if="todayDietBreakFast">
+                <img class="cursor" @click="modify" style="width: 3em;" src="../../asset/icon/edit.png" alt="수정">
+                <img class="cursor" @click="graph" style="width: 3em;" src="../../asset/icon/graph.png" alt="그래프">
+            </div>
+            <div v-else>
+                <img class="cursor" @click="regist" style="width: 3em;" src="../../asset/icon/add.png" alt="등록">
+              
+            </div>
         </div>
+
+        <!-- 저녁, 간식도 추가하기.. 일단 아침 점심 확인해보고 -->
     </div>
 </template>
 
@@ -31,19 +45,17 @@ const todayDietSnack = computed(() => store.todayDietSnack);
 
 const emits = defineEmits(["modify", "regist", "graph"]);
 
-const modify = function() {
+const modify = function () {
     emits("modify");
 }
 
-const regist = function() {
+const regist = function () {
     emits("regist");
 }
 
-const graph = function() {
+const graph = function () {
     emits("graph");
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

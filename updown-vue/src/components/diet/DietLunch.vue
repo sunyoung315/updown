@@ -1,7 +1,5 @@
 <template>
     <div class="container">
-        <h3>점심</h3>
-        <h4>kcal</h4>
         <KeepAlive>
             <component :is="choose" :category="'점심'" @regist="regist" @modify="modify" @home="home" />
         </KeepAlive>

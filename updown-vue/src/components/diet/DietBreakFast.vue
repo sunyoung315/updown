@@ -8,7 +8,6 @@
 
 <script setup>
 import { shallowRef, onMounted } from 'vue'
-import { useWeightStore } from '@/stores/weight';
 
 import DietDetail from '@/components/diet/DietDetail.vue';
 import DietModify from './DietModify.vue';
