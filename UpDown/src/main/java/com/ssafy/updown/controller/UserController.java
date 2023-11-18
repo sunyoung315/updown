@@ -24,9 +24,17 @@ public class UserController {
 	@Autowired
 	private UserService uService;
 	
+	// 전체 사용자 가져오기
 	@GetMapping("/user")
 	public ResponseEntity<List<User>> getAllUsers() {
 		List<User> uList = uService.getAllUsers();
+		return new ResponseEntity<List<User>>(uList, HttpStatus.OK);
+	}
+	
+	// 계정 공개를 희망하는 사용자만 가져오기
+	@GetMapping("/user/open")
+	public ResponseEntity<List<User>> getNoSecretUsers() {
+		List<User> uList = uService.getNoSecretUsers();
 		return new ResponseEntity<List<User>>(uList, HttpStatus.OK);
 	}
 	

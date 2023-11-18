@@ -7,7 +7,13 @@
 	<select id="selectAllUsers" resultType="User">
 		SELECT id, password, name, nickname, email, target_weight as targetWeight, target_time as targetTime, updown, is_secret as isSecret, img, org_img as orgImg
 		FROM user
-		WHERE is_secret = false;
+	</select>
+	
+	<!-- 계정 공개 희망하는 사용자들만 가져오기 -->
+	<select id="selectNoSecretUsers" resultType="User">
+		SELECT id, password, name, nickname, email, target_weight as targetWeight, target_time as targetTime, updown, is_secret as isSecret, img, org_img as orgImg
+		FROM user
+		WHRER is_secret = false
 	</select>
 	
 	<!-- 사용자 1명 가져오기 -->
