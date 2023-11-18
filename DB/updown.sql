@@ -59,6 +59,8 @@ CREATE TABLE IF NOT EXISTS `diet` (
   `food` VARCHAR(300) NOT NULL,
   `calorie` INT NOT NULL DEFAULT 0,
   `reg_date` DATE NOT NULL,
+  `img` VARCHAR(100) NULL,
+  `org_img` VARCHAR(100) NULL,
   `user_id` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`no`, `user_id`),
   UNIQUE INDEX `no_UNIQUE` (`no` ASC) VISIBLE,
