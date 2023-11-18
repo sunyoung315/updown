@@ -22,14 +22,10 @@ import com.ssafy.updown.model.service.UserService;
 @RequestMapping("/updown")
 public class UserFileController {
 
-	// resource 경로를 가져오기위해 ResourcesLoader를 주입받는다.
-	@Autowired
-	ResourceLoader resLoader;
-	
 	@Autowired
 	UserService uService;
 	
-
+	static File dir = new File("C:/upload");
 //	 * 같은 이름의 파일이 여러개 있을 경우를 위해서 업로드한 시간(밀리초단위)를 파일 이름 앞에 추가한다.
 //	 * 중복방지 처리가된 파일이름을 img, 원래 파일이름을 orgImg로 한다.	
 	// 이미지 업로드
@@ -38,19 +34,19 @@ public class UserFileController {
 		
 		Img img = new Img();
 		
-		// 프로젝트 내에 target 폴더에 static/upload폴더 만들어야 업로드 가능
-		Resource res = resLoader.getResource("classpath:/static/upload");
-		
 		// 중복방지를 위해 파일 이름앞에 현재 시간 추가
 		img.setImg(System.currentTimeMillis() + "_" + file.getOriginalFilename());
 		// User 객체에 원본 파일 이름 저장
 		img.setOrgImg(file.getOriginalFilename());
 		// // 파일 저장
 		
-		System.out.println(res.getFile());
+		System.out.println(dir);
 
-		
-		file.transferTo(new File(res.getFile(), img.getImg()));
+		// 디렉토리가 없다면 생성	    
+	    if (!dir.exists()) {
+	    	dir.mkdirs();
+	    }
+		file.transferTo(new File(dir, img.getImg()));
 		return new ResponseEntity<Img>(img, HttpStatus.OK);
 	}
 
