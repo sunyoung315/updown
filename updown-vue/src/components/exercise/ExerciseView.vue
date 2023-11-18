@@ -1,12 +1,7 @@
 <template>
     <div class="container">
-        <h4>운동</h4>
-        <button @click="change('upload')">등록</button>
-        <button @click="change('modify')">수정</button>
-        <button @click="change('detail')">상세보기</button>
-        <button @click="change('list')">목록보기</button>
         <KeepAlive>
-            <component :is="choose"></component>
+            <component :is="choose" @regist="regist" @modify="modify" @home="home" @list="list"></component>
         </KeepAlive>
     </div>
 </template>
@@ -20,22 +15,23 @@ import { shallowRef } from 'vue'
 
 let choose = shallowRef(ExerciseDetail);
 
-const change = (val) => {
-    switch(val) {
-    case 'detail':
-        choose.value = ExerciseDetail;
-        break;
-    case 'upload':
-        choose.value = ExerciseUpload;
-        break;
-    case 'modify':
-        choose.value = ExerciseModify;
-        break;
-    case 'list':
-        choose.value = ExerciseList;
-        break;
-    }
+const modify = function() {
+    choose.value = ExerciseModify;
 }
+
+const regist = function() {
+    choose.value = ExerciseUpload;
+}
+
+const home = function() {
+    choose.value = ExerciseDetail;
+}
+
+const list = function() {
+    choose.value = ExerciseList;
+}
+
+
 
 </script>
 

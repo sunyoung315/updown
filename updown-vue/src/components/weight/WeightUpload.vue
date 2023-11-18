@@ -28,17 +28,17 @@ const emits = defineEmits(["home",])
 
 const store = useWeightStore();
 
-onMounted(() =>{
-    getTodayWeight();
+onMounted(async () =>{
+    await getTodayWeight();
 })
 
 const getTodayWeight = async function() {
     await store.getWeight(loginUserId, regDate);
 }
 
-const upload = function() {
-    store.uploadWeight(newWeight.value);
-    getTodayWeight();
+const upload = async function() {
+    await store.uploadWeight(newWeight.value);
+    await getTodayWeight();
     emits("home");
 }
 

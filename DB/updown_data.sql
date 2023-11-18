@@ -18,9 +18,3 @@ INSERT INTO weight(now_weight, reg_date, user_id) VALUES
 (59.5, '2023-11-15', 'ssafy'),
 (60, '2023-11-16', 'ssafy'),
 (60.2, '2023-11-17', 'ssafy');
-
-INSERT INTO weight(now_weight, reg_date, user_id) VALUES
-(60, '2023-11-18', 'ssafy');
-
-DELETE FROM weight
-WHERE reg_date='2023-11-18';
