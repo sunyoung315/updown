@@ -1,17 +1,19 @@
 <template>
     <div class="container">
         <KeepAlive>
-            <component :is="choose" :weight="weight" @modify="modify"/>
+            <component :is="choose" @regist="regist" @modify="modify" @home="home" @graph="graph"/>
         </KeepAlive>
     </div>
 </template>
 
 <script setup>
+import { shallowRef, onMounted } from 'vue'
+import { useWeightStore } from '@/stores/weight';
+
 import WeightDetail from '@/components/weight/WeightDetail.vue';
 import WeightModify from '@/components/weight/WeightModify.vue';
 import WeightUpload from '@/components/weight/WeightUpload.vue';
-import { shallowRef, onMounted } from 'vue'
-import { useWeightStore } from '@/stores/weight';
+import WeightGraph from '@/components/weight/WeightGraph.vue';
 
 let choose = shallowRef(WeightDetail);
 
@@ -23,37 +25,27 @@ const regist = function() {
     choose.value = WeightUpload;
 }
 
-// const change = (val) => {
-//     switch(val) {
-//     case 'detail':
-//         choose.value = WeightDetail;
-//         break;
-//     case 'upload':
-//         choose.value = WeightUpload;
-//         break;
-//     case 'modify':
-//         choose.value = WeightModify;
-//         break;
-//     }
-// }
+const home = function() {
+    choose.value = WeightDetail;
+}
+
+const graph = function() {
+    choose.value = WeightGraph;
+}
 
 const today = new Date();
-
 const year = today.getFullYear();
 const month = ("0" + (1 + today.getMonth())).slice(-2);
 const day = ("0" + today.getDate()).slice(-2);
-
-const regDate = year + '-' + month + '-' + day;
+const regDate = `${year}-${month}-${day}`;
 
 const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
 
 const store = useWeightStore();
 
-onMounted(() => {
-    store.getWeight(loginUserId, regDate);
+onMounted(async () => {
+    await store.getWeight(loginUserId, regDate);
 })
-
-const weight = store.todayWeight;
 
 </script>
 
