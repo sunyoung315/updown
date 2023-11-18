@@ -10,6 +10,9 @@ public interface UserDao {
 	//전체 사용자 가져오기 
 	public List<User> selectAllUsers();
 	
+	// 계정 공개를 희망하는 사용자만 가져오기
+	public List<User> selectNoSecretUsers();
+	
 	//사용자 1명 가져오기 
 	public User selectOneUser(@Param("id")String id, @Param("password")String password);
 	

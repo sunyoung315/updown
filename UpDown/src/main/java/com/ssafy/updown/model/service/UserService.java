@@ -7,6 +7,9 @@ import com.ssafy.updown.model.dto.User;
 public interface UserService {
 	// 전체 사용자 가져오기
 	public List<User> getAllUsers();
+	
+	// 계정 공개를 희망하는 사용자만 가져오기
+	public List<User> getNoSecretUsers();
 
 	// 사용자 1명 가져오기
 	public User getOneUser(String id, String password);

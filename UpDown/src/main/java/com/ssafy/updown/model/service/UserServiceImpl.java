@@ -20,6 +20,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public List<User> getNoSecretUsers() {
+		return uDao.selectNoSecretUsers();
+	}
+	
+	@Override
 	public User getOneUser(String id, String password) {
 		return uDao.selectOneUser(id, password);
 	}
@@ -38,5 +43,5 @@ public class UserServiceImpl implements UserService {
 	public void removeUser(String id) {
 		uDao.deleteUser(id);
 	}
-	
+
 }
