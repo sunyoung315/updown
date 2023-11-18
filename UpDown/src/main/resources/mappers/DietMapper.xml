@@ -6,8 +6,8 @@
 
 <!-- 식단 등록 -->
 <insert id="insertDiet" parameterType="Diet">
-	INSERT INTO diet (category, food, calorie, reg_date, user_id)
-	VALUES(#{category}, #{food}, #{calorie}, #{regDate}, #{userId});
+	INSERT INTO diet (category, food, calorie, reg_date, img, org_img, user_id)
+	VALUES(#{category}, #{food}, #{calorie}, date_format(now(), '%Y-%m-%d'), #{img}, #{orgImg}, #{userId});
 </insert>
 
 <!-- 식단 수정 -->

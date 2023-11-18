@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.updown.model.dto.Diet;
 import com.ssafy.updown.model.service.DietService;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @RequestMapping("/updown")
@@ -28,6 +28,7 @@ public class DietController {
 	// 식단 등록
 	@PostMapping("/diet/upload")
 	public ResponseEntity<Void> uploadDiet(@RequestBody Diet diet) {
+		System.out.println(diet);
 		dietService.uploadDiet(diet);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
@@ -51,7 +52,7 @@ public class DietController {
 	}
 
 	// 하루 식단 기록 조회
-	@GetMapping("/diet/")
+	@GetMapping("/diet")
 	public ResponseEntity<List<Diet>> getDietOneday(String loginUserId, String regDate){
 		List<Diet> dietList = dietService.getDietOneday(loginUserId, regDate);
 		return new ResponseEntity<List<Diet>>(dietList, HttpStatus.OK);		

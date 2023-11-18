@@ -40,7 +40,7 @@ public class UserFileController {
 		img.setOrgImg(file.getOriginalFilename());
 		// // 파일 저장
 		
-		System.out.println(dir);
+		System.out.println(img);
 
 		// 디렉토리가 없다면 생성	    
 	    if (!dir.exists()) {
