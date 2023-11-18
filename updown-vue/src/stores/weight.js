@@ -48,7 +48,6 @@ export const useWeightStore = defineStore('weight', () => {
     }
     
     const uploadWeight = async function(newWeight) {
-        console.log(todayWeight);
         await axios({
             url: `${REST_WEIGHT_API}/upload`,
             method: 'POST',

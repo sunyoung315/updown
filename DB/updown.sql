@@ -34,7 +34,6 @@ SELECT * FROM user;
 CREATE TABLE IF NOT EXISTS `weight` (
   `no` INT NOT NULL AUTO_INCREMENT,
   `now_weight` DECIMAL(5,1) NOT NULL,
-  `remain_weight` DECIMAL(5,1) NOT NULL,
   `reg_date` DATE NOT NULL,
   `user_id` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`no`, `user_id`),
