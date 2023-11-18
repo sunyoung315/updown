@@ -29,8 +29,6 @@ public class UserFileController {
 	@Autowired
 	UserService uService;
 	
-	// C드라이브에 upload파일 만들어야 코드 아래 메서드 실행됨
-//	static File dir = new File("/static/upload");
 
 //	 * 같은 이름의 파일이 여러개 있을 경우를 위해서 업로드한 시간(밀리초단위)를 파일 이름 앞에 추가한다.
 //	 * 중복방지 처리가된 파일이름을 img, 원래 파일이름을 orgImg로 한다.	
@@ -40,6 +38,7 @@ public class UserFileController {
 		
 		Img img = new Img();
 		
+		// 프로젝트 내에 target 폴더에 static/upload폴더 만들어야 업로드 가능
 		Resource res = resLoader.getResource("classpath:/static/upload");
 		
 		// 중복방지를 위해 파일 이름앞에 현재 시간 추가
