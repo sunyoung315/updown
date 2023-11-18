@@ -1,7 +1,7 @@
 -- -----------------------------------------------------
 -- Schema updown
 -- DROP SCHEMA updown;
------------------------------------------------------
+-- ---------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `updown` DEFAULT CHARACTER SET utf8 ;
 USE `updown` ;
 

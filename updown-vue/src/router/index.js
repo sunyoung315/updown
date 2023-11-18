@@ -8,7 +8,6 @@ import MyProfileView from '@/views/MyProfileView.vue'
 
 import Login from '@/components/user/Login.vue'
 import SignUp from '@/components/user/SignUp.vue'
-import fileUploadTest from '@/components/user/fileUploadTest.vue'
 
 
 const router = createRouter({
@@ -53,11 +52,7 @@ const router = createRouter({
         },
       ]
     },
-    {
-      path: '/test',
-      name: 'test',
-      component: fileUploadTest,
-    },
+   
    
   ]
 })

@@ -1,5 +1,10 @@
 package com.ssafy.updown.model.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class User {
 	private String id;
 	private String password;
@@ -13,7 +18,7 @@ public class User {
 	//증,감량 희망 여부
 	private String updown;
 	//계정 공개 여부(Following 기능 추가 시 사용)
-	private boolean isSecret;
+	private Boolean isSecret;
 	private String img;
 	private String orgImg;
 	
@@ -21,7 +26,7 @@ public class User {
 	}
 
 	public User(String id, String password, String nickname, String name, String email, int targetWeight,
-			int targetTime, String updown, boolean isSecret, String img, String orgImg) {
+			int targetTime, String updown, Boolean isSecret, String img, String orgImg) {
 		this.id = id;
 		this.password = password;
 		this.nickname = nickname;
@@ -99,11 +104,14 @@ public class User {
 		this.updown = updown;
 	}
 
-	public boolean isSecret() {
+	
+	
+
+	public Boolean getIsSecret() {
 		return isSecret;
 	}
 
-	public void setSecret(boolean isSecret) {
+	public void setIsSecret(Boolean isSecret) {
 		this.isSecret = isSecret;
 	}
 
