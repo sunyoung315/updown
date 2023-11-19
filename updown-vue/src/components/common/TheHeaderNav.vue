@@ -4,7 +4,7 @@
             <RouterLink to="today"><h2>로고</h2></RouterLink> 
             <nav>
                 <RouterLink :to="{name: 'today'}">오늘의 기록</RouterLink> | 
-                <RouterLink :to="{name: 'record'}">과거 전체 기록</RouterLink>
+                <RouterLink :to="{name: 'record'}">과거 기록 조회</RouterLink>
             </nav>
             <img class="cursor" @click="logout"  style="width: 3em; height: 3em" src="../../asset/icon/out.png" alt="로그아웃">
         </div>

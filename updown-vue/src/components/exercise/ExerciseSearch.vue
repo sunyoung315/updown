@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>운동</h2>
-        <img class="cursor" @click="regist" style="width: 1.8em;" src="../../asset/icon/delete.png" alt="돌아가기">
+        <img class="cursor" @click="cancel" style="width: 1.8em;" src="../../asset/icon/delete.png" alt="검색취소">
         <div>
             <input type="text" placeholder="운동명을 검색해주세요." v-model="word">
             <img @click="search" class="cursor" style="width: 2.5em;" src="../../asset/icon/search.png" alt="검색">
@@ -29,13 +29,13 @@ const store = useExerciseStore();
 
 const emits = defineEmits(["regist", "getInfo"]);
 
-const regist = function() {
+const exerciseInfoList = computed(() => store.exerciseInfoList);
+
+const cancel = function() {
     emits("regist");
 }
 
 const word = ref('');
-
-const exerciseInfoList = computed(() => store.exerciseInfoList);
 
 const search = async function() {
     store.searchExerciseInfo(word.value);
