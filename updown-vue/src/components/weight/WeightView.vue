@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { shallowRef, onMounted } from 'vue'
+import { shallowRef, onMounted } from 'vue';
 import { useWeightStore } from '@/stores/weight';
 
 import WeightDetail from '@/components/weight/WeightDetail.vue';

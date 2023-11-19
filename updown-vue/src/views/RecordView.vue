@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>과거 기록 조회창</h3>
+        <h2>과거 기록 조회</h2>
     </div>
 </template>
 

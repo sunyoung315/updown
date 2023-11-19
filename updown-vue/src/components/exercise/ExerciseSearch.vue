@@ -1,9 +1,8 @@
 <template>
     <div>
         <h2>운동</h2>
-        <img class="cursor" @click="regist" style="width: 3em;" src="../../asset/icon/add.png" alt="등록">
-        <img class="cursor" @click="home" style="width: 2.5em;" src="../../asset/icon/home.png" alt="등록">
-        <h4>{{ regDate }}</h4>
+        <img class="cursor" @click="list" style="width: 2.5em;" src="../../asset/icon/list.png" alt="목록">
+        <input type="text" placeholder="운동명을 검색해주세요.">
         <div v-for="exercise in todayExerciseList" :key="exercise.no">
             {{ exercise.type }}
             {{ exercise.time }}min
@@ -38,10 +37,10 @@ const getTodayExercise = async function() {
     await store.getExerciseList(loginUserId, regDate);
 }
 
-const emits = defineEmits(["home", "regist", "modify", "remove"]);
+const emits = defineEmits(["list", "regist"]);
 
-const home = function() {
-    emits("home");
+const list = function() {
+    emits("list");
 }
 
 const regist = function() {

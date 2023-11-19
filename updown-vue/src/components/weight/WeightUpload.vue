@@ -3,7 +3,7 @@
         <h2>체중</h2>
         <img @click="upload" class="cursor" style="width: 2.5em;" src="../../asset/icon/save.png" alt="저장">
         <h4>오늘의 체중은?</h4>
-        <input type="number" v-model="newWeight.nowWeight" placeholder=0>kg
+        <input type="number" v-model="newWeight.nowWeight">kg
     </div>
 </template>
 
@@ -20,7 +20,7 @@ const regDate = `${year}-${month}-${day}`;
 const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
 
 const newWeight = ref({
-    nowWeight: 0,
+    nowWeight: 0.0,
     userId: JSON.parse(localStorage.getItem("loginUser")).id,
 });
 

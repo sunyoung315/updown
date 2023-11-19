@@ -1,22 +1,28 @@
 <template>
     <div class="container">
         <KeepAlive>
-            <component :is="choose" @regist="regist" @modify="modify" @home="home" @list="list"></component>
+            <component :is="choose" @regist="regist" @modify="modify" :exercise="exercise" @remove="remove" @home="home" @list="list"></component>
         </KeepAlive>
     </div>
 </template>
 
 <script setup>
+import { shallowRef, ref, onMounted } from 'vue';
+import { useExerciseStore } from '@/stores/exercise';
+
 import ExerciseDetail from '@/components/exercise/ExerciseDetail.vue';
 import ExerciseModify from '@/components/exercise/ExerciseModify.vue';
 import ExerciseUpload from '@/components/exercise/ExerciseUpload.vue';
 import ExerciseList from '@/components/exercise/ExerciseList.vue';
-import { shallowRef } from 'vue'
+import axios from 'axios';
 
 let choose = shallowRef(ExerciseDetail);
 
-const modify = function() {
+let exercise = ref({});
+
+const modify = function(e) {
     choose.value = ExerciseModify;
+    exercise.value = e;
 }
 
 const regist = function() {
@@ -31,7 +37,30 @@ const list = function() {
     choose.value = ExerciseList;
 }
 
+const REST_EXERCISE_API = `http://localhost:8080/updown/exercise`;
+const remove = async function(exercise) {
+    await axios({
+        url: `${REST_EXERCISE_API}/remove/${exercise.no}`,
+        method: 'DELETE',
+    })
+    .then(
+        store.getExerciseList(loginUserId, regDate),
+    )
+}
 
+const today = new Date();
+const year = today.getFullYear();
+const month = ("0" + (1 + today.getMonth())).slice(-2);
+const day = ("0" + today.getDate()).slice(-2);
+const regDate = `${year}-${month}-${day}`;
+
+const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
+
+const store = useExerciseStore();
+
+onMounted(async () => {
+    await store.getExerciseList(loginUserId, regDate);
+})
 
 </script>
 

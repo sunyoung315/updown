@@ -2,14 +2,14 @@ package com.ssafy.updown.model.dto;
 
 public class Weight {
 	private int no;
-	private int nowWeight;
+	private float nowWeight;
 	private String regDate;
 	private String userId;
 	
 	public Weight() {
 	}
 
-	public Weight(int no, int nowWeight, String regDate, String userId) {
+	public Weight(int no, float nowWeight, String regDate, String userId) {
 		this.no = no;
 		this.nowWeight = nowWeight;
 		this.regDate = regDate;
@@ -24,11 +24,11 @@ public class Weight {
 		this.no = no;
 	}
 
-	public int getNowWeight() {
+	public float getNowWeight() {
 		return nowWeight;
 	}
 
-	public void setNowWeight(int nowWeight) {
+	public void setNowWeight(float nowWeight) {
 		this.nowWeight = nowWeight;
 	}
 
