@@ -13,7 +13,7 @@
 <!-- 식단 수정 -->
 <update id="updateDiet" parameterType="Diet">
 	UPDATE diet
-	SET category=#{category}, food=#{food}, calorie=#{calorie}
+	SET category=#{category}, food=#{food}, calorie=#{calorie}, img=#{img}, org_img=#{orgImg}
 	WHERE no=#{no};
 </update>
 

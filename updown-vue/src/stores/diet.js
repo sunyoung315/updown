@@ -79,7 +79,6 @@ export const useDietStore = defineStore('diet', () => {
                 todayDietLunch.value = Array.isArray(res.data) ? res.data : [];
             })
             .then(() => {
-                console.log(todayDietLunch.value)
                 for (let i = todayDietLunch.value.length - 1; i >= 0; i--) {
                     if (!todayDietLunch.value[i] || todayDietLunch.value[i].img == null || todayDietLunch.value[i].img == '') continue;
                     else if (todayDietLunch.value[i] && todayDietLunch.value[i].img !== null) {
@@ -91,27 +90,110 @@ export const useDietStore = defineStore('diet', () => {
             })
     }
 
-    const modifyWeight = async function (newWeight) {
+    // 저녁 식단 기록 조회
+    const getDietDinner = async function (loginUserId, regDate) {
+        await axios.get(`${REST_DIET_API}/dinner`, {
+            params: {
+                loginUserId: loginUserId,
+                regDate: regDate,
+            },
+            headers: {
+                "Content-Type": "application/x-www-form-urlencode"
+            }
+        })
+            .then((res) => {
+                todayDietDinner.value = Array.isArray(res.data) ? res.data : [];
+            })
+            .then(() => {
+                for (let i = todayDietDinner.value.length - 1; i >= 0; i--) {
+                    if (!todayDietDinner.value[i] || todayDietDinner.value[i].img == null || todayDietDinner.value[i].img == '') continue;
+                    else if (todayDietDinner.value[i] && todayDietDinner.value[i].img !== null) {
+                        dinnerimg.value = todayDietDinner.value[i].img;
+                        break;
+                    }
+                }
+
+            })
+    }
+
+    // 간식 식단 기록 조회
+    const getDietSnack = async function (loginUserId, regDate) {
+        await axios.get(`${REST_DIET_API}/snack`, {
+            params: {
+                loginUserId: loginUserId,
+                regDate: regDate,
+            },
+            headers: {
+                "Content-Type": "application/x-www-form-urlencode"
+            }
+        })
+            .then((res) => {
+                todayDietSnack.value = Array.isArray(res.data) ? res.data : [];
+            })
+            .then(() => {
+                for (let i = todayDietSnack.value.length - 1; i >= 0; i--) {
+                    console.log(todayDietSnack.value[i])
+                    if (!todayDietSnack.value[i] || todayDietSnack.value[i].img == null || todayDietSnack.value[i].img == '') continue;
+                    else if (todayDietSnack.value[i] && todayDietSnack.value[i].img !== null) {
+                        snackimg.value = todayDietSnack.value[i].img;
+                        break;
+                    }
+                }
+
+            })
+    }
+
+    // 식단 삭제
+    const remove = async function (diet) {
         await axios({
-            url: `${REST_WEIGHT_API}/modify`,
+            url: `${REST_DIET_API}/remove/${diet.no}`,
+            method: 'DELETE',
+            data: diet.no
+        })
+            .then(() => {
+                if (diet.category == '아침')
+                    getDietBreakFast(loginUserId, regDate)
+                else if (diet.category == '점심')
+                    getDietLunch(loginUserId, regDate)
+                else if (diet.category == '저녁')
+                    getDietDinner(loginUserId, regDate)
+                else if (diet.category == '간식')
+                    getDietSnack(loginUserId, regDate)
+            })
+    }
+
+    // 식단 수정
+    const modifyDiet = async function (newDiet) {
+        console.log(newDiet)
+        await axios({
+            url: `${REST_DIET_API}/modify`,
             method: 'PUT',
-            data: newWeight,
+            data: newDiet,
             headers: {
                 "Content-Type": "application/json"
             },
         })
-            .then(
-                getWeight(loginUserId, regDate),
+            .then((res) => {
+                console.log(res)
+                if (newDiet.category == '아침')
+                    getDietBreakFast(loginUserId, regDate)
+                else if (newDiet.category == '점심')
+                    getDietLunch(loginUserId, regDate)
+                else if (newDiet.category == '저녁')
+                    getDietDinner(loginUserId, regDate)
+                else if (newDiet.category == '간식')
+                    getDietSnack(loginUserId, regDate)
+
                 router.push({ name: 'today' })
-            )
+            })
             .catch((err) => {
                 console.log('오류 : ' + err)
             })
     }
 
-    //일단 아침을 기준으로 업로드
+
+    // 식단 등록
     const uploadDiet = async function (newDiet) {
-        console.log(newDiet)
         await axios({
             url: `${REST_DIET_API}/upload`,
             method: 'POST',
@@ -120,11 +202,24 @@ export const useDietStore = defineStore('diet', () => {
                 "Content-Type": "application/json"
             },
         })
-            .then(() => {
+            .then((res) => {
+                console.log(res)
+                console.log(newDiet)
                 if (newDiet.category == '아침')
                     getDietBreakFast(loginUserId, regDate)
                 else if (newDiet.category == '점심')
                     getDietLunch(loginUserId, regDate)
+                else if (newDiet.category == '저녁')
+                    getDietDinner(loginUserId, regDate)
+                else if (newDiet.category == '간식')
+                    getDietSnack(loginUserId, regDate)
+
+                // 등록 후 초기화
+                newDiet.category = ''
+                newDiet.food = ''
+                newDiet.calorie = ''
+                newDiet.Img = ''
+                newDiet.userId = loginUserId
 
                 router.push({ name: 'today' })
             })
@@ -132,5 +227,5 @@ export const useDietStore = defineStore('diet', () => {
                 console.log('오류 : ' + err)
             })
     }
-    return { today, breakfastimg, lunchimg, dinnerimg, snackimg, todayDietBreakFast, todayDietLunch, todayDietDinner, todayDietSnack, getDietBreakFast, getDietLunch, uploadDiet }
+    return { today, remove, modifyDiet, breakfastimg, lunchimg, dinnerimg, snackimg, todayDietBreakFast, todayDietLunch, todayDietDinner, todayDietSnack, getDietBreakFast, getDietLunch, getDietDinner, getDietSnack, uploadDiet }
 })

@@ -27,15 +27,15 @@ public class DietController {
 
 	// 식단 등록
 	@PostMapping("/diet/upload")
-	public ResponseEntity<Void> uploadDiet(@RequestBody Diet diet) {
-		System.out.println(diet);
+	public ResponseEntity<Diet> uploadDiet(@RequestBody Diet diet) {
 		dietService.uploadDiet(diet);
-		return new ResponseEntity<Void>(HttpStatus.CREATED);
+		return new ResponseEntity<Diet>(diet, HttpStatus.CREATED);
 	}
 
 	// 식단 수정
 	@PutMapping("/diet/modify")
 	public ResponseEntity<?> modifyDiet(@RequestBody Diet diet) {
+		System.out.println(diet);
 		// 만약 식단이 잘 수정되었다면
 		if (dietService.modifyDiet(diet)) {
 			return new ResponseEntity<Diet>(diet, HttpStatus.OK);
@@ -45,8 +45,8 @@ public class DietController {
 	}
 
 	// 식단 삭제
-	@DeleteMapping("/diet/remove")
-	public ResponseEntity<Void> removeDiet(int no){
+	@DeleteMapping("/diet/remove/{no}")
+	public ResponseEntity<Void> removeDiet(@PathVariable int no){
 		dietService.removeDiet(no);
 		return new ResponseEntity<Void>(HttpStatus.OK);		
 	}
@@ -62,7 +62,6 @@ public class DietController {
 	@GetMapping("/diet/breakfast")
 	public ResponseEntity<List<Diet>> getDietOnedayBreakfast(String loginUserId, String regDate){
 		List<Diet> dietList = dietService.getDietOnedayBreakfast(loginUserId, regDate);
-		System.out.println(dietList);
 		return new ResponseEntity<List<Diet>>(dietList, HttpStatus.OK);		
 	}
 	
