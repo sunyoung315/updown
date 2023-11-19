@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.updown.model.dto.Exercise;
+import com.ssafy.updown.model.dto.ExerciseInfo;
 import com.ssafy.updown.model.service.ExerciseService;
 
 @RestController
@@ -52,6 +53,19 @@ public class ExerciseController {
 	public ResponseEntity<Void> removeExercise(@PathVariable int no) {
 		eService.removeExercise(no);
 		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
+	
+	@GetMapping("/exercise/search/{word}")
+	public ResponseEntity<List<ExerciseInfo>> getExerciseInfoList(@PathVariable String word) {
+		List<ExerciseInfo> eiList = eService.getExerciseInfoList(word);
+		return new ResponseEntity<List<ExerciseInfo>>(eiList, HttpStatus.OK);
+	}
+	
+	@GetMapping("/exercise/searchDetail/{type}")
+	public ResponseEntity<ExerciseInfo> getExerciseInfo(@PathVariable String type) {
+		ExerciseInfo eInfo = eService.getExerciseInfo(type);
+		System.out.println(eInfo.toString());
+		return new ResponseEntity<ExerciseInfo>(eInfo, HttpStatus.OK);
 	}
 	
 }

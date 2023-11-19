@@ -2,12 +2,12 @@
     <div>
         <h2>운동</h2>
         <img class="cursor" @click="regist" style="width: 3em;" src="../../asset/icon/add.png" alt="등록">
-        <img class="cursor" @click="home" style="width: 2.5em;" src="../../asset/icon/home.png" alt="등록">
+        <img class="cursor" @click="home" style="width: 2.5em;" src="../../asset/icon/home.png" alt="홈으로">
         <h4>{{ regDate }}</h4>
         <div v-for="exercise in todayExerciseList" :key="exercise.no">
             {{ exercise.type }}
             {{ exercise.time }}min
-            {{ exercise.calorie }}kcal
+            {{ exercise.calorie.toFixed(1) }}kcal
             <img class="cursor" @click="modify(exercise)" style="width: 2.5em;" src="../../asset/icon/edit.png" alt="수정">
             <img class="cursor" @click="remove(exercise)" style="width: 2.5em;" src="../../asset/icon/trash.png" alt="삭제">
         </div>
@@ -31,12 +31,8 @@ const store = useExerciseStore();
 const todayExerciseList = computed(() => store.todayExerciseList);
 
 onMounted(async () => {
-    await getTodayExercise();
-});
-
-const getTodayExercise = async function() {
     await store.getExerciseList(loginUserId, regDate);
-}
+});
 
 const emits = defineEmits(["home", "regist", "modify", "remove"]);
 

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <KeepAlive>
-            <component :is="choose" @regist="regist" @modify="modify" :exercise="exercise" @remove="remove" @home="home" @list="list"></component>
+            <component :is="choose" @getInfo="getInfo" :info="info" @regist="regist" @modify="modify" :exercise="exercise" @remove="remove" @home="home" @list="list" @search="search"></component>
         </KeepAlive>
     </div>
 </template>
@@ -14,11 +14,19 @@ import ExerciseDetail from '@/components/exercise/ExerciseDetail.vue';
 import ExerciseModify from '@/components/exercise/ExerciseModify.vue';
 import ExerciseUpload from '@/components/exercise/ExerciseUpload.vue';
 import ExerciseList from '@/components/exercise/ExerciseList.vue';
+import ExerciseSearch from '@/components/exercise/ExerciseSearch.vue';
 import axios from 'axios';
 
 let choose = shallowRef(ExerciseDetail);
 
 let exercise = ref({});
+
+let info = ref({});
+
+const getInfo = function(i) {
+    choose.value = ExerciseUpload;
+    info.value = i;
+}
 
 const modify = function(e) {
     choose.value = ExerciseModify;
@@ -37,15 +45,19 @@ const list = function() {
     choose.value = ExerciseList;
 }
 
+const search = function() {
+    choose.value = ExerciseSearch
+}
+
 const REST_EXERCISE_API = `http://localhost:8080/updown/exercise`;
 const remove = async function(exercise) {
     await axios({
         url: `${REST_EXERCISE_API}/remove/${exercise.no}`,
         method: 'DELETE',
     })
-    .then(
-        store.getExerciseList(loginUserId, regDate),
-    )
+    .then(() => {
+        store.getExerciseList(loginUserId, regDate)
+    })
 }
 
 const today = new Date();

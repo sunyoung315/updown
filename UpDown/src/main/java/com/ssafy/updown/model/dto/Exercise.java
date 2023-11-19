@@ -4,14 +4,14 @@ public class Exercise {
 	private int no;
 	private String type;
 	private int time;
-	private int calorie;
+	private float calorie;
 	private String regDate;
 	private String userId;
 	
 	public Exercise() {
 	}
 
-	public Exercise(int no, String type, int time, int calorie, String regDate, String userId) {
+	public Exercise(int no, String type, int time, float calorie, String regDate, String userId) {
 		this.no = no;
 		this.type = type;
 		this.time = time;
@@ -44,11 +44,11 @@ public class Exercise {
 		this.time = time;
 	}
 
-	public int getCalorie() {
+	public float getCalorie() {
 		return calorie;
 	}
 
-	public void setCalorie(int calorie) {
+	public void setCalorie(float calorie) {
 		this.calorie = calorie;
 	}
 

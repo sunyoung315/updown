@@ -1,6 +1,5 @@
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { defineStore } from 'pinia';
-import router from '@/router';
 import axios from 'axios';
 
 const REST_EXERCISE_API = `http://localhost:8080/updown/exercise`;
@@ -27,6 +26,17 @@ export const useExerciseStore = defineStore('exercise', () => {
       todayExerciseList.value = res.data;
     })
   }
+      
+  let todayTime = ref(0);
+  let todayCalorie = ref(0);
+
+  onMounted(async () => {
+    await getExerciseList(loginUserId, regDate);
+    for(let i = 0; i < todayExerciseList.value.length; i++) {
+        todayTime.value += todayExerciseList.value[i].time;
+        todayCalorie.value += todayExerciseList.value[i].calorie;
+    }
+  })
 
   const modifyExercise = async function(newExercise) {
     await axios({
@@ -36,6 +46,9 @@ export const useExerciseStore = defineStore('exercise', () => {
       headers: {
         "Content-Type": "application/json"
       },
+    })
+    .then(() => {
+      getExerciseList(loginUserId, regDate)
     })
   }
 
@@ -48,10 +61,36 @@ export const useExerciseStore = defineStore('exercise', () => {
         "Content-Type": "application/json"
       },
     })
-    .then(
-      getExerciseList((loginUserId, regDate)),
-    )
+    .then(() => {
+      getExerciseList(loginUserId, regDate),
+      exerciseInfoList.value = []
+    })
   }
 
-  return { todayExerciseList, getExerciseList, modifyExercise, uploadExercise }
+  const exerciseInfoList = ref([]);
+
+  const searchExerciseInfo = async function(word) {
+    await axios({
+      url: `${REST_EXERCISE_API}/search/${word}`,
+      method: 'GET',
+    })
+    .then((res) => {
+      word = '',
+      exerciseInfoList.value = res.data
+    })
+  }
+
+  const exerciseInfo = ref({});
+
+  const searchExerciseInfoDetail = async function(type) {
+    await axios({
+      url: `${REST_EXERCISE_API}/searchDetail/${type}`,
+      method: 'GET',
+    })
+    .then((res) => {
+      exerciseInfo.value = res.data
+    })
+  }
+
+  return { todayExerciseList, getExerciseList, modifyExercise, uploadExercise, exerciseInfoList, searchExerciseInfo, todayTime, todayCalorie, exerciseInfo, searchExerciseInfoDetail }
 })
