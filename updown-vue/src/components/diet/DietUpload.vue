@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, reactive } from 'vue';
+import { ref, onMounted, } from 'vue';
 import { useDietStore } from '@/stores/diet';
 import axios from 'axios';
 
@@ -56,6 +56,9 @@ onMounted(async () => {
 const getDietBreakFast = async function () {
     await store.getDietBreakFast(loginUserId, regDate);
 }
+const getDietLunch = async function () {
+    await store.getDietLunch(loginUserId, regDate);
+}
 
 
 // 이미지 업로드
@@ -66,16 +69,19 @@ const submitForm = async () => {
             upload();
             return;
         }
-        if (props.category == '점심') {
+        else if (props.category == '점심') {
             newDiet.value.category = "점심"
+            upload();
             return;
         }
-        if (props.category == '저녁') {
+        else if (props.category == '저녁') {
             newDiet.value.category = "저녁"
+            upload();
             return;
         }
-        if (props.category == '간식') {
+        else if (props.category == '간식') {
             newDiet.value.category = "간식"
+            upload();
             return;
         }
     }
@@ -100,8 +106,9 @@ const submitForm = async () => {
         })
     }
     else if (props.category == '점심') {
-        store.newDietLunch.value.img = serveyImage.value.files[0]
-        axios({
+        newDiet.value.img = serveyImage.value.files[0].name
+        newDiet.value.category = "점심"
+        await axios({
             url: `http://localhost:8080/updown/img/regist`,
             method: 'POST',
             data: formData,
@@ -109,13 +116,15 @@ const submitForm = async () => {
                 'Content-Type': 'multipart/form-data'
             },
         }).then((res) => {
-            store.newDietLunch.value.img = res.data.img
-            store.newDietLunch.value.orgImg = res.data.orgImg
+            console.log(res.data)
+            newDiet.value.img = res.data.img
+            newDiet.value.orgImg = res.data.orgImg
         })
     }
     else if (props.category == '저녁') {
-        store.newDietDinner.value.img = serveyImage.value.files[0]
-        axios({
+        newDiet.value.img = serveyImage.value.files[0].name
+        newDiet.value.category = "저녁"
+        await axios({
             url: `http://localhost:8080/updown/img/regist`,
             method: 'POST',
             data: formData,
@@ -123,13 +132,15 @@ const submitForm = async () => {
                 'Content-Type': 'multipart/form-data'
             },
         }).then((res) => {
-            store.newDietDinner.value.img = res.data.img
-            store.newDietDinner.value.orgImg = res.data.orgImg
+            console.log(res.data)
+            newDiet.value.img = res.data.img
+            newDiet.value.orgImg = res.data.orgImg
         })
     }
     else if (props.category == '간식') {
-        store.newDietSnack.value.img = serveyImage.value.files[0]
-        axios({
+        newDiet.value.img = serveyImage.value.files[0].name
+        newDiet.value.category = "간식"
+        await axios({
             url: `http://localhost:8080/updown/img/regist`,
             method: 'POST',
             data: formData,
@@ -137,18 +148,21 @@ const submitForm = async () => {
                 'Content-Type': 'multipart/form-data'
             },
         }).then((res) => {
-            store.newDietSnack.value.img = res.data.img
-            store.newDietSnack.value.orgImg = res.data.orgImg
+            console.log(res.data)
+            newDiet.value.img = res.data.img
+            newDiet.value.orgImg = res.data.orgImg
         })
     }
     upload();
 
 };
 
-// 일단 아침을 기준으로 업로드
 const upload = async function () {
     await store.uploadDiet(newDiet.value);
-    await getDietBreakFast();
+    if (props.category == '점심')
+        await getDietLunch();
+    else if (props.category == '아침')
+        await getDietBreakFast();
     emits("home");
 }
 

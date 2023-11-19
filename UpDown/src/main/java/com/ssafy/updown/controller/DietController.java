@@ -62,6 +62,7 @@ public class DietController {
 	@GetMapping("/diet/breakfast")
 	public ResponseEntity<List<Diet>> getDietOnedayBreakfast(String loginUserId, String regDate){
 		List<Diet> dietList = dietService.getDietOnedayBreakfast(loginUserId, regDate);
+		System.out.println(dietList);
 		return new ResponseEntity<List<Diet>>(dietList, HttpStatus.OK);		
 	}
 	
