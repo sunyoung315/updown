@@ -34,6 +34,7 @@ const modify = function(e) {
 }
 
 const regist = function() {
+    info.value = {};
     choose.value = ExerciseUpload;
 }
 

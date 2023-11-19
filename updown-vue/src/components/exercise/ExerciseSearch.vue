@@ -42,6 +42,7 @@ const search = async function() {
 }
 
 const getInfo = function(info) {
+    word.value = '';
     emits("getInfo", info);
 }
 

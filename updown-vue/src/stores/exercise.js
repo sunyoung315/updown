@@ -33,8 +33,8 @@ export const useExerciseStore = defineStore('exercise', () => {
   onMounted(async () => {
     await getExerciseList(loginUserId, regDate);
     for(let i = 0; i < todayExerciseList.value.length; i++) {
-        todayTime.value += todayExerciseList.value[i].time;
-        todayCalorie.value += todayExerciseList.value[i].calorie;
+      todayTime.value += todayExerciseList.value[i].time;
+      todayCalorie.value += todayExerciseList.value[i].calorie;
     }
   })
 
@@ -63,6 +63,7 @@ export const useExerciseStore = defineStore('exercise', () => {
     })
     .then(() => {
       getExerciseList(loginUserId, regDate),
+      newExercise.time = 0,
       exerciseInfoList.value = []
     })
   }
@@ -75,7 +76,6 @@ export const useExerciseStore = defineStore('exercise', () => {
       method: 'GET',
     })
     .then((res) => {
-      word = '',
       exerciseInfoList.value = res.data
     })
   }
