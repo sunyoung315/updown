@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { nextTick, ref } from 'vue'
 import { defineStore, storeToRefs } from 'pinia';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
@@ -132,7 +132,6 @@ export const useDietStore = defineStore('diet', () => {
             })
             .then(() => {
                 for (let i = todayDietSnack.value.length - 1; i >= 0; i--) {
-                    console.log(todayDietSnack.value[i])
                     if (!todayDietSnack.value[i] || todayDietSnack.value[i].img == null || todayDietSnack.value[i].img == '') continue;
                     else if (todayDietSnack.value[i] && todayDietSnack.value[i].img !== null) {
                         snackimg.value = todayDietSnack.value[i].img;
@@ -149,22 +148,11 @@ export const useDietStore = defineStore('diet', () => {
             url: `${REST_DIET_API}/remove/${diet.no}`,
             method: 'DELETE',
             data: diet.no
-        })
-            .then(() => {
-                if (diet.category == '아침')
-                    getDietBreakFast(loginUserId, regDate)
-                else if (diet.category == '점심')
-                    getDietLunch(loginUserId, regDate)
-                else if (diet.category == '저녁')
-                    getDietDinner(loginUserId, regDate)
-                else if (diet.category == '간식')
-                    getDietSnack(loginUserId, regDate)
-            })
+        })      
     }
 
     // 식단 수정
     const modifyDiet = async function (newDiet) {
-        console.log(newDiet)
         await axios({
             url: `${REST_DIET_API}/modify`,
             method: 'PUT',
@@ -173,8 +161,7 @@ export const useDietStore = defineStore('diet', () => {
                 "Content-Type": "application/json"
             },
         })
-            .then((res) => {
-                console.log(res)
+            .then(() => {
                 if (newDiet.category == '아침')
                     getDietBreakFast(loginUserId, regDate)
                 else if (newDiet.category == '점심')
@@ -202,9 +189,7 @@ export const useDietStore = defineStore('diet', () => {
                 "Content-Type": "application/json"
             },
         })
-            .then((res) => {
-                console.log(res)
-                console.log(newDiet)
+            .then(() => {
                 if (newDiet.category == '아침')
                     getDietBreakFast(loginUserId, regDate)
                 else if (newDiet.category == '점심')

@@ -103,7 +103,6 @@ const submitForm = async () => {
                 'Content-Type': 'multipart/form-data'
             },
         }).then((res) => {
-            console.log(res.data)
             newDiet.value.img = res.data.img
             newDiet.value.orgImg = res.data.orgImg
         })
@@ -119,7 +118,6 @@ const submitForm = async () => {
                 'Content-Type': 'multipart/form-data'
             },
         }).then((res) => {
-            console.log(res.data)
             newDiet.value.img = res.data.img
             newDiet.value.orgImg = res.data.orgImg
         })
@@ -135,7 +133,6 @@ const submitForm = async () => {
                 'Content-Type': 'multipart/form-data'
             },
         }).then((res) => {
-            console.log(res.data)
             newDiet.value.img = res.data.img
             newDiet.value.orgImg = res.data.orgImg
         })
@@ -151,7 +148,6 @@ const submitForm = async () => {
                 'Content-Type': 'multipart/form-data'
             },
         }).then((res) => {
-            console.log(res.data)
             newDiet.value.img = res.data.img
             newDiet.value.orgImg = res.data.orgImg
         })
