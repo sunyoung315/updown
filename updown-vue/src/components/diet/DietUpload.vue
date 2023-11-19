@@ -2,6 +2,7 @@
     <div>
         <h2>{{ category }}</h2>
         <img @click="submitForm" class="cursor" style="width: 2.5em;" src="../../asset/icon/save.png" alt="저장">
+        <img class="cursor" @click="home" style="width: 2.3em;" src="../../asset/icon/home.png" alt="목록">
         <br>
         <label>음식 이름</label><br>
         <input type="text" v-model="newDiet.food" placeholder='식단을 등록해주세요.'>
@@ -49,15 +50,17 @@ const emits = defineEmits(["home",])
 
 const store = useDietStore();
 
-onMounted(async () => {
-    await getDietBreakFast();
-})
-
 const getDietBreakFast = async function () {
     await store.getDietBreakFast(loginUserId, regDate);
 }
 const getDietLunch = async function () {
     await store.getDietLunch(loginUserId, regDate);
+}
+const getDietDinner = async function () {
+    await store.getDietDinner(loginUserId, regDate);
+}
+const getDietSnack = async function () {
+    await store.getDietSnack(loginUserId, regDate);
 }
 
 
@@ -159,12 +162,21 @@ const submitForm = async () => {
 
 const upload = async function () {
     await store.uploadDiet(newDiet.value);
-    if (props.category == '점심')
+   if (props.category == '아침')
+    await getDietBreakFast();
+    else if (props.category == '점심')
         await getDietLunch();
-    else if (props.category == '아침')
-        await getDietBreakFast();
+    else if (props.category == '저녁')
+        await getDietDinner();
+    else if (props.category == '간식')
+        await getDietSnack();
     emits("home");
 }
+
+const home = function() {
+    emits("home");
+}
+
 
 </script>
 
