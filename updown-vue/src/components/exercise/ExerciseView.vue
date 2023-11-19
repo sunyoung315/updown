@@ -1,13 +1,13 @@
 <template>
     <div class="container">
         <KeepAlive>
-            <component :is="choose" @getInfo="getInfo" :info="info" @regist="regist" @modify="modify" :exercise="exercise" @remove="remove" @home="home" @list="list" @search="search"></component>
+            <component :is="choose" @getInfo="getInfo" :info="info" @regist="regist" @modify="modify" :exercise="exercise" @remove="remove" @home="home" @list="list" @search="search" :time="time" :calorie="calorie"></component>
         </KeepAlive>
     </div>
 </template>
 
 <script setup>
-import { shallowRef, ref, onMounted } from 'vue';
+import { shallowRef, ref, onMounted, computed } from 'vue';
 import { useExerciseStore } from '@/stores/exercise';
 
 import ExerciseDetail from '@/components/exercise/ExerciseDetail.vue';
@@ -74,6 +74,16 @@ const store = useExerciseStore();
 onMounted(async () => {
     await store.getExerciseList(loginUserId, regDate);
 })
+
+const todayExerciseList = computed(() => store.todayExerciseList);
+
+let time = ref(0);
+let calorie = ref(0);
+
+for(let i = 0; i < todayExerciseList.value.length; i++) {
+    time += todayExerciseList.value[i].time;
+    calorie += todayExerciseList.value[i].calorie;
+}
 
 </script>
 

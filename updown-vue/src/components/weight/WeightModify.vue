@@ -2,8 +2,9 @@
     <div>
         <h2>체중</h2>
         <img @click="modify" class="cursor" style="width: 2.5em;" src="../../asset/icon/save.png" alt="저장">
+        <img @click="home" class="cursor" style="width: 2.5em;" src="../../asset/icon/home.png" alt="홈으로">
         <h4>오늘의 체중은?</h4>
-        <input type="number" v-model="newWeight.nowWeight" :placeholder=weight>kg
+        <input type="number" :placeholder=weight v-model="newWeight.nowWeight">kg
     </div>
 </template>
 
@@ -19,14 +20,16 @@ const regDate = `${year}-${month}-${day}`;
 
 const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
 
+const store = useWeightStore();
+
 const newWeight = ref({
     nowWeight: 0,
     regDate: regDate,
+    userId: loginUserId,
 });
 
 const emits = defineEmits(["home"])
 
-const store = useWeightStore();
 
 const weight = computed(() => store.todayWeight.nowWeight);
 
@@ -43,6 +46,11 @@ const modify = async function() {
     await store.modifyWeight(newWeight.value);
     await getTodayWeight();
     emits("home");
+}
+
+const home = function() {
+    emits("home");
+    newWeight.value.nowWeight = weight.value;
 }
 
 </script>

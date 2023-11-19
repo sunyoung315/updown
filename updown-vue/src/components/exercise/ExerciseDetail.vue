@@ -3,14 +3,14 @@
         <h2>운동</h2>
         <img class="cursor" @click="list" style="width: 2.3em;" src="../../asset/icon/list.png" alt="목록">
         <h4>총 운동 시간</h4>
-        {{ todayTime }}min
+        <!-- {{ todayTime }}min -->
         <h4>총 소모 칼로리</h4>
-        {{ todayCalorie.toFixed(1) }}kcal
+        <!-- {{ todayCalorie.toFixed(1) }}kcal -->
     </div>
 </template>
 
 <script setup>
-import { onMounted, computed } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useExerciseStore } from '@/stores/exercise';
 
 const store = useExerciseStore();
@@ -24,8 +24,14 @@ const regDate = `${year}-${month}-${day}`;
 const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
 
 let todayExerciseList = computed(() => store.todayExerciseList);
-let todayTime = computed(() => store.todayTime);
-let todayCalorie = computed(() => store.todayCalorie);
+
+// let todayTime = 0;
+// let todayCalorie = 0;
+
+// for(let i = 0; i < todayExerciseList.value.length; i++) {
+//     todayTime += todayExerciseList.value[i].time;
+//     todayCalorie += todayExerciseList.value[i].calorie;
+// }
 
 onMounted(async () => {
     await store.getExerciseList(loginUserId, regDate);
