@@ -3,7 +3,6 @@
         <h2>운동</h2>
         <img class="cursor" @click="regist" style="width: 3em;" src="../../asset/icon/add.png" alt="등록">
         <img class="cursor" @click="home" style="width: 2.5em;" src="../../asset/icon/home.png" alt="홈으로">
-        <h4>{{ regDate }}</h4>
         <div v-for="exercise in todayExerciseList" :key="exercise.no">
             {{ exercise.type }}
             {{ exercise.time }}min

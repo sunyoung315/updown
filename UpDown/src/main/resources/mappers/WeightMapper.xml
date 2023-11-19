@@ -14,7 +14,7 @@
 	<update id="updateWeight" parameterType="Weight">
 		UPDATE weight
 		SET now_weight=#{nowWeight}
-		WHERE reg_date = #{regDate}
+		WHERE reg_date = #{regDate} AND user_id = #{userId}
 	</update>
 	
 	<!-- 당일 체중 조회 -->

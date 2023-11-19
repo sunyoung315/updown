@@ -27,15 +27,8 @@ export const useExerciseStore = defineStore('exercise', () => {
     })
   }
       
-  let todayTime = ref(0);
-  let todayCalorie = ref(0);
-
   onMounted(async () => {
     await getExerciseList(loginUserId, regDate);
-    for(let i = 0; i < todayExerciseList.value.length; i++) {
-      todayTime.value += todayExerciseList.value[i].time;
-      todayCalorie.value += todayExerciseList.value[i].calorie;
-    }
   })
 
   const modifyExercise = async function(newExercise) {
@@ -92,5 +85,5 @@ export const useExerciseStore = defineStore('exercise', () => {
     })
   }
 
-  return { todayExerciseList, getExerciseList, modifyExercise, uploadExercise, exerciseInfoList, searchExerciseInfo, todayTime, todayCalorie, exerciseInfo, searchExerciseInfoDetail }
+  return { todayExerciseList, getExerciseList, modifyExercise, uploadExercise, exerciseInfoList, searchExerciseInfo, exerciseInfo, searchExerciseInfoDetail }
 })

@@ -33,6 +33,7 @@ public class WeightController {
 	// 체중 수정
 	@PutMapping("/weight/modify")
 	public ResponseEntity<?> modifyWeight(@RequestBody Weight weight) {
+		System.out.println(weight.toString());
 		// 데이터가 잘 수정되었다면
 		if (weightService.modifyWeight(weight))
 			return new ResponseEntity<Weight>(weight, HttpStatus.OK);
