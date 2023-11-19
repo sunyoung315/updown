@@ -14,13 +14,18 @@
         </div>
         <div v-if="props.info.met">
             <label for="calorie">소모 칼로리 </label>
-            {{ (props.info.met * (3.5 * weight * newExercise.time) / 1000 * 5).toFixed(1) }} kcal
+            <div v-if="weight">{{ (props.info.met * (3.5 * weight * newExercise.time) / 1000 * 5).toFixed(1) }} kcal</div>
+            <div v-else>
+                {{ (props.info.met * (3.5 * 50 * newExercise.time) / 1000 * 5).toFixed(1) }} kcal
+                <br>
+                (체중이 입력되지 않아 50kg 기준으로 계산됩니다.)
+            </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useExerciseStore } from '@/stores/exercise';
 import { useWeightStore } from '@/stores/weight';
 
@@ -46,12 +51,13 @@ const newExercise = ref({
 });
 
 const weightStore = useWeightStore();
-const weight = weightStore.todayWeight.nowWeight;
+const weight = computed(() => weightStore.todayWeight.nowWeight);
 
 const emits = defineEmits(["list", "search"])
 
 const list = function() {
     emits("list");
+    newExercise.time = 0;
 }
 
 onMounted(async () => {
@@ -60,7 +66,7 @@ onMounted(async () => {
 
 const upload = async function() {
     newExercise.value.type = props.info.type;
-    newExercise.value.calorie = (props.info.met * (3.5 * weight * newExercise.value.time) / 1000 * 5).toFixed(1);
+    newExercise.value.calorie = (props.info.met * (3.5 * weight.value * newExercise.value.time) / 1000 * 5).toFixed(1);
     await store.uploadExercise(newExercise.value);
     await store.getExerciseList(loginUserId, regDate);
     emits("list");

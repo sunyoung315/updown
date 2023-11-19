@@ -145,4 +145,4 @@ CREATE TABLE IF NOT EXISTS `exercise_info` (
   PRIMARY KEY (`type`))
 ENGINE = InnoDB;
 
-SELECT * FROM exercise_info;
+SELECT * FROM weight;
