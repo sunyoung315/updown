@@ -35,4 +35,18 @@
 		DELETE FROM exercise
 		WHERE no = #{exerciseNo};
 	</delete>
+	
+	<!-- 입력한 키워드를 포함하는 운동명의 운동 정보 가져오기 -->
+	<select id="selectExerciseInfoList" parameterType="String" resultType="ExerciseInfo">
+		SELECT *
+		FROM exercise_info
+		WHERE type LIKE concat('%', #{word}, '%');
+	</select>
+	
+	<!-- 운동명이 동일한 운동 정보 가져오기 -->
+	<select id="selectExerciseInfo" parameterType="String" resultType="ExerciseInfo">
+		SELECT *
+		FROM exercise_info
+		WHERE type = #{type};
+	</select>
 </mapper>

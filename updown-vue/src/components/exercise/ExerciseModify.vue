@@ -4,23 +4,24 @@
         <img @click="modify" class="cursor" style="width: 2.5em;" src="../../asset/icon/save.png" alt="저장">
         <img @click="list" class="cursor" style="width: 2.5em;" src="../../asset/icon/list.png" alt="목록">
         <div>
-            <label for="type">운동 종류 </label>
-            <input type="text" id="type" :placeholder="props.exercise.type" v-model="newExercise.type">
+            <label for="type">운동 종류 : </label>
+            {{ props.exercise.type }}
         </div>
         <div>
             <label for="time">운동 시간 </label>
-            <input type="number" id="time" :placeholder="props.exercise.time" v-model="newExercise.time">min
+            <input type="number" id="time" v-model="newExercise.time">min
         </div>
         <div>
             <label for="calorie">소모 칼로리 </label>
-            <input type="number" id="calorie" :placeholder="props.exercise.calorie" v-model="newExercise.calorie">kcal
+            {{ (exerciseInfo.met * (3.5 * weight * newExercise.time) / 1000 * 5).toFixed(1) }} kcal
         </div>
     </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useExerciseStore } from '@/stores/exercise';
+import { useWeightStore } from '@/stores/weight';
 
 const today = new Date();
 const year = today.getFullYear();
@@ -43,20 +44,22 @@ const newExercise = ref({
     calorie: 0,
 });
 
+const weightStore = useWeightStore();
+const weight = weightStore.todayWeight.nowWeight;
+
 onMounted(async () => {
-    await getExerciseList();
-    newExercise.value.type = store.todayExerciseList.type;
-    newExercise.value.time = store.todayExerciseList.time;
-    newExercise.value.calorie = store.todayExerciseList.calorie;
+    await store.getExerciseList(loginUserId,regDate);
+    await store.searchExerciseInfoDetail(props.exercise.type);
 })
 
-const getExerciseList = async function() {
-    await store.getExerciseList(loginUserId,regDate);
-}
+const exerciseInfo = computed(() => store.exerciseInfo);
 
 const emits = defineEmits(["list"]);
 
 const modify = function() {
+    newExercise.value.type = props.exercise.type;
+    newExercise.value.calorie = (exerciseInfo.value.met * (3.5 * weight * newExercise.value.time) / 1000 * 5).toFixed(1);
+    console.log(newExercise.value)
     store.modifyExercise(newExercise.value);
     emits("list")
 }

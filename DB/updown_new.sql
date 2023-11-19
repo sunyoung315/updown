@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `exercise` (
   `no` INT NOT NULL AUTO_INCREMENT,
   `type` VARCHAR(100) NOT NULL,
   `time` INT NOT NULL DEFAULT '0',
-  `calorie` INT NOT NULL DEFAULT '0',
+  `calorie` DECIMAL(5,1) NOT NULL DEFAULT '0',
   `reg_date` DATE NOT NULL,
   `user_id` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`no`, `user_id`),
@@ -85,6 +85,7 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 19
 DEFAULT CHARACTER SET = utf8;
 
+SELECT * FROM exercise;
 
 -- -----------------------------------------------------
 -- Table `updown`.`follow`
@@ -140,6 +141,8 @@ DROP TABLE IF EXISTS `exercise_info` ;
 
 CREATE TABLE IF NOT EXISTS `exercise_info` (
   `type` VARCHAR(100) NOT NULL,
-  `met` INT NULL,
+  `met` DECIMAL(5,1) NULL,
   PRIMARY KEY (`type`))
 ENGINE = InnoDB;
+
+SELECT * FROM exercise_info;

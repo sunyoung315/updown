@@ -5,7 +5,7 @@
         <h4>총 운동 시간</h4>
         {{ todayTime }}min
         <h4>총 소모 칼로리</h4>
-        {{ todayCalorie }}kcal
+        {{ todayCalorie.toFixed(1) }}kcal
     </div>
 </template>
 
@@ -24,18 +24,12 @@ const regDate = `${year}-${month}-${day}`;
 const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
 
 let todayExerciseList = computed(() => store.todayExerciseList);
+let todayTime = computed(() => store.todayTime);
+let todayCalorie = computed(() => store.todayCalorie);
 
 onMounted(async () => {
     await store.getExerciseList(loginUserId, regDate);
 })
-
-let todayTime = 0;
-let todayCalorie = 0;
-
-for(let i = 0; i < todayExerciseList.value.length; i++) {
-    todayTime += todayExerciseList.value[i].time;
-    todayCalorie += todayExerciseList.value[i].calorie;
-}
 
 const emits = defineEmits(["list", "regist"]);
 
