@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watchEffect } from 'vue';
 import { useDietStore } from '@/stores/diet';
 import axios from 'axios';
 
@@ -39,10 +39,10 @@ const props = defineProps({
 })
 
 // 수정할 식단
-const newDiet = ref({
+let newDiet = ref({
     no: props.diet.no,
     category: props.diet.category,
-    food: '',
+    food:'',
     calorie: '',
     img: '',
     orgImg: '',
@@ -79,8 +79,6 @@ const emits = defineEmits(["home"]);
 
 // 이미지 업로드
 const submitForm = async () => {
-    // newDiet.value.food = props.diet.food;
-    // newDiet.value.calorie=props.diet.calorie;
     if (serveyImage.value.files[0] == null) {
         store.modifyDiet(newDiet.value);
         emits("home")
@@ -91,6 +89,7 @@ const submitForm = async () => {
     formData.append('file', serveyImage.value.files[0]);
 
     newDiet.value.img = serveyImage.value.files[0].name
+
     await axios({
         url: `http://localhost:8080/updown/img/regist`,
         method: 'POST',
@@ -109,6 +108,20 @@ const submitForm = async () => {
     emits("home")
 };
 
+// watchEffect : 주어진 함수를 즉시 실행, 함수 내에서 사용된 반응형 속성들의 변경을 감시, 의존성이 있는 데이터에 대해서 즉각적으로 실행 (immediately)
+// 즉, props.diet의 어떤 속성이든 변경되면 newDiet.value가 해당 변경 사항을 반영한 새로운 객체로 설정
+// props.diet의 값이 변경될 때마다 newDiet.value의 값도 그에 따라 자동으로 업데이트
+watchEffect(() => {
+    newDiet.value = {
+        no: props.diet.no,
+        category: props.diet.category,
+        food: props.diet.food,
+        calorie: props.diet.calorie,
+        img: props.diet.img,
+        orgImg: props.diet.orgImg,
+        userId: loginUserId
+    };
+});
 
 const home = function () {
     emits("home")
