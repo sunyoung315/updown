@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { defineStore, storeToRefs } from 'pinia';
+import { defineStore } from 'pinia';
 import router from '@/router';
 import axios from 'axios';
 
@@ -11,7 +11,7 @@ export const useWeightStore = defineStore('weight', () => {
     const year = today.getFullYear();
     const month = ("0" + (1 + today.getMonth())).slice(-2);
     const day = ("0" + today.getDate()).slice(-2);
-    const regDate = year + '-' + month + '-' + day;
+    const regDate = `${year}-${month}-${day}`;
 
     const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
 

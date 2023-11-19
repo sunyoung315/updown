@@ -24,7 +24,7 @@ const newWeight = ref({
     regDate: regDate,
 });
 
-const emits = defineEmits(["home",])
+const emits = defineEmits(["home"])
 
 const store = useWeightStore();
 

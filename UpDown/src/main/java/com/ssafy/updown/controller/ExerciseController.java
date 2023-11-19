@@ -48,9 +48,9 @@ public class ExerciseController {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/exercise/remove")
-	public ResponseEntity<Void> removeExercise(int exerciseNo) {
-		eService.removeExercise(exerciseNo);
+	@DeleteMapping("/exercise/remove/{no}")
+	public ResponseEntity<Void> removeExercise(@PathVariable int no) {
+		eService.removeExercise(no);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
