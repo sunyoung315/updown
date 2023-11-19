@@ -34,16 +34,16 @@ const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
 
 const store = useExerciseStore();
 
+const props = defineProps({
+    info: Object,
+})
+
 const newExercise = ref({
     type: '',
     time: 0,
     calorie: 0,
     userId: loginUserId,
 });
-
-const props = defineProps({
-    info: Object,
-})
 
 const weightStore = useWeightStore();
 const weight = weightStore.todayWeight.nowWeight;
