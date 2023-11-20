@@ -59,7 +59,6 @@ const emits = defineEmits(["list"]);
 const modify = function() {
     newExercise.value.type = props.exercise.type;
     newExercise.value.calorie = (exerciseInfo.value.met * (3.5 * weight * newExercise.value.time) / 1000 * 5).toFixed(1);
-    console.log(newExercise.value)
     store.modifyExercise(newExercise.value);
     emits("list")
 }

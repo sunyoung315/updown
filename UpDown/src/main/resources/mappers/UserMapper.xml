@@ -32,7 +32,7 @@
 	<!-- 사용자 정보 수정 -->
 	<update id="updateUser" parameterType="User">
 		UPDATE user
-		SET password = #{password}, target_weight = #{targetWeight}, target_time = #{targetTime}, img = #{img}, org_img = #{orgImg}, updown = #{updown}, is_secret = #{isSecret}
+		SET password = #{password}, nickname = #{nickname}, email = #{email}, target_weight = #{targetWeight}, target_time = #{targetTime}, img = #{img}, org_img = #{orgImg}, updown = #{updown}, is_secret = #{isSecret}
 		WHERE id = #{id};
 	</update>
 	
