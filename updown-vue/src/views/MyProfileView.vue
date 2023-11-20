@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h3>프로필 수정</h3>
         <MyProfileModify/>
     </div>
 </template>
