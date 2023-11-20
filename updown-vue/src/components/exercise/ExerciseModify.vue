@@ -1,19 +1,25 @@
 <template>
     <div class="exercise-modify">
-        <h2>운동</h2>
-        <img @click="modify" class="cursor" style="width: 2.5em;" src="../../asset/icon/save.png" alt="저장">
-        <img @click="list" class="cursor" style="width: 2.5em;" src="../../asset/icon/list.png" alt="목록">
-        <div>
-            <label for="type">운동 종류 : </label>
-            {{ props.exercise.type }}
+        <div class="exercise-head">
+            <div class="exercise-title">운동</div>
+            <div>
+                <img @click="modify" class="cursor" style="width: 43px; margin: 18px 8px 0px 5px;" src="../../asset/bootstrap-icon/save.svg" alt="저장">
+                <img @click="list" class="cursor" style="width: 43px; margin: 18px 5px 0px 8px;" src="../../asset/bootstrap-icon/table.svg" alt="목록">
+            </div>
         </div>
-        <div>
-            <label for="time">운동 시간 </label>
-            <input type="number" id="time" v-model="newExercise.time">min
-        </div>
-        <div>
-            <label for="calorie">소모 칼로리 </label>
-            {{ (exerciseInfo.met * (3.5 * weight * newExercise.time) / 1000 * 5).toFixed(1) }} kcal
+        <div class="exercise-modify-box">
+            <div>
+                <label for="type">운동 종류 : </label><br>
+                <div class="exercise-value">{{ props.exercise.type }}</div>
+            </div>
+            <div>
+                <label for="time">운동 시간 : </label><br>
+                <div class="exercise-value"><input type="number" id="time" v-model="newExercise.time">min</div>
+            </div>
+            <div>
+                <label for="calorie">소모 칼로리 : </label><br>
+                <div class="exercise-value">{{ (exerciseInfo.met * (3.5 * weight * newExercise.time) / 1000 * 5).toFixed(1) }} kcal</div>
+            </div>
         </div>
     </div>
 </template>
@@ -40,7 +46,7 @@ const props = defineProps ({
 const newExercise = ref({
     no: props.exercise.no,
     type: '',
-    time: 0,
+    time: props.exercise.time,
     calorie: 0,
 });
 
@@ -72,7 +78,29 @@ const list = function() {
 <style scoped>
 .exercise-modify {
     background-color: rgb(91, 94, 151, 0.5);
-    padding: 2em;
+    padding: 40px;
     border-radius: 20px;
+}
+.exercise-title {
+    font-size: 50px;
+}
+.exercise-head {
+    display: flex;
+    justify-content: space-between;
+}
+.exercise-modify-box {
+    margin-top: 35px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+label {
+    font-size: 25px;
+    margin-top: 25px;
+}
+input {
+    width: 150px;
+}
+.exercise-value {
+    font-size: 35px;
 }
 </style>

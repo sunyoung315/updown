@@ -2,10 +2,14 @@
     <div class="weight-upload">
         <div class="weight-head">
             <div class="weight-title">체중</div>
-            <img @click="upload" class="cursor" style="width: 45px; height: 45px;" src="../../asset/icon/save.png" alt="저장">
+            <img @click="upload" class="cursor" style="width: 43px; margin: 15px 5px 0px 5px;" src="../../asset/bootstrap-icon/save.svg" alt="저장">
         </div>
-        <h4>오늘의 체중은?</h4>
-        <input type="number" v-model="newWeight.nowWeight">kg
+        <div class="today-weight-box">
+            <p class="today-weight">오늘의 체중은?</p>
+            <div class="weight-value">
+                <input type="number" v-model="newWeight.nowWeight"><span class="weight-unit">kg</span>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -49,14 +53,33 @@ const upload = async function() {
 <style scoped>
 .weight-upload {
     background-color: rgb(193, 96, 96, 0.5);
-    padding: 2em;
+    padding: 40px;
     border-radius: 20px;
 }
 .weight-title {
-    font-size: 40px;
+    font-size: 50px;
 }
 .weight-head {
     display: flex;
     justify-content: space-between;
+}
+.today-weight {
+    font-size: 30px;
+    text-align: center;
+}
+input {
+    width: 220px;
+    height: 120px;
+    font-size: 80px;
+}
+.weight-unit {
+    font-size: 80px;
+}
+.weight-value {
+    text-align: center;
+}
+.today-weight-box {
+    position: relative;
+    top: 140px
 }
 </style>

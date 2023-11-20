@@ -1,8 +1,8 @@
 <template>
     <div>
         <h3>나의 프로필</h3>
-        <img v-if="loginUser.img!==null" style="width: 80%;"  :src="'http://localhost:8080/upload/' + loginUser.img" alt="프로필 사진">
-        <img v-else style="width: 80%" src="../../asset/icon/profile-user.png" alt="프로필 사진">
+        <img v-if="loginUser.img!==null" style="width: 390px;"  :src="'http://localhost:8080/upload/' + loginUser.img" alt="프로필 사진">
+        <img v-else style="width: 390px" src="../../asset/icon/profile-user.png" alt="프로필 사진">
         <div class="profile-content">
             <div>
                 <p>📌목표 체중 : {{ loginUser.targetWeight }}kg</p>

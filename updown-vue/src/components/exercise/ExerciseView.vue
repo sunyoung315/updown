@@ -80,7 +80,8 @@ onMounted(async () => {
 <style scoped>
 .container {
     display: inline;
-    width: 50%;
+    width: 650px;
+    height: 650px;
     margin: 20px;
     padding: 20px;
 }

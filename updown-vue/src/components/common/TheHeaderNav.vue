@@ -43,6 +43,7 @@ header {
 }
 * {
     font-family: 'mobiletitle';
+    color: black;
 }
 a {
     text-decoration: none;

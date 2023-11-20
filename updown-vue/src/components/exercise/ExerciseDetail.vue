@@ -1,11 +1,15 @@
 <template>
     <div class="exercise-detail">
-        <h2>운동</h2>
-        <img class="cursor" @click="list" style="width: 2.3em;" src="../../asset/icon/list.png" alt="목록">
-        <h4>총 운동 시간</h4>
-        {{ todayTime }}min
-        <h4>총 소모 칼로리</h4>
-        {{ todayCalorie.toFixed(1) }}kcal
+        <div class="exercise-head">
+            <div class="exercise-title">운동</div>
+            <img class="cursor" @click="list" style="width: 46px; height: 46px; margin: 15px 5px 0px 5px;" src="../../asset/bootstrap-icon/table.svg" alt="목록">
+        </div>
+        <div class="today-exercise-box">
+            <p class="today-exercise-key">총 운동 시간</p>
+            <p class="today-exercise-value">{{ todayTime }}min</p>
+            <p class="today-exercise-key">총 소모 칼로리</p>
+            <p class="today-exercise-value">{{ todayCalorie.toFixed(1) }}kcal</p>
+        </div>
     </div>
 </template>
 
@@ -54,7 +58,28 @@ const list = function() {
 <style scoped>
 .exercise-detail {
     background-color: rgb(91, 94, 151);
-    padding: 2em;
+    padding: 40px;
     border-radius: 20px;
+}
+.exercise-title {
+    font-size: 50px;
+    color: white;
+}
+.exercise-head {
+    display: flex;
+    justify-content: space-between;
+}
+.today-exercise-box {
+    position: relative;
+    top: 60px
+}
+.today-exercise-key {
+    font-size: 30px;
+    text-align: center;
+}
+.today-exercise-value {
+    font-size: 80px;
+    text-align: center;
+    color: white;
 }
 </style>
