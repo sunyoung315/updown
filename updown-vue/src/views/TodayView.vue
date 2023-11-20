@@ -21,7 +21,7 @@ import WeightView from '@/components/weight/WeightView.vue';
 
 <style scoped>
 .today-container {
-    width: 70%;
+    width: 1350px;
 }
 .today-box {
     display: flex;

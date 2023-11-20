@@ -3,12 +3,16 @@
         <div class="weight-head">
             <div class="weight-title">체중</div>
             <div>
-                <img @click="modify" class="cursor" style="width: 43px; margin: 0px 5px 0px 5px;" src="../../asset/bootstrap-icon/save.svg" alt="저장">
-                <img @click="home" class="cursor" style="width: 49px; margin: 0px 5px 0px 5px;" src="../../asset/bootstrap-icon/house.svg" alt="홈으로">
+                <img @click="modify" class="cursor" style="width: 43px; margin: 15px 5px 0px 5px;" src="../../asset/bootstrap-icon/save.svg" alt="저장">
+                <img @click="home" class="cursor" style="width: 49px; margin: 15px 5px 0px 5px;" src="../../asset/bootstrap-icon/house.svg" alt="홈으로">
             </div>
         </div>
-        <h4>오늘의 체중은?</h4>
-        <input type="number" :placeholder=weight v-model="newWeight.nowWeight">kg
+        <div class="today-weight-box">
+            <p class="today-weight">오늘의 체중은?</p>
+            <div class="weight-value">
+                <input type="number" :placeholder=weight v-model="newWeight.nowWeight"><span class="weight-unit">kg</span>
+            </div>
+        </div>    
     </div>
 </template>
 
@@ -62,14 +66,33 @@ const home = function() {
 <style scoped>
 .weight-modify {
     background-color: rgb(193, 96, 96, 0.5);
-    padding: 2em;
+    padding: 40px;
     border-radius: 20px;
 }
 .weight-title {
-    font-size: 40px;
+    font-size: 50px;
 }
 .weight-head {
     display: flex;
     justify-content: space-between;
+}
+.today-weight {
+    font-size: 30px;
+    text-align: center;
+}
+input {
+    width: 220px;
+    height: 120px;
+    font-size: 80px;
+}
+.weight-unit {
+    font-size: 80px;
+}
+.weight-value {
+    text-align: center;
+}
+.today-weight-box {
+    position: relative;
+    top: 140px
 }
 </style>

@@ -20,7 +20,4 @@ import TheFooter from '@/components/common/TheFooter.vue';
 .home {
     display: flex;
 }
-.home-container{
-    padding: 20px;
-}
 </style>

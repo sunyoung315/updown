@@ -1,24 +1,32 @@
 <template>
     <div class="exercise-upload">
-        <h2>운동</h2>
-        <img @click="upload" class="cursor" style="width: 2.5em;" src="../../asset/icon/save.png" alt="저장">
-        <img @click="list" class="cursor" style="width: 2.5em;" src="../../asset/icon/list.png" alt="목록">
-        <div>
-            <label for="type">운동 종류</label>
-            <span v-if="props.info.type">{{ ' : ' + props.info.type }}</span>
-            <img @click="search" class="cursor" style="width: 2em;" src="../../asset/icon/search.png" alt="검색">
+        <div class="exercise-head">
+            <div class="exercise-title">운동</div>
+            <div>
+                <img @click="upload" class="cursor" style="width: 43px; margin: 18px 8px 0px 5px;" src="../../asset/bootstrap-icon/save.svg" alt="저장">
+                <img @click="list" class="cursor" style="width: 43px; margin: 18px 5px 0px 8px;" src="../../asset/bootstrap-icon/table.svg" alt="목록">
+            </div>
         </div>
-        <div>
-            <label for="time">운동 시간 : </label>
-            <input type="number" id="time" v-model="newExercise.time">min
-        </div>
-        <div v-if="props.info.met">
-            <label for="calorie">소모 칼로리 </label>
-            <div v-if="weight">{{ (props.info.met * (3.5 * weight * newExercise.time) / 1000 * 5).toFixed(1) }} kcal</div>
-            <div v-else>
-                {{ (props.info.met * (3.5 * 50 * newExercise.time) / 1000 * 5).toFixed(1) }} kcal
-                <br>
-                (체중이 입력되지 않아 50kg 기준으로 계산됩니다.)
+        <div class="exercise-upload-box">
+            <div>
+                <label for="type">운동 종류 : </label>
+                <img @click="search" class="cursor" style="width: 43px; margin: 0px 5px 20px 8px;" src="../../asset/bootstrap-icon/search.svg" alt="검색"><br>
+                <span class="exercise-value" v-if="props.info.type">{{ ' ' + props.info.type }}</span>
+            </div>
+            <div>
+                <label for="time">운동 시간 : </label><br>
+                <div class="exercise-value"><input type="number" id="time" v-model="newExercise.time">min</div>
+            </div>
+            <div v-if="props.info.met">
+                <label for="calorie">소모 칼로리 : </label><br>
+                <div class="exercise-value">
+                    <div v-if="weight">{{ (props.info.met * (3.5 * weight * newExercise.time) / 1000 * 5).toFixed(1) }} kcal</div>
+                    <div v-else>
+                        {{ (props.info.met * (3.5 * 50 * newExercise.time) / 1000 * 5).toFixed(1) }} kcal
+                        <br>
+                        <p class="cal-desc">(체중이 입력되지 않아 50kg 기준으로 계산됩니다.)</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -66,7 +74,9 @@ onMounted(async () => {
 
 const upload = async function() {
     newExercise.value.type = props.info.type;
-    newExercise.value.calorie = (props.info.met * (3.5 * weight.value * newExercise.value.time) / 1000 * 5).toFixed(1);
+    if(props.info.weight)
+        newExercise.value.calorie = (props.info.met * (3.5 * weight.value * newExercise.value.time) / 1000 * 5).toFixed(1);
+    newExercise.value.calorie = (props.info.met * (3.5 * 50 * newExercise.value.time) / 1000 * 5).toFixed(1);
     await store.uploadExercise(newExercise.value);
     await store.getExerciseList(loginUserId, regDate);
     emits("list");
@@ -81,7 +91,33 @@ const search = async function() {
 <style scoped>
 .exercise-upload {
     background-color: rgb(91, 94, 151, 0.5);
-    padding: 2em;
+    padding: 40px;
     border-radius: 20px;
+}
+.exercise-title {
+    font-size: 50px;
+}
+.exercise-head {
+    display: flex;
+    justify-content: space-between;
+}
+.exercise-upload-box {
+    margin-top: 35px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+label {
+    font-size: 25px;
+    margin-top: 25px;
+}
+input {
+    width: 150px;
+}
+.exercise-value {
+    font-size: 35px;
+}
+.cal-desc {
+    font-size: 18px;
+    color: rgb(100, 100, 100);
 }
 </style>
