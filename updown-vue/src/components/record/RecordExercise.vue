@@ -1,8 +1,8 @@
 <template>
     <div>
         <h3>운동</h3>
-        <table v-if="props.exerciseRecord.length">
-            <thead>
+        <table class="table" id="exercise" v-if="props.exerciseRecord.length">
+            <thead class="table-light">
                 <tr>
                     <th>운동명</th>
                     <th>운동 시간</th>
@@ -28,5 +28,13 @@ const props = defineProps({
 </script>
 
 <style scoped>
+
+th{
+    background-color: rgb(91,94,151, 0.3)
+}
+
+#exercise{
+    text-align: center; font-size: large; width: 43em;
+}
 
 </style>
