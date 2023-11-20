@@ -27,13 +27,13 @@ const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
 
 const store = useExerciseStore();
 
-const todayExerciseList = computed(() => store.todayExerciseList);
-
 onMounted(async () => {
     await store.getExerciseList(loginUserId, regDate);
 });
 
-const emits = defineEmits(["home", "regist", "modify", "remove"]);
+const todayExerciseList = computed(() => store.todayExerciseList);
+
+const emits = defineEmits(["home","regist", "modify", "remove"]);
 
 const home = function() {
     emits("home");

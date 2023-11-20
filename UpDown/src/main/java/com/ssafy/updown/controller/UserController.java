@@ -54,7 +54,7 @@ public class UserController {
 	}
 	
 	@PutMapping("/user/modify")
-	public ResponseEntity<Void> modifyUser(User user) {
+	public ResponseEntity<Void> modifyUser(@RequestBody User user) {
 		uService.modifyUser(user);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}

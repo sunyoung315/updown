@@ -2,7 +2,7 @@
     <div>
         <h3>나의 프로필</h3>
         <img v-if="loginUser.img!==null" style="width: 3em;"  :src="'http://localhost:8080/upload/' + loginUser.img" alt="프로필 사진">
-        <img v-else style="width: 15em" src="../../asset/icon/profile-user.png" alt="프로필 사진">
+        <img v-else style="width: 10em" src="../../asset/icon/profile-user.png" alt="프로필 사진">
         <div class="profile-content">
             <div>
                 <p>📌목표 체중 : {{ loginUser.targetWeight }}kg</p>
@@ -16,8 +16,9 @@
 </template>
 
 <script setup>
-const loginUser = JSON.parse(localStorage.getItem("loginUser"));
+import { computed } from 'vue';
 
+const loginUser = computed(() => JSON.parse(localStorage.getItem("loginUser")));
 </script>
 
 <style scoped>

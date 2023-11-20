@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, watchEffect, computed } from 'vue';
 import { useExerciseStore } from '@/stores/exercise';
 
 const store = useExerciseStore();
@@ -23,19 +23,25 @@ const regDate = `${year}-${month}-${day}`;
 
 const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
 
-let todayExerciseList = computed(() => store.todayExerciseList);
+let todayTime = ref(0);
+let todayCalorie = ref(0);
 
-let todayTime = 0;
-let todayCalorie = 0;
-
-for(let i = 0; i < todayExerciseList.value.length; i++) {
-    todayTime += todayExerciseList.value[i].time;
-    todayCalorie += todayExerciseList.value[i].calorie;
+const calTotal = function() { 
+    todayTime.value = 0;
+    todayCalorie.value = 0;
+    
+    for(let i = 0; i < todayExerciseList.value.length; i++) {
+        todayTime.value += todayExerciseList.value[i].time;
+        todayCalorie.value += todayExerciseList.value[i].calorie;
+    }
 }
 
-onMounted(async () => {
-    await store.getExerciseList(loginUserId, regDate);
+watchEffect(async () => {
+    await store.todayExerciseList;
+    await store.getExerciseList(loginUserId, regDate).then(calTotal);
 })
+
+let todayExerciseList = computed(() => store.todayExerciseList);
 
 const emits = defineEmits(["list", "regist"]);
 
