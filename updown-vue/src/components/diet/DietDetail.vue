@@ -107,7 +107,7 @@
 
 <script setup>
 import { useDietStore } from '@/stores/diet';
-import { onMounted, onUpdated, ref, watchEffect, computed } from 'vue';
+import { ref, watchEffect } from 'vue';
 
 const store = useDietStore();
 

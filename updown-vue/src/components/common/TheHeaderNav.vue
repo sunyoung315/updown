@@ -23,6 +23,10 @@ const logout = function() {
 </script>
 
 <style>
+@font-face {
+    font-family: 'hanna';
+    src: url('/font/BMHANNAPro.ttf')
+}
 header {
     border: 1px solid gray;
 }
@@ -32,5 +36,12 @@ header {
 }
 .cursor {
     cursor: pointer;
+}
+* {
+    font-family: 'hanna';
+}
+a {
+    text-decoration: none;
+    color: black;
 }
 </style>

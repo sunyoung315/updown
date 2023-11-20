@@ -1,13 +1,11 @@
 <template>
-    <div class="container">
+    <div class="diet-container ratio ratio-1x1">
         <h4>식단</h4> 
         <div class="diet-box">
-            <DietBreakFast @caloriesum="caloriesum" class="diet" />
-            <DietLunch class="diet" />
-        </div>
-        <div class="diet-box">
-            <DietDinner class="diet" />
-            <DietSnack class="diet" />
+            <DietBreakFast />
+            <DietLunch />
+            <DietDinner />
+            <DietSnack />
         </div>
     </div>
 </template>
@@ -22,16 +20,16 @@ import DietSnack from '@/components/diet/DietSnack.vue';
 </script>
 
 <style scoped>
-.container {
-    border: 1px solid black;
+.diet-container {
+    display: inline;
+    width: 100%;
+    margin: 1em;
+    padding: 1em;
+    background-color: rgb(83, 120, 77);
+    border-radius: 20px;
 }
-
 .diet-box {
     display: flex;
-}
-
-.diet {
-    display: inline;
-    width: 50%;
+    position: relative;
 }
 </style>

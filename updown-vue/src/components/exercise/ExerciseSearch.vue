@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="exercise-search">
         <h2>운동</h2>
         <img class="cursor" @click="cancel" style="width: 1.8em;" src="../../asset/icon/delete.png" alt="검색취소">
         <div>
@@ -49,5 +49,9 @@ const getInfo = function(info) {
 </script>
 
 <style scoped>
-
+.exercise-search {
+    background-color: rgb(91, 94, 151, 0.5);
+    padding: 2em;
+    border-radius: 20px;
+}
 </style>

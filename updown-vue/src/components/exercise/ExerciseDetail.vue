@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="exercise-detail">
         <h2>운동</h2>
         <img class="cursor" @click="list" style="width: 2.3em;" src="../../asset/icon/list.png" alt="목록">
         <h4>총 운동 시간</h4>
@@ -52,5 +52,9 @@ const list = function() {
 </script>
 
 <style scoped>
-
+.exercise-detail {
+    background-color: rgb(91, 94, 151);
+    padding: 2em;
+    border-radius: 20px;
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="weight-modify">
         <h2>체중</h2>
         <img @click="modify" class="cursor" style="width: 2.5em;" src="../../asset/icon/save.png" alt="저장">
         <img @click="home" class="cursor" style="width: 2.5em;" src="../../asset/icon/home.png" alt="홈으로">
@@ -56,5 +56,9 @@ const home = function() {
 </script>
 
 <style scoped>
-
+.weight-modify {
+    background-color: rgb(193, 96, 96, 0.5);
+    padding: 2em;
+    border-radius: 20px;
+}
 </style>

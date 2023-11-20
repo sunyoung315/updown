@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="exercise-list">
         <h2>운동</h2>
         <img class="cursor" @click="regist" style="width: 3em;" src="../../asset/icon/add.png" alt="등록">
         <img class="cursor" @click="home" style="width: 2.5em;" src="../../asset/icon/home.png" alt="홈으로">
@@ -56,5 +56,9 @@ const remove = function(exercise) {
 </script>
 
 <style scoped>
-
+.exercise-list {
+    background-color: rgb(91, 94, 151, 0.5);
+    padding: 2em;
+    border-radius: 20px;
+}
 </style>

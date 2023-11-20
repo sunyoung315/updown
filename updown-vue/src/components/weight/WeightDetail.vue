@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="weight-detail">
         <h2>체중</h2>
         <div v-if="todayWeight && todayWeight.nowWeight">
             <img class="cursor" @click="modify" style="width: 3em;" src="../../asset/icon/edit.png" alt="수정">
@@ -42,5 +42,9 @@ const graph = function() {
 </script>
 
 <style scoped>
-
+.weight-detail {
+    background-color: rgb(193, 96, 96);
+    padding: 2em;
+    border-radius: 20px;
+}
 </style>
