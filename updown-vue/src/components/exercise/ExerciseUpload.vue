@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="exercise-upload">
         <h2>운동</h2>
         <img @click="upload" class="cursor" style="width: 2.5em;" src="../../asset/icon/save.png" alt="저장">
         <img @click="list" class="cursor" style="width: 2.5em;" src="../../asset/icon/list.png" alt="목록">
@@ -79,5 +79,9 @@ const search = async function() {
 </script>
 
 <style scoped>
-
+.exercise-upload {
+    background-color: rgb(91, 94, 151, 0.5);
+    padding: 2em;
+    border-radius: 20px;
+}
 </style>

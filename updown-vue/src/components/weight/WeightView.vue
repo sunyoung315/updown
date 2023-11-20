@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container ratio ratio-1x1">
         <KeepAlive>
             <component :is="choose" @regist="regist" @modify="modify" @home="home" @graph="graph"/>
         </KeepAlive>
@@ -50,8 +50,11 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.container {
-    border: 1px solid black;
-}
 
+.container {
+    display: inline;
+    width: 50%;
+    margin: 1em;
+    padding: 1em;
+}
 </style>

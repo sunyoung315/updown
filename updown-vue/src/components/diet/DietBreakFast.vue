@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <KeepAlive>
-            <component :is="choose" :category="'아침'" @regist="regist" @modify="modify" :caloriesum="caloriesum" :diet="diet" @home="home"  @remove="remove" />
+            <component :is="choose" :category="'아침'" @regist="regist" @modify="modify" :diet="diet" @home="home"  @remove="remove" />
         </KeepAlive>
     </div>
 </template>

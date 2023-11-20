@@ -1,10 +1,12 @@
 <template>
     <div class="today-container">
         <div class="today-box">
-            <WeightView class="weight"/>
-            <ExerciseView class="exercise"/>
+            <WeightView />
+            <ExerciseView />
         </div>
-        <DietView/>
+        <div class="today-box">
+            <DietView class="diet"/>
+        </div>
     </div>
 </template>
 
@@ -23,13 +25,5 @@ import WeightView from '@/components/weight/WeightView.vue';
 }
 .today-box {
     display: flex;
-}
-.weight {
-    display: inline;
-    width: 50%;
-}
-.exercise {
-    display: inline;
-    width: 50%;
 }
 </style>
