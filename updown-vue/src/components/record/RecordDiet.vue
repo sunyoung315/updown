@@ -1,8 +1,8 @@
 <template>
     <div>
         <h3>식단</h3>
-        <table v-if="props.dietRecord.length">
-            <thead>
+        <table class="table" id="diet" v-if="props.dietRecord.length">
+            <thead class="table-light">
                 <tr>
                     <th>구분</th>
                     <th>음식명</th>
@@ -30,5 +30,13 @@ const props = defineProps({
 </script>
 
 <style scoped>
+th{
+    background-color: rgb(83,120,77, 0.3)
+}
 
+#diet{
+    text-align: center; 
+    font-size: large; 
+    width: 43em;
+}
 </style>
