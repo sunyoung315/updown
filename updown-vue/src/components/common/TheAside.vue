@@ -10,7 +10,7 @@ import MyProfile from '@/components/user/MyProfile.vue'
 
 <style scoped>
 aside {
-    border: 1px solid gray;
+    border: 1px solid rgb(199, 199, 199);
     width: 30%;
 }
 </style>

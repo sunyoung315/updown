@@ -1,11 +1,15 @@
 <template>
-    <div class="diet-container ratio ratio-1x1">
-        <h4>식단</h4> 
-        <div class="diet-box">
-            <DietBreakFast />
-            <DietLunch />
-            <DietDinner />
-            <DietSnack />
+    <div class="diet-container">
+        <h2>식단</h2> 
+        <div>
+            <div class="diet-box">
+                <DietBreakFast />
+                <DietLunch />
+            </div>
+            <div class="diet-box">
+                <DietDinner />
+                <DietSnack />
+            </div>
         </div>
     </div>
 </template>
@@ -21,15 +25,14 @@ import DietSnack from '@/components/diet/DietSnack.vue';
 
 <style scoped>
 .diet-container {
-    display: inline;
-    width: 100%;
-    margin: 1em;
-    padding: 1em;
+    margin: 20px;
+    padding: 32px;
     background-color: rgb(83, 120, 77);
     border-radius: 20px;
+
+    aspect-ratio: 1/1;
 }
 .diet-box {
     display: flex;
-    position: relative;
 }
 </style>

@@ -1,8 +1,12 @@
 <template>
     <div class="weight-modify">
-        <h2>체중</h2>
-        <img @click="modify" class="cursor" style="width: 2.5em;" src="../../asset/icon/save.png" alt="저장">
-        <img @click="home" class="cursor" style="width: 2.5em;" src="../../asset/icon/home.png" alt="홈으로">
+        <div class="weight-head">
+            <div class="weight-title">체중</div>
+            <div>
+                <img @click="modify" class="cursor" style="width: 43px; margin: 0px 5px 0px 5px;" src="../../asset/bootstrap-icon/save.svg" alt="저장">
+                <img @click="home" class="cursor" style="width: 49px; margin: 0px 5px 0px 5px;" src="../../asset/bootstrap-icon/house.svg" alt="홈으로">
+            </div>
+        </div>
         <h4>오늘의 체중은?</h4>
         <input type="number" :placeholder=weight v-model="newWeight.nowWeight">kg
     </div>
@@ -60,5 +64,12 @@ const home = function() {
     background-color: rgb(193, 96, 96, 0.5);
     padding: 2em;
     border-radius: 20px;
+}
+.weight-title {
+    font-size: 40px;
+}
+.weight-head {
+    display: flex;
+    justify-content: space-between;
 }
 </style>

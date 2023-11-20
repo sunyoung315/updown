@@ -4,7 +4,7 @@
         <h2>{{ category }}</h2>
         <div v-if="category == '아침'">
             <div>
-                <img class="cursor" @click="regist" style="width: 3em;" src="../../asset/icon/add.png" alt="등록">
+                <img class="cursor" @click="regist" style="width: 3rem;" src="../../asset/icon/add.png" alt="등록">
 
                 <div v-if="store.todayDietBreakFast.length !== 0">
                     <ul v-for="diet in store.todayDietBreakFast" key="diet.no">
@@ -17,7 +17,7 @@
                         </li>
                     </ul>
                     <div>
-                        <img v-if="store.breakfastimg" style="width: 3em;"
+                        <img v-if="store.breakfastimg" style="width: 3rem;"
                             :src="`http://localhost:8080/upload/${store.breakfastimg}`" alt="음식 사진">
                     </div>
                 </div>
@@ -30,7 +30,7 @@
 
         <div v-else-if="category == '점심'">
             <div>
-                <img class="cursor" @click="regist" style="width: 3em;" src="../../asset/icon/add.png" alt="등록">
+                <img class="cursor" @click="regist" style="width: 3rem;" src="../../asset/icon/add.png" alt="등록">
                 <div v-if="store.todayDietLunch.length !== 0">
                     <ul v-for="diet in store.todayDietLunch" key="diet.no">
                         <li>
@@ -43,7 +43,7 @@
                         </li>
                     </ul>
                     <div>
-                        <img v-if="store.lunchimg" style="width: 3em;"
+                        <img v-if="store.lunchimg" style="width: 3rem;"
                             :src="`http://localhost:8080/upload/${store.lunchimg}`" alt="음식 사진">
                     </div>
                 </div>
@@ -55,7 +55,7 @@
 
         <div v-else-if="category == '저녁'">
             <div>
-                <img class="cursor" @click="regist" style="width: 3em;" src="../../asset/icon/add.png" alt="등록">
+                <img class="cursor" @click="regist" style="width: 3rem;" src="../../asset/icon/add.png" alt="등록">
                 <div v-if="store.todayDietDinner.length !== 0">
                     <ul v-for="diet in store.todayDietDinner" key="diet.no">
                         <li>
@@ -68,7 +68,7 @@
                         </li>
                     </ul>
                     <div>
-                        <img v-if="store.dinnerimg" style="width: 3em;"
+                        <img v-if="store.dinnerimg" style="width: 3rem;"
                             :src="`http://localhost:8080/upload/${store.dinnerimg}`" alt="음식 사진">
                     </div>
                 </div>
@@ -80,7 +80,7 @@
 
         <div v-else-if="category == '간식'">
             <div>
-                <img class="cursor" @click="regist" style="width: 3em;" src="../../asset/icon/add.png" alt="등록">
+                <img class="cursor" @click="regist" style="width: 3rem;" src="../../asset/icon/add.png" alt="등록">
                 <div v-if="store.todayDietSnack.length !== 0">
                     <ul v-for="diet in store.todayDietSnack" key="diet.no">
                         <li>
@@ -93,7 +93,7 @@
                         </li>
                     </ul>
                     <div>
-                        <img v-if="store.snackimg" style="width: 3em;"
+                        <img v-if="store.snackimg" style="width: 3rem;"
                             :src="`http://localhost:8080/upload/${store.snackimg}`" alt="음식 사진">
                     </div>
                 </div>
@@ -122,7 +122,7 @@ const day = ("0" + today.getDate()).slice(-2);
 const regDate = year + '-' + month + '-' + day;
 const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
 
-const emits = defineEmits(["modify", "regist", "graph", "remove", "caloriesum"]);
+const emits = defineEmits(["modify", "regist", "graph", "remove"]);
 
 
 const regist = function () {
@@ -134,10 +134,6 @@ const modify = function (diet) {
 
 const remove = function (diet) {
     emits("remove", diet)
-}
-
-const caloriesum = function(calSum){
-    emits("caloriesum", calSum)
 }
 
 const calSum = ref(0);
@@ -180,4 +176,5 @@ watchEffect(async() => {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

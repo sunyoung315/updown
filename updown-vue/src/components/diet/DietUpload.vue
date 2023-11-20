@@ -8,7 +8,7 @@
         <input type="text" v-model="newDiet.food" placeholder='식단을 등록해주세요.'>
         <br>
         <label>음식 칼로리</label><br>
-        <input type="number" v-model="newDiet.calorie" placeholder='kcal'>
+        <input type="number" v-model="newDiet.calorie">kcal
         <br>
         <label>음식사진(선택)</label>
         <div>

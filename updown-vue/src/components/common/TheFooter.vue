@@ -10,6 +10,6 @@
 
 <style scoped>
 footer {
-    border: 1px solid gray;
+    border: 1px solid rgb(199, 199, 199);
 }
 </style>
