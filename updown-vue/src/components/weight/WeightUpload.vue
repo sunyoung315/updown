@@ -1,7 +1,9 @@
 <template>
     <div class="weight-upload">
-        <h2>체중</h2>
-        <img @click="upload" class="cursor" style="width: 2.5em;" src="../../asset/icon/save.png" alt="저장">
+        <div class="weight-head">
+            <div class="weight-title">체중</div>
+            <img @click="upload" class="cursor" style="width: 45px; height: 45px;" src="../../asset/icon/save.png" alt="저장">
+        </div>
         <h4>오늘의 체중은?</h4>
         <input type="number" v-model="newWeight.nowWeight">kg
     </div>
@@ -49,5 +51,12 @@ const upload = async function() {
     background-color: rgb(193, 96, 96, 0.5);
     padding: 2em;
     border-radius: 20px;
+}
+.weight-title {
+    font-size: 40px;
+}
+.weight-head {
+    display: flex;
+    justify-content: space-between;
 }
 </style>

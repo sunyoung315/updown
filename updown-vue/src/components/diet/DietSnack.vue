@@ -7,8 +7,7 @@
 </template>
 
 <script setup>
-import { shallowRef, onMounted, ref } from 'vue'
-import { useWeightStore } from '@/stores/weight';
+import { shallowRef, ref } from 'vue'
 
 import DietDetail from '@/components/diet/DietDetail.vue';
 import DietModify from './DietModify.vue';
@@ -42,7 +41,12 @@ const remove = function(diet) {
 
 <style scoped>
 .container {
-    border: 1px solid black;
+    display: inline-block;
+    width: 50%;
+    border-radius: 10px;
+    background-color: white;
+    margin: 15px 0px 15px 15px;
+    padding: 15px;
 }
 
 </style>

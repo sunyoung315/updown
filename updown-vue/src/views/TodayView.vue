@@ -4,7 +4,7 @@
             <WeightView />
             <ExerciseView />
         </div>
-        <div class="today-box">
+        <div>
             <DietView class="diet"/>
         </div>
     </div>

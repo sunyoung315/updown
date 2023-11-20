@@ -1,7 +1,9 @@
 <template>
     <div class="weight-graph">
-        <h2>체중</h2>
-        <img @click="home" class="cursor" style="width: 2.5em;" src="../../asset/icon/home.png" alt="홈">
+        <div class="weight-head">
+            <div class="weight-title">체중</div>
+            <img @click="home" class="cursor" style="width: 49px; margin: 0px 5px 5px 5px;" src="../../asset/bootstrap-icon/house.svg" alt="홈으로">
+        </div>
         <h4>7일간의 몸무게 변화</h4>
     </div>
 </template>
@@ -18,5 +20,12 @@ const home = function() {
     background-color: rgb(193, 96, 96, 0.5);
     padding: 2em;
     border-radius: 20px;
+}
+.weight-title {
+    font-size: 40px;
+}
+.weight-head {
+    display: flex;
+    justify-content: space-between;
 }
 </style>
