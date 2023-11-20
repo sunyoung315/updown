@@ -1,46 +1,69 @@
 <template>
-    <div>
-        <h2>마이프로필</h2>
+    <div class="myprofile-modify-container">
         <form @submit.prevent="submitForm">
-            <fieldset>
-                <label for="password">비밀번호</label><br>
+            <fieldset class="myprofile-modify">
+                <h2>마이프로필</h2><br>
+                <label for="password">비밀번호</label>
                 <input v-model="signupUser.password" autoComplete="off" type="password" id="password" name="password">
-                <br>
-                <label for="password">비밀번호 확인</label><br>
+                <br><br>
+                <label for="password">비밀번호 확인</label>
                 <input v-model="password2" autoComplete="off" type="password" id="password2" name="password2">
-                <br>
-                <label for="nickname">닉네임</label><br>
+                <br><br>
+                <label for="nickname">닉네임</label>
                 <input v-model="signupUser.nickname" type="text" id="nickname" name="nickname">
-                <br>
-                <label for="email">이메일</label><br>
+                <br><br>
+                <label for="email">이메일</label>
                 <input v-model="signupUser.email" type="text" id="email" name="email">
+                <br><br>
+                <label for="targetWeight">목표 체중</label>
+                <input v-model="signupUser.targetWeight" type="number" id="targetWeight" name="targetWeight">
+                <a>
+                    kg
+                </a>
                 <br>
-                <label for="targetWeight">목표 체중</label><br>
-                <input v-model="signupUser.targetWeight" type="number" id="targetWeight" name="targetWeight">kg
+                <label for="targetTime">하루 목표 운동 시간</label>
+                <input v-model="signupUser.targetTime" type="number" id="targetTime" name="targetTime">
+                <a>
+                    min
+                </a>
                 <br>
-                <label for="targetTime">하루 목표 운동 시간</label><br>
-                <input v-model="signupUser.targetTime" type="number" id="targetTime" name="targetTime">min
-                <br>
-                <label>증감량 희망 여부</label><br>{{ signupUser.updown }}
-                <input v-model="signupUser.updown" type="radio" id="up" value="up">
-                <label for="up">증량</label>
-                <input v-model="signupUser.updown" type="radio" id="down" value="down">
-                <label for="down">감량</label>
-                <br>
-                <label for="isSecret">계정 공개 희망 여부</label><br>{{ signupUser.isSecret }}
-                <input v-model="signupUser.isSecret" type="radio" id="isSecretTrue" :value="true">
-                <label for="isSecretTrue">공개</label>
-                <input v-model="signupUser.isSecret" type="radio" id="isSecretFalse" :value="false">
-                <label for="isSecretFalse">비공개</label>
-                <br>
-    
-                <label>프로필 사진(선택)</label>
-                <div>
-                    <input ref="serveyImage" type="file" accept="image/*">
+                <label>증/감량 희망 여부</label>
+                <div class="radio-container">
+                    <div class="radio">
+                        <input v-model="signupUser.updown" type="radio" id="up" value="up" style="width: 20px;">
+                        &nbsp;<label for="up">증 &nbsp;&nbsp;&nbsp;량</label>
+                    </div>
+                    <div class="radio">
+                        <input v-model="signupUser.updown" type="radio" id="down" value="down" style="width: 20px;">
+                        &nbsp;<label for="down">감&nbsp;&nbsp;&nbsp; 량</label>
+                    </div>
                 </div>
-    
+                <br>
+                <label for="isSecret">계정 공개 희망 여부</label>
+                <div class="radio-container">
+                    <div class="radio">
+                        <input v-model="signupUser.isSecret" type="radio" id="isSecretTrue" :value="true"
+                            style="width: 20px;">
+                        &nbsp;<label for="isSecretTrue">공 &nbsp;&nbsp;&nbsp;개</label>
+                    </div>
+                    <div class="radio">
+                        <input v-model="signupUser.isSecret" type="radio" id="isSecretFalse" :value="false"
+                            style="width: 20px;">
+                        &nbsp;<label for="isSecretFalse">비공개</label>
+                    </div>
+                </div>
+                <br>
+
+                <label>프로필 사진(선택)</label>
+                <div class="input-group flex-nowrap">
+                        <input type="file" class="form-control" placeholder="Username" aria-label="Username"
+                            aria-describedby="addon-wrapping =" style="color: #a8a7a7; height: 35px;">
+                    </div>
+
+
+                <br>
+                <input id="gomodify" type="submit" value="수정">
                 <RouterLink to="/">홈으로</RouterLink>
-                <input type="submit" value="수정">
             </fieldset>
         </form>
     </div>
@@ -130,12 +153,12 @@ const goModifyProfile = function () {
         alert("비밀번호는 8자리 이상 20자리 이하이며, 특수문자를 포함해야 합니다.")
         return;
     }
-    
+
     if (signupUser.value.password !== password2.value) {
         alert('비밀번호가 일치하지 않습니다.');
         return;
     }
-    
+
     if (signupUser.value.nickname === null || signupUser.value.nickname === '') {
         alert('닉네임을 입력해주시기 바랍니다.')
         return;
@@ -189,15 +212,71 @@ const goModifyProfile = function () {
             "Content-Type": "application/json"
         },
     })
-    .then(() => {
-        localStorage.setItem("loginUser", JSON.stringify(signupUser.value));
-        router.push({ name: 'today' })
-    })
+        .then(() => {
+            localStorage.setItem("loginUser", JSON.stringify(signupUser.value));
+            router.push({ name: 'today' })
+        })
 }
 
 getUserList();
 </script>
 
 <style scoped>
+.myprofile-modify {
+    display: inline-block;
+    justify-content: center;
+    width: 400px;
+    text-align: left;
+}
 
+h2 {
+    text-align: center;
+}
+
+input {
+    border: 1px solid #929191;
+    border-radius: 7.5px;
+    height: 33px;
+    width: 400px;
+}
+
+#gomodify {
+    border: 1px solid #a8a7a7;
+    border-radius: 7.5px;
+    height: 40px;
+    background-color: #a9a8a8;
+    color: white;
+}
+
+.radio-container {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+
+}
+
+.radio {
+    display: flex;
+    vertical-align: middle;
+}
+
+.myprofile-modify-container {
+    padding-top: 40px;
+    margin-left: 110px;
+    width: 500px;
+    text-align: center;
+
+}
+
+a {
+    display: inline-block;
+    width: 400px;
+    text-align: right;
+    text-decoration: underline;
+    color: #a8a7a7;
+}
+
+#img{
+    color: #a8a7a7;
+}
 </style>

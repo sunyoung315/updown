@@ -1,17 +1,11 @@
 <template>
     <div class="record">
         <h2>과거 기록 조회</h2>
-
-        <section>
-            <div class="input-group flex-nowrap">
-                <span class="input-group-text" id="addon-wrapping">등록일자</span>
-                <input type="date" v-model="regDate" class="form-control" placeholder="Username" aria-label="Username"
-                    aria-describedby="addon-wrapping">
-            </div>
-            &nbsp;
-            <img @click="search" class="cursor" style="width: 2.5em;" src="../asset/icon/search.png" alt="검색">
-        </section>
-
+        <br>
+        <div class="calendar">
+            <VCalendar expanded :attributes='attrs' @dayclick="showRecord" v-model="date" view="weekly"></VCalendar>
+        </div>
+        <br>
         <a>
             <RecordWeight :weightRecord="weightRecord" />
         </a>
@@ -38,9 +32,25 @@ const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
 
 const REST_UPDOWN_API = `http://localhost:8080/updown`;
 
+const attrs = ref([
+    {
+        key: 'today',
+        highlight: {
+            color: 'blue',
+            fillMode: 'light',
+        },
+        dates: new Date(),
+    },
+]);
+
 const weightRecord = ref({});
 const exerciseRecord = ref([]);
 const dietRecord = ref([]);
+
+const showRecord = (day) => {
+    regDate.value = day.id;
+    search();
+}
 
 const search = function () {
     axios({
@@ -96,7 +106,7 @@ a {
     margin-left: 70px;
 }
 
-section{
+section {
     width: 300px;
     display: flex;
     margin: 20px;
@@ -104,8 +114,13 @@ section{
     margin-bottom: 50px;
 }
 
-h2{
-    margin-top: 30px;
+h2 {
+    margin-top: 20px;
     margin-left: 110px;
+}
+
+.calendar{
+    width: 1000px;
+    margin-left:70px;
 }
 </style>

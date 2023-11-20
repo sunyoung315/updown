@@ -15,7 +15,8 @@
 
 <style scoped>
 .show{   
-    width: 100%;
+    width: 800px;
+    height: 745.775px;
     padding: 30%
 }
 .start{
@@ -26,10 +27,11 @@ a{
     display: flex;
     align-content: center;
     justify-content: center;
-    width: 50%;
+    width: 683.65px;
+    
 }
 
 img{
-    width: 100%
+    width: 683.65px
 }
 </style>

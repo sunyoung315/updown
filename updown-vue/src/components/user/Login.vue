@@ -1,10 +1,10 @@
 <template>
-    <div>       
-        <div>
-            <h3>로그인</h3>
+    <div>
+        <div class="login-container">
+            <h2>로그인</h2>
             <br>
             <fieldset class="login">
-                <label for="id">아 이 디</label>                
+                <label for="id">아 이 디</label>
                 <input type="text" id="id" name="id" v-model="loginUser.id" placeholder="아이디를 입력해주세요.">
                 <br>
                 <label for="password">비 밀 번 호</label>
@@ -13,7 +13,7 @@
                 <br>
                 <button @click="login">로그인</button>
             </fieldset>
-            <RouterLink class="signup" :to="{ name: 'signup' }">회원가입</RouterLink>
+            <RouterLink :to="{ name: 'signup' }">회원가입</RouterLink>
         </div>
     </div>
 </template>
@@ -36,17 +36,42 @@ const login = function () {
 </script>
 
 <style scoped>
-.login{
+.login-container {
+    width: 400px;
+}
+
+.login {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
-h3{
+h2 {
     text-align: center;
 }
 
-.signup{
-    text-align: center;
+
+input {
+    border: 1px solid #929191;
+    /* 테두리 굵기와 색을 변경합니다. */
+    border-radius: 7.5px;
+    height: 50px;
+}
+
+button {
+    border: 1px solid #a8a7a7;
+    /* 테두리 굵기와 색을 변경합니다. */
+    border-radius: 7.5px;
+    height: 50px;
+    background-color: #a9a8a8;
+    color: white;
+}
+
+a {
+    display: inline-block;
+    width: 400px;
+    text-align: right;
+    text-decoration: underline;
+    color: #a8a7a7;
 }
 </style>
