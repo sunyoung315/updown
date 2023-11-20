@@ -8,7 +8,7 @@
         <input type="text" id="food" v-model="newDiet.food" :placeholder=props.diet.food>
         <br>
         <label for="calorie">음식 칼로리</label><br>
-        <input type="number" id="calorie" v-model="newDiet.calorie" :placeholder=props.diet.calorie>
+        <input type="number" id="calorie" v-model="newDiet.calorie" :placeholder=props.diet.calorie>kcal
         <br>
         <label>음식사진(선택)</label>
         <div>

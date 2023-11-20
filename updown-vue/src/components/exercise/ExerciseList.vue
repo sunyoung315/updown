@@ -3,13 +3,16 @@
         <h2>운동</h2>
         <img class="cursor" @click="regist" style="width: 3em;" src="../../asset/icon/add.png" alt="등록">
         <img class="cursor" @click="home" style="width: 2.5em;" src="../../asset/icon/home.png" alt="홈으로">
-        <div v-for="exercise in todayExerciseList" :key="exercise.no">
-            {{ exercise.type }}
-            {{ exercise.time }}min
-            {{ exercise.calorie.toFixed(1) }}kcal
-            <img class="cursor" @click="modify(exercise)" style="width: 2.5em;" src="../../asset/icon/edit.png" alt="수정">
-            <img class="cursor" @click="remove(exercise)" style="width: 2.5em;" src="../../asset/icon/trash.png" alt="삭제">
+        <div v-if="todayExerciseList.length">
+            <div v-for="exercise in todayExerciseList" :key="exercise.no">
+                {{ exercise.type }}
+                {{ exercise.time }}min
+                {{ exercise.calorie.toFixed(1) }}kcal
+                <img class="cursor" @click="modify(exercise)" style="width: 2.5em;" src="../../asset/icon/edit.png" alt="수정">
+                <img class="cursor" @click="remove(exercise)" style="width: 2.5em;" src="../../asset/icon/trash.png" alt="삭제">
+            </div>
         </div>
+        <div v-else>등록된 운동 기록이 없습니다.</div>
     </div>
 </template>
 

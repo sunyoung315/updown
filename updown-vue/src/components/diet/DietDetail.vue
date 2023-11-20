@@ -1,5 +1,6 @@
 <template>
-    <div>{{ calSum }}
+    <div>
+        <span>{{ calSum }}kcal</span>
         <h2>{{ category }}</h2>
         <div v-if="category == '아침'">
             <div>
@@ -8,8 +9,7 @@
                 <div v-if="store.todayDietBreakFast.length !== 0">
                     <ul v-for="diet in store.todayDietBreakFast" key="diet.no">
                         <li>
-                            <span>{{ diet.food }}</span>
-                            <span>{{ diet.calorie }}kcal</span>
+                            <span>{{ diet.food }} {{ diet.calorie }}kcal</span>
                             <img class="cursor" @click="modify(diet)" style="width: 3em;" src="../../asset/icon/edit.png"
                                 alt="수정">
                             <img class="cursor" @click="remove(diet)" style="width: 2.5em;" src="../../asset/icon/trash.png"
