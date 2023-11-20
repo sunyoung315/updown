@@ -1,42 +1,54 @@
 <template>
-    <div>
+    <div>{{ calSum }}
         <h2>{{ category }}</h2>
         <div v-if="category == '아침'">
             <div>
                 <img class="cursor" @click="regist" style="width: 3em;" src="../../asset/icon/add.png" alt="등록">
-                <ul v-for="diet in store.todayDietBreakFast" key="diet.no">
-                    <li>
-                        <span>{{ diet.food }}</span>
-                        <span>{{ diet.calorie }}kcal</span>
-                        <img class="cursor" @click="modify(diet)" style="width: 3em;" src="../../asset/icon/edit.png"
-                            alt="수정">
-                        <img class="cursor" @click="remove(diet)" style="width: 2.5em;" src="../../asset/icon/trash.png"
-                            alt="삭제">
-                    </li>
-                </ul>
-                <div>
-                    <img v-if="store.breakfastimg" style="width: 3em;"
-                        :src="`http://localhost:8080/upload/${store.breakfastimg}`" alt="음식 사진">
+
+                <div v-if="store.todayDietBreakFast.length !== 0">
+                    <ul v-for="diet in store.todayDietBreakFast" key="diet.no">
+                        <li>
+                            <span>{{ diet.food }}</span>
+                            <span>{{ diet.calorie }}kcal</span>
+                            <img class="cursor" @click="modify(diet)" style="width: 3em;" src="../../asset/icon/edit.png"
+                                alt="수정">
+                            <img class="cursor" @click="remove(diet)" style="width: 2.5em;" src="../../asset/icon/trash.png"
+                                alt="삭제">
+                        </li>
+                    </ul>
+                    <div>
+                        <img v-if="store.breakfastimg" style="width: 3em;"
+                            :src="`http://localhost:8080/upload/${store.breakfastimg}`" alt="음식 사진">
+                    </div>
                 </div>
+                <div v-else>
+                    <p>등록된 식단이 없습니다.</p>
+                </div>
+
             </div>
         </div>
 
         <div v-else-if="category == '점심'">
             <div>
                 <img class="cursor" @click="regist" style="width: 3em;" src="../../asset/icon/add.png" alt="등록">
-                <ul v-for="diet in store.todayDietLunch" key="diet.no">
-                    <li>
-                        <span>{{ diet.food }}</span>
-                        <span>{{ diet.calorie }}kcal</span>
-                        <img class="cursor" @click="modify(diet)" style="width: 3em;" src="../../asset/icon/edit.png"
-                            alt="수정">
-                        <img class="cursor" @click="remove(diet)" style="width: 2.5em;" src="../../asset/icon/trash.png"
-                            alt="삭제">
-                    </li>
-                </ul>
-                <div>
-                    <img v-if="store.lunchimg" style="width: 3em;" :src="`http://localhost:8080/upload/${store.lunchimg}`"
-                        alt="음식 사진">
+                <div v-if="store.todayDietLunch.length !== 0">
+                    <ul v-for="diet in store.todayDietLunch" key="diet.no">
+                        <li>
+                            <span>{{ diet.food }}</span>
+                            <span>{{ diet.calorie }}kcal</span>
+                            <img class="cursor" @click="modify(diet)" style="width: 3em;" src="../../asset/icon/edit.png"
+                                alt="수정">
+                            <img class="cursor" @click="remove(diet)" style="width: 2.5em;" src="../../asset/icon/trash.png"
+                                alt="삭제">
+                        </li>
+                    </ul>
+                    <div>
+                        <img v-if="store.lunchimg" style="width: 3em;"
+                            :src="`http://localhost:8080/upload/${store.lunchimg}`" alt="음식 사진">
+                    </div>
+                </div>
+                <div v-else>
+                    <p>등록된 식단이 없습니다.</p>
                 </div>
             </div>
         </div>
@@ -44,19 +56,24 @@
         <div v-else-if="category == '저녁'">
             <div>
                 <img class="cursor" @click="regist" style="width: 3em;" src="../../asset/icon/add.png" alt="등록">
-                <ul v-for="diet in store.todayDietDinner" key="diet.no">
-                    <li>
-                        <span>{{ diet.food }}</span>
-                        <span>{{ diet.calorie }}kcal</span>
-                        <img class="cursor" @click="modify(diet)" style="width: 3em;" src="../../asset/icon/edit.png"
-                            alt="수정">
-                        <img class="cursor" @click="remove(diet)" style="width: 2.5em;" src="../../asset/icon/trash.png"
-                            alt="삭제">
-                    </li>
-                </ul>
-                <div>
-                    <img v-if="store.dinnerimg" style="width: 3em;" :src="`http://localhost:8080/upload/${store.dinnerimg}`"
-                        alt="음식 사진">
+                <div v-if="store.todayDietDinner.length !== 0">
+                    <ul v-for="diet in store.todayDietDinner" key="diet.no">
+                        <li>
+                            <span>{{ diet.food }}</span>
+                            <span>{{ diet.calorie }}kcal</span>
+                            <img class="cursor" @click="modify(diet)" style="width: 3em;" src="../../asset/icon/edit.png"
+                                alt="수정">
+                            <img class="cursor" @click="remove(diet)" style="width: 2.5em;" src="../../asset/icon/trash.png"
+                                alt="삭제">
+                        </li>
+                    </ul>
+                    <div>
+                        <img v-if="store.dinnerimg" style="width: 3em;"
+                            :src="`http://localhost:8080/upload/${store.dinnerimg}`" alt="음식 사진">
+                    </div>
+                </div>
+                <div v-else>
+                    <p>등록된 식단이 없습니다.</p>
                 </div>
             </div>
         </div>
@@ -64,19 +81,24 @@
         <div v-else-if="category == '간식'">
             <div>
                 <img class="cursor" @click="regist" style="width: 3em;" src="../../asset/icon/add.png" alt="등록">
-                <ul v-for="diet in store.todayDietSnack" key="diet.no">
-                    <li>
-                        <span>{{ diet.food }}</span>
-                        <span>{{ diet.calorie }}kcal</span>
-                        <img class="cursor" @click="modify(diet)" style="width: 3em;" src="../../asset/icon/edit.png"
-                            alt="수정">
-                        <img class="cursor" @click="remove(diet)" style="width: 2.5em;" src="../../asset/icon/trash.png"
-                            alt="삭제">
-                    </li>
-                </ul>
-                <div>
-                    <img v-if="store.snackimg" style="width: 3em;" :src="`http://localhost:8080/upload/${store.snackimg}`"
-                        alt="음식 사진">
+                <div v-if="store.todayDietSnack.length !== 0">
+                    <ul v-for="diet in store.todayDietSnack" key="diet.no">
+                        <li>
+                            <span>{{ diet.food }}</span>
+                            <span>{{ diet.calorie }}kcal</span>
+                            <img class="cursor" @click="modify(diet)" style="width: 3em;" src="../../asset/icon/edit.png"
+                                alt="수정">
+                            <img class="cursor" @click="remove(diet)" style="width: 2.5em;" src="../../asset/icon/trash.png"
+                                alt="삭제">
+                        </li>
+                    </ul>
+                    <div>
+                        <img v-if="store.snackimg" style="width: 3em;"
+                            :src="`http://localhost:8080/upload/${store.snackimg}`" alt="음식 사진">
+                    </div>
+                </div>
+                <div v-else>
+                    <p>등록된 식단이 없습니다.</p>
                 </div>
             </div>
         </div>
@@ -85,7 +107,7 @@
 
 <script setup>
 import { useDietStore } from '@/stores/diet';
-import { onMounted, onUpdated, computed } from 'vue';
+import { onMounted, onUpdated, ref, watchEffect, computed } from 'vue';
 
 const store = useDietStore();
 
@@ -100,7 +122,7 @@ const day = ("0" + today.getDate()).slice(-2);
 const regDate = year + '-' + month + '-' + day;
 const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
 
-const emits = defineEmits(["modify", "regist", "graph", "remove"]);
+const emits = defineEmits(["modify", "regist", "graph", "remove", "caloriesum"]);
 
 
 const regist = function () {
@@ -114,47 +136,47 @@ const remove = function (diet) {
     emits("remove", diet)
 }
 
+const caloriesum = function(calSum){
+    emits("caloriesum", calSum)
+}
 
+const calSum = ref(0);
 
-onMounted(() => {
-    if (props.category == '아침')
-        store.getDietBreakFast(loginUserId, regDate);
-    else if (props.category == '점심')
-        store.getDietLunch(loginUserId, regDate);
-    else if (props.category == '저녁')
-        store.getDietDinner(loginUserId, regDate);
-    else if (props.category == '간식')
-        store.getDietSnack(loginUserId, regDate);
-})
+const sum = function () {
+    calSum.value = 0; // 초기화
 
-onUpdated(() => {
-    if (props.category == '아침')
-        store.getDietBreakFast(loginUserId, regDate);
-    else if (props.category == '점심')
-        store.getDietLunch(loginUserId, regDate);
-    else if (props.category == '저녁')
-        store.getDietDinner(loginUserId, regDate);
-    else if (props.category == '간식')
-        store.getDietSnack(loginUserId, regDate);
-})
+    let dietList;
 
+    if (props.category == '아침') dietList = store.todayDietBreakFast;
+    else if (props.category == '점심') dietList = store.todayDietLunch;
+    else if (props.category == '저녁') dietList = store.todayDietDinner;
+    else if (props.category == '간식') dietList = store.todayDietSnack;
 
-// 안되네ㅠㅠ
-// const imgUrl = computed(() => {
-//     if (props.category == '아침' && store.breakfastimg) {
-//         return `http://localhost:8080/upload/${store.dinnerimg}`;
-//     }
-//     else if (props.category == '점심' && store.lunchimg) {
-//         return `http://localhost:8080/upload/${store.lunchimg}`;
-//     }
-//     else if (props.category == '저녁' && store.dinnerimg) {
-//         return `http://localhost:8080/upload/${store.dinnerimg}`;
-//     }
-//     else if (props.category == '점심' && store.lunchimg) {
-//         return `http://localhost:8080/upload/${store.lunchimg}`;
-//     }
-//     return null;
-// });
+    for (let i = 0; i < dietList.length; i++) {
+        calSum.value += Number(dietList[i].calorie);
+    }
+}
+
+watchEffect(async() => {
+    if (props.category == '아침') { 
+        await store.todayDietBreakFast
+        await store.getDietBreakFast(loginUserId, regDate).then(sum); 
+    }
+    else if (props.category == '점심') {
+        await store.todayDietLunch
+        await store.getDietLunch(loginUserId, regDate).then(sum);
+    }
+    else if (props.category == '저녁') {
+        await store.todayDietDinner
+        await store.getDietDinner(loginUserId, regDate).then(sum);
+    }
+    else if (props.category == '간식') {
+        await store.todayDietSnack
+        await store.getDietSnack(loginUserId, regDate).then(sum);
+    }
+    
+});
+
 
 </script>
 

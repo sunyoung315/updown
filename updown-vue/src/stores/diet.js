@@ -138,7 +138,6 @@ export const useDietStore = defineStore('diet', () => {
                         break;
                     }
                 }
-
             })
     }
 
@@ -148,7 +147,7 @@ export const useDietStore = defineStore('diet', () => {
             url: `${REST_DIET_API}/remove/${diet.no}`,
             method: 'DELETE',
             data: diet.no
-        })      
+        })
     }
 
     // 식단 수정
@@ -212,5 +211,7 @@ export const useDietStore = defineStore('diet', () => {
                 console.log('오류 : ' + err)
             })
     }
+  
+
     return { today, remove, modifyDiet, breakfastimg, lunchimg, dinnerimg, snackimg, todayDietBreakFast, todayDietLunch, todayDietDinner, todayDietSnack, getDietBreakFast, getDietLunch, getDietDinner, getDietSnack, uploadDiet }
 })

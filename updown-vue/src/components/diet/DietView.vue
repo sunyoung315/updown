@@ -1,13 +1,13 @@
 <template>
     <div class="container">
-        <h4>식단</h4>
+        <h4>식단</h4> 
         <div class="diet-box">
-            <DietBreakFast class="diet"/>
-            <DietLunch class="diet"/>
+            <DietBreakFast @caloriesum="caloriesum" class="diet" />
+            <DietLunch class="diet" />
         </div>
         <div class="diet-box">
-            <DietDinner class="diet"/>
-            <DietSnack class="diet"/>
+            <DietDinner class="diet" />
+            <DietSnack class="diet" />
         </div>
     </div>
 </template>
@@ -26,7 +26,7 @@ import DietSnack from '@/components/diet/DietSnack.vue';
     border: 1px solid black;
 }
 
-.diet-box{
+.diet-box {
     display: flex;
 }
 
@@ -34,5 +34,4 @@ import DietSnack from '@/components/diet/DietSnack.vue';
     display: inline;
     width: 50%;
 }
-
 </style>

@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `diet` (
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
-DROP TABLE diet;
+-- DROP TABLE diet;
 SELECT * FROM diet;
 
 -- -----------------------------------------------------
