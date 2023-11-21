@@ -18,7 +18,7 @@
                     <p class="weight-scale-number">{{ weight }}kg</p>
                 </div>
                 <p class="weight-target">
-                    목표체중까지 <span class="weight-value">{{ (weight - targetWeight).toFixed(1) }}kg</span> 남았습니다.
+                    목표체중까지 <span class="weight-value">{{ (targetWeight - weight).toFixed(1) }}kg</span> 남았습니다.
                 </p>
             </div>
             <div class="weight-main" v-else>

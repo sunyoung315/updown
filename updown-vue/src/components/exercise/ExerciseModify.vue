@@ -15,6 +15,7 @@
             <div>
                 <label for="time">운동 시간 : </label><br>
                 <div class="exercise-value"><input type="number" id="time" v-model="newExercise.time">min</div>
+                <p v-if="!newExercise.time">운동 시간을 등록해주세요.</p>
             </div>
             <div>
                 <label for="calorie">소모 칼로리 : </label><br>
@@ -68,6 +69,7 @@ const exerciseInfo = computed(() => store.exerciseInfo);
 const emits = defineEmits(["list"]);
 
 const modify = function() {
+    if(newExercise.value.time <= 0 || !newExercise.value.time) return;
     newExercise.value.type = props.exercise.type;
     if(weight)
         newExercise.value.calorie = (exerciseInfo.value.met * (3.5 * weight * newExercise.value.time) / 1000 * 5).toFixed(1);
@@ -109,5 +111,9 @@ input {
 }
 .exercise-value {
     font-size: 35px;
+}
+p{
+    font-size: 11px;
+    color: red;
 }
 </style>

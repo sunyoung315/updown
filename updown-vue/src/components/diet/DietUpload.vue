@@ -12,6 +12,7 @@
                 <div class="diet-box-row">
                     <label>음식 이름</label><br>
                     <input type="text" v-model="newDiet.food" placeholder='식단을 등록해주세요.'>
+                    <p v-if="!newDiet.food">식단을 등록해주세요.</p>
                 </div>
                 <div class="diet-box-row">
                     <label>음식 칼로리</label><br>
@@ -198,6 +199,7 @@ const submitForm = async () => {
 };
 
 const upload = async function () {
+    if(!newDiet.value.food) return;
     await store.uploadDiet(newDiet.value);
    if (props.category == '아침')
     await getDietBreakFast();
@@ -262,5 +264,10 @@ input {
     margin-left: 10px;
     margin-right: 10px;
     vertical-align: middle;
+}
+
+p{
+    font-size: 11px;
+    color: red;
 }
 </style>

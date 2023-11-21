@@ -68,13 +68,15 @@
 
                     <label>프로필 사진(선택)</label>
                     <div class="input-group flex-nowrap" style="width: 400px;">
-                        <input type="file" class="form-control" placeholder="Username" aria-label="Username"
+                        <input type="file" class="form-control" placeholder="Username" aria-label="Username" ref="serveyImage"
                             aria-describedby="addon-wrapping =" style="color: #a8a7a7; height: 35px;">
                     </div>
 
                     <br>
                     <input id="gosignup" type="submit" value="회원가입">
-                    <RouterLink to="/">홈으로</RouterLink>
+                    <a id="signup">
+                        <RouterLink to="/">홈으로</RouterLink>
+                    </a>
                     <br><br>
                 </fieldset>
             </div>
@@ -300,11 +302,15 @@ input {
 }
 
 a {
-    display: inline-block;
     width: 400px;
     text-align: right;
     text-decoration: underline;
     color: #a8a7a7;
+}
+
+#gologin{
+    text-align: right;
+    
 }
 
 h2{

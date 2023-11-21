@@ -63,7 +63,9 @@
 
                 <br>
                 <input id="gomodify" type="submit" value="수정">
-                <RouterLink to="/">홈으로</RouterLink>
+                <div id="gohome">
+                    <RouterLink to="/today">홈으로</RouterLink>
+                </div>
             </fieldset>
         </form>
     </div>
@@ -282,11 +284,11 @@ input {
 }
 
 a {
-    display: inline-block;
-    width: 400px;
-    text-align: right;
     text-decoration: underline;
     color: #a8a7a7;
+}
+#gohome{
+    text-align: right;
 }
 
 #img{

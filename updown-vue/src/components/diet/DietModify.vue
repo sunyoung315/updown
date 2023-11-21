@@ -12,6 +12,7 @@
                 <div class="diet-box-row">
                     <label>음식 이름</label><br>
                     <input type="text" id="food" v-model="newDiet.food">
+                    <p v-if="!newDiet.food">식단을 등록해주세요.</p>
                 </div>
                 <div class="diet-box-row">
                     <label>음식 칼로리</label><br>
@@ -116,6 +117,7 @@ const emits = defineEmits(["home"]);
 
 // 이미지 업로드
 const submitForm = async () => {
+    if(!newDiet.value.food) return;
     if (serveyImage.value.files[0] == null) {
         store.modifyDiet(newDiet.value);
         emits("home")
@@ -211,4 +213,9 @@ input {
     margin-right: 10px;
     vertical-align: middle;
 }
+p{
+    font-size: 11px;
+    color: red;
+}
+
 </style>
