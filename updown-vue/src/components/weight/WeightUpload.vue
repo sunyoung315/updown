@@ -10,7 +10,7 @@
         <div class="today-weight-box">
             <p class="today-weight">오늘의 체중은?</p>
             <div class="weight-value">
-                <input type="number" v-model="newWeight.nowWeight" @keyup.enter="upload"><span class="weight-unit">kg</span>
+                <input type="number" v-model="newWeight.nowWeight"><span class="weight-unit">kg</span>
                 <p id="check" v-if="!newWeight.nowWeight">체중을 등록해주세요.</p>
             </div>
         </div>
