@@ -218,6 +218,7 @@ tr {
     border: 0px
 }
 .table {
+    width: 313px;
     height: 260px;
 }
 .diet-food-col {
