@@ -27,7 +27,7 @@
                 </tr>
             </tbody>
         </table>
-        <div v-else>등록된 운동 기록이 없습니다.</div>
+        <div v-else class="no-exercise">등록된 운동 기록이 없습니다.</div>
     </div>
 </template>
 
@@ -96,7 +96,7 @@ table {
     margin-top: 0px;
 }
 th {
-    font-size: 18px;
+    font-size: 16px;
 }
 #exercise tr td {
     background-color: transparent !important;
@@ -107,12 +107,16 @@ img {
     background-color: transparent;
 }
 .exercise-type {
-    width: 265px;
+    width: 220px;
 }
 .exercise-time {
-    width: 95px;
+    width: 100px;
 }
 .exercise-calorie {
-    width: 115px;
+    width: 120px;
+}
+.no-exercise {
+    font-size: 18px;
+    margin-top: 20px;
 }
 </style>

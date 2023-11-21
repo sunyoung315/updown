@@ -1,53 +1,61 @@
 <template>
     <div>
-        <span>{{ calSum }}kcal</span>
-        <h2>{{ category }}</h2>
+        <div class="diet-head">
+            <div>
+                <span class="diet-head-category">{{ category }}</span>
+                <span class="diet-head-calorie">{{ calSum }}kcal</span>
+            </div>
+            <img class="cursor" @click="regist" style="width: 45px; margin: 5px 5px 0px 5px;" src="../../asset/bootstrap-icon/plus-square.svg" alt="등록">
+        </div>
         <div v-if="category == '아침'">
             <div>
-                <img class="cursor" @click="regist" style="width: 3rem;" src="../../asset/icon/add.png" alt="등록">
-
-                <div v-if="store.todayDietBreakFast.length !== 0">
-                    <ul v-for="diet in store.todayDietBreakFast" key="diet.no">
-                        <li>
-                            <span>{{ diet.food }} {{ diet.calorie }}kcal</span>
-                            <img class="cursor" @click="modify(diet)" style="width: 3em;" src="../../asset/icon/edit.png"
-                                alt="수정">
-                            <img class="cursor" @click="remove(diet)" style="width: 2.5em;" src="../../asset/icon/trash.png"
-                                alt="삭제">
-                        </li>
-                    </ul>
-                    <div>
-                        <img v-if="store.breakfastimg" style="width: 3rem;"
+                <div class="diet-table" v-if="store.todayDietBreakFast.length !== 0">
+                    <table class="table">
+                        <div class="box" style="height: 260px; overflow-y: auto;">
+                            <tbody>
+                                <tr v-for="diet in store.todayDietBreakFast" key="diet.no">
+                                    <td class="diet-col"><img style="width: 20px; margin-right: 6px;" src="../../asset/bootstrap-icon/check-lg.svg" alt="row"></td>  
+                                    <td class="diet-food-col">{{ diet.food }}</td>  
+                                    <td class="diet-calorie-col">{{ diet.calorie }}kcal</td>  
+                                    <td><img class="cursor" @click="modify(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정"></td>
+                                    <td><img class="cursor" @click="remove(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/trash3.svg" alt="삭제"></td>
+                                </tr>
+                            </tbody>
+                        </div>
+                    </table>
+                    <div class="diet-img">
+                        <img class="food-img" v-if="store.breakfastimg"
                             :src="`http://localhost:8080/upload/${store.breakfastimg}`" alt="음식 사진">
                     </div>
                 </div>
-                <div v-else>
+                <div v-else class="no-diet">
                     <p>등록된 식단이 없습니다.</p>
                 </div>
-
             </div>
         </div>
-
+        
         <div v-else-if="category == '점심'">
             <div>
-                <img class="cursor" @click="regist" style="width: 3rem;" src="../../asset/icon/add.png" alt="등록">
-                <div v-if="store.todayDietLunch.length !== 0">
-                    <ul v-for="diet in store.todayDietLunch" key="diet.no">
-                        <li>
-                            <span>{{ diet.food }}</span>
-                            <span>{{ diet.calorie }}kcal</span>
-                            <img class="cursor" @click="modify(diet)" style="width: 3em;" src="../../asset/icon/edit.png"
-                                alt="수정">
-                            <img class="cursor" @click="remove(diet)" style="width: 2.5em;" src="../../asset/icon/trash.png"
-                                alt="삭제">
-                        </li>
-                    </ul>
-                    <div>
-                        <img v-if="store.lunchimg" style="width: 3rem;"
+                <div class="diet-table" v-if="store.todayDietLunch.length !== 0">
+                    <table class="table">
+                        <div class="box" style="height: 260px; overflow-y: auto;">
+                            <tbody>
+                                <tr v-for="diet in store.todayDietLunch" key="diet.no">
+                                    <td class="diet-col"><img style="width: 20px; margin-right: 6px;" src="../../asset/bootstrap-icon/check-lg.svg" alt="row"></td>  
+                                    <td class="diet-food-col">{{ diet.food }}</td>  
+                                    <td class="diet-calorie-col">{{ diet.calorie }}kcal</td>  
+                                    <td><img class="cursor" @click="modify(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정"></td>
+                                    <td><img class="cursor" @click="remove(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/trash3.svg" alt="삭제"></td>
+                                </tr>
+                            </tbody>
+                        </div>
+                    </table>
+                    <div class="diet-img">
+                        <img class="food-img" v-if="store.lunchimg"
                             :src="`http://localhost:8080/upload/${store.lunchimg}`" alt="음식 사진">
                     </div>
                 </div>
-                <div v-else>
+                <div v-else class="no-diet">
                     <p>등록된 식단이 없습니다.</p>
                 </div>
             </div>
@@ -55,24 +63,26 @@
 
         <div v-else-if="category == '저녁'">
             <div>
-                <img class="cursor" @click="regist" style="width: 3rem;" src="../../asset/icon/add.png" alt="등록">
-                <div v-if="store.todayDietDinner.length !== 0">
-                    <ul v-for="diet in store.todayDietDinner" key="diet.no">
-                        <li>
-                            <span>{{ diet.food }}</span>
-                            <span>{{ diet.calorie }}kcal</span>
-                            <img class="cursor" @click="modify(diet)" style="width: 3em;" src="../../asset/icon/edit.png"
-                                alt="수정">
-                            <img class="cursor" @click="remove(diet)" style="width: 2.5em;" src="../../asset/icon/trash.png"
-                                alt="삭제">
-                        </li>
-                    </ul>
-                    <div>
-                        <img v-if="store.dinnerimg" style="width: 3rem;"
+                <div class="diet-table" v-if="store.todayDietDinner.length !== 0">
+                    <table class="table">
+                        <div class="box" style="height: 260px; overflow-y: auto;">
+                            <tbody>
+                                <tr v-for="diet in store.todayDietDinner" key="diet.no">
+                                    <td class="diet-col"><img style="width: 20px; margin-right: 6px;" src="../../asset/bootstrap-icon/check-lg.svg" alt="row"></td>  
+                                    <td class="diet-food-col">{{ diet.food }}</td>  
+                                    <td class="diet-calorie-col">{{ diet.calorie }}kcal</td>  
+                                    <td><img class="cursor" @click="modify(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정"></td>
+                                    <td><img class="cursor" @click="remove(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/trash3.svg" alt="삭제"></td>
+                                </tr>
+                            </tbody>
+                        </div>
+                    </table>
+                    <div class="diet-img">
+                        <img class="food-img" v-if="store.dinnerimg"
                             :src="`http://localhost:8080/upload/${store.dinnerimg}`" alt="음식 사진">
                     </div>
                 </div>
-                <div v-else>
+                <div v-else class="no-diet">
                     <p>등록된 식단이 없습니다.</p>
                 </div>
             </div>
@@ -80,24 +90,26 @@
 
         <div v-else-if="category == '간식'">
             <div>
-                <img class="cursor" @click="regist" style="width: 3rem;" src="../../asset/icon/add.png" alt="등록">
-                <div v-if="store.todayDietSnack.length !== 0">
-                    <ul v-for="diet in store.todayDietSnack" key="diet.no">
-                        <li>
-                            <span>{{ diet.food }}</span>
-                            <span>{{ diet.calorie }}kcal</span>
-                            <img class="cursor" @click="modify(diet)" style="width: 3em;" src="../../asset/icon/edit.png"
-                                alt="수정">
-                            <img class="cursor" @click="remove(diet)" style="width: 2.5em;" src="../../asset/icon/trash.png"
-                                alt="삭제">
-                        </li>
-                    </ul>
-                    <div>
-                        <img v-if="store.snackimg" style="width: 3rem;"
+                <div class="diet-table" v-if="store.todayDietSnack.length !== 0">
+                    <table class="table">
+                        <div class="box" style="height: 260px; overflow-y: auto;">
+                            <tbody>
+                                <tr v-for="diet in store.todayDietSnack" key="diet.no">
+                                    <td class="diet-col"><img style="width: 20px; margin-right: 6px;" src="../../asset/bootstrap-icon/check-lg.svg" alt="row"></td>  
+                                    <td class="diet-food-col">{{ diet.food }}</td>  
+                                    <td class="diet-calorie-col">{{ diet.calorie }}kcal</td>  
+                                    <td><img class="cursor" @click="modify(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정"></td>
+                                    <td><img class="cursor" @click="remove(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/trash3.svg" alt="삭제"></td>
+                                </tr>
+                            </tbody>
+                        </div>
+                    </table>
+                    <div class="diet-img">
+                        <img class="food-img" v-if="store.snackimg"
                             :src="`http://localhost:8080/upload/${store.snackimg}`" alt="음식 사진">
                     </div>
                 </div>
-                <div v-else>
+                <div v-else class="no-diet">
                     <p>등록된 식단이 없습니다.</p>
                 </div>
             </div>
@@ -177,4 +189,70 @@ watchEffect(async() => {
 </script>
 
 <style scoped>
+.diet-head {
+    display: flex;
+    justify-content: space-between;
+}
+.diet-head-category {
+    font-size: 40px;
+    padding-left: 10px;
+}
+.diet-head-calorie {
+    font-size: 30px;
+    padding-left: 20px;
+}
+.no-diet {
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size: 20px;
+}
+.diet-table {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+    height: 260px;
+    display: flex;
+}
+tr {
+    height: 50px;
+    border: 0px
+}
+.table {
+    height: 260px;
+}
+.diet-food-col {
+    width: 130px;
+}
+.diet-calorie-col {
+    width: 90px;
+}
+.diet-img{
+    width: 200px;
+    height: 260px;
+    line-height: 260px;
+    margin-left: 5px;
+    background-color: rgb(225, 225, 225);
+}
+.food-img {
+    width: 180px;
+    margin-left: 10px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.box::-webkit-scrollbar { 
+    width: 5px; 
+}
+.box::-webkit-scrollbar-thumb { 
+    background-color: #666; 
+    border-radius: 10px;
+}
+.box::-webkit-scrollbar-track { 
+    background-color: #dcdcdc;  
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+.table>:not(caption)>*>* {
+    border-bottom-width: var(--bs-border-width);
+    border-bottom-color: white;
+}
 </style>

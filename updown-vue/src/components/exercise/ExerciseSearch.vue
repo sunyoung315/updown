@@ -2,7 +2,7 @@
     <div class="exercise-search">
         <div class="exercise-head">
             <div class="exercise-title">운동</div>
-            <img class="cursor" @click="cancel" style="width: 43px; margin: 13px 5px 0px 5px;" src="../../asset/bootstrap-icon/x-lg.svg" alt="검색취소">
+            <img class="cursor" @click="cancel" style="width: 43px; margin: 0px 5px 0px 5px;" src="../../asset/bootstrap-icon/x-lg.svg" alt="검색취소">
         </div>
         <div class="exercise-search-input">
             <input type="text" placeholder="운동명을 검색해주세요." v-model="word">
@@ -12,24 +12,16 @@
             <thead>
                 <tr>
                     <th class="exercise-type">운동명</th>
-                    <th class="exercise-met">단위체중당에너지소비량</th>
+                    <th class="th-exercise-met">단위체중당에너지소비량</th>
                 </tr>
             </thead>
         </table>
         <table class="table" id="exercise">
-            <div v-if="exerciseInfoList.length <= 8">
+            <div class="box" style="height: 386px; overflow-y: auto;">
                 <tbody>
-                    <tr id="exercise-content" @click="getInfo(info)" class="cursor border border-light-top" v-for="info in exerciseInfoList" :key="info.type">
+                    <tr id="exercise-content" @click="getInfo(info)" class="cursor" v-for="info in exerciseInfoList" :key="info.type">
                         <td class="exercise-type">{{ info.type }}</td>  
-                        <td class="exercise-met" style="padding-left: 12px;">{{ info.met }}kcal/min/kg</td>  
-                    </tr>
-                </tbody>
-            </div>
-            <div v-else class="box" style="height: 386px; overflow-y: auto;">
-                <tbody>
-                    <tr id="exercise-content" @click="getInfo(info)" class="cursor border border-light-top" v-for="info in exerciseInfoList" :key="info.type">
-                        <td class="exercise-type" id="ex-type">{{ info.type }}</td>  
-                        <td class="exercise-met" id="ex-met">{{ info.met }}kcal/min/kg</td>  
+                        <td class="exercise-met">{{ info.met }}kcal/min/kg</td>  
                     </tr>
                 </tbody>
             </div>
@@ -87,6 +79,7 @@ table {
 }
 th {
     font-size: 18px;
+    /* width: 515px; */
 }
 #exercise tr td {
     background-color: transparent !important;
@@ -94,26 +87,34 @@ th {
     text-overflow: clip;
 }
 .exercise-type {
-    width: 270px;
+    width: 250px;
     padding-left: 10px;
+    padding-right: 10px;
 }
 .exercise-met {
     width: 300px;
+    padding-left: 25px;
+    padding-right: 10px;
 }
 #exercise-content {
     background-color: transparent !important;
     height: 55px;
 }
-#ex-type{
-    padding-left: 10px;
-    padding-right: 10px;
+.box::-webkit-scrollbar { 
+    width: 5px; 
 }
-#ex-met{
-    padding-left: 20px;
-    padding-right: 10px;
+.box::-webkit-scrollbar-thumb { 
+    background-color: #666; 
+    border-radius: 10px;
 }
-.box::-webkit-scrollbar { width: 10px; }
-.box::-webkit-scrollbar-thumb { background-color: #666; }
-.box::-webkit-scrollbar-track { background-color: #dcdcdc;  border-radius: 10px;
-box-shadow: inset 0px 0px 5px white;}
+.box::-webkit-scrollbar-track { 
+    background-color: #dcdcdc;  
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+.table>:not(caption)>*>* {
+    border-bottom-width: var(--bs-border-width);
+    border-bottom-color: white;
+}
+
 </style>

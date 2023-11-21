@@ -18,7 +18,6 @@ let choose = shallowRef(DietDetail);
 
 let diet = ref({});
 
-
 const modify = function(d) {
     diet.value=d;
     choose.value = DietModify;
@@ -37,8 +36,6 @@ const remove = function(diet) {
     store.remove(diet);
 }
 
-
-
 </script>
 
 <style scoped>
@@ -49,6 +46,7 @@ const remove = function(diet) {
     background-color: white;
     margin: 15px 15px 15px 0px;
     padding: 15px;
+    height: 380px;
 }
 
 </style>
