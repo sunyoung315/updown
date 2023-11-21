@@ -76,5 +76,7 @@ watchEffect (async () => {
 }
 .diet-calorie {
     font-size: 30px;
+    padding-top: 20px;
+    padding-right: 20px;
 }
 </style>

@@ -1,6 +1,19 @@
 <template>
     <footer>
-        <h5>footer</h5>
+        <div class="d-flex flex-row mb-3 justify-content-evenly">
+            <div>
+                PJT-FINAL-D-KSY-KYK
+            </div>
+            <div>
+                김선영
+            </div>
+            <div>
+                권유경
+            </div>
+            <div>
+                ⓒUpDown
+            </div>
+        </div>
     </footer>
 </template>
 
@@ -10,6 +23,13 @@
 
 <style scoped>
 footer {
-    border: 1px solid rgb(199, 199, 199);
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    line-height: 100px;
+}
+div {
+    color: gray;
+    font-size: 12px;
 }
 </style>

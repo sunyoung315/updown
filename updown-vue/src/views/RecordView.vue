@@ -1,20 +1,12 @@
 <template>
     <div class="record">
-        <h2>과거 기록 조회</h2>
-        <br>
+        <div class="record-title">과거 기록 조회</div>
         <div class="calendar">
             <VCalendar expanded :attributes='attrs' @dayclick="showRecord" v-model="date" view="weekly"></VCalendar>
         </div>
-        <br>
-        <a>
-            <RecordWeight :weightRecord="weightRecord" />
-        </a>
-        <a>
-            <RecordExercise :exerciseRecord="exerciseRecord" />
-        </a>
-        <a>
-            <RecordDiet :dietRecord="dietRecord" />
-        </a>
+        <RecordWeight :weightRecord="weightRecord" class="record-view"/>
+        <RecordExercise :exerciseRecord="exerciseRecord" class="record-view"/>
+        <RecordDiet :dietRecord="dietRecord" class="record-view"/>
     </div>
 </template>
 
@@ -98,12 +90,13 @@ const search = function () {
     flex-direction: column;
     justify-content: space-around;
     width: 1270px;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
-a {
-    margin: 20px;
-    margin-left: 70px;
+.record-view {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 80px;
 }
 
 section {
@@ -114,13 +107,16 @@ section {
     margin-bottom: 50px;
 }
 
-h2 {
+.record-title {
+    font-size: 40px;
     margin-top: 20px;
     margin-left: 110px;
+    margin-bottom: 20px;
 }
 
 .calendar{
     width: 1000px;
-    margin-left:70px;
+    margin-left: 70px;
+    margin-bottom: 20px;
 }
 </style>
