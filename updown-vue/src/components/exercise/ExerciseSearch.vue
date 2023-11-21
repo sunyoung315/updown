@@ -5,14 +5,14 @@
             <img class="cursor" @click="cancel" style="width: 43px; margin: 0px 5px 0px 5px;" src="../../asset/bootstrap-icon/x-lg.svg" alt="검색취소">
         </div>
         <div class="exercise-search-input">
-            <input type="text" placeholder="운동명을 검색해주세요." v-model="word">
+            <input type="text" placeholder="운동명을 검색해주세요." v-model="word" @keyup.enter="search">
             <img @click="search" class="cursor" style="width: 2.5em; margin-left: 5px;" src="../../asset/icon/search.png" alt="검색">
         </div>
         <table class="table">
             <thead>
                 <tr>
                     <th class="exercise-type">운동명</th>
-                    <th class="th-exercise-met">단위체중당에너지소비량</th>
+                    <th class="th-exercise-met">단위체중당 에너지소비량</th>
                 </tr>
             </thead>
         </table>

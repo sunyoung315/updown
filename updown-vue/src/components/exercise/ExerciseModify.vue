@@ -50,9 +50,9 @@ const props = defineProps ({
 
 const newExercise = ref({
     no: props.exercise.no,
-    type: '',
+    type: props.exercise.type,
     time: props.exercise.time,
-    calorie: 0,
+    calorie: props.exercise.calorie,
 });
 
 const weightStore = useWeightStore();

@@ -7,16 +7,31 @@
                 <img class="cursor" @click="home" style="width: 50px; margin: 5px 0px 0px 5px;" src="../../asset/bootstrap-icon/house.svg" alt="목록">
             </div>
         </div>
-        <br>
-        <label for="food">음식 이름</label><br>
-        <input type="text" id="food" v-model="newDiet.food" :placeholder=props.diet.food>
-        <br>
-        <label for="calorie">음식 칼로리</label><br>
-        <input type="number" id="calorie" v-model="newDiet.calorie" :placeholder=props.diet.calorie>kcal
-        <br>
-        <label>음식사진(선택)</label>
-        <div>
-            <input ref="serveyImage" type="file" accept="image/*">
+        <div class="diet-box-flex">
+            <div class="diet-box">
+                <div class="diet-box-row">
+                    <label>음식 이름</label><br>
+                    <input type="text" id="food" v-model="newDiet.food">
+                </div>
+                <div class="diet-box-row">
+                    <label>음식 칼로리</label><br>
+                    <input type="number" id="calorie" v-model="newDiet.calorie">kcal
+                </div>
+                <div class="diet-box-row">
+                    <label>음식사진(선택)</label>
+                    <div>
+                        <input ref="serveyImage" type="file" accept="image/*" @change="changeImage">
+                    </div>
+                </div>
+            </div>
+            <div class="preview">
+                <div v-if="props.diet.img">
+                    <img class="preview-img" :src="previewImage" alt="이미지 미리보기">
+                </div>
+                <div v-else style="color: gray;">
+                    No Image
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -25,6 +40,27 @@
 import { ref, onMounted, watchEffect } from 'vue';
 import { useDietStore } from '@/stores/diet';
 import axios from 'axios';
+
+const props = defineProps({
+    diet: Object,
+})
+
+const previewImage = ref(`http://localhost:8080/upload/${props.diet.img}`);
+const changeImage = function(event) {
+    const files = event.target.files;
+    if(files.length > 0) {
+        const file = files[0];
+        // FileReader 객체 : 웹 애플리케이션이 데이터를 읽고, 저장하게 해줌
+        const reader = new FileReader();
+        // load 이벤트 핸들러. 리소스 로딩이 완료되면 실행됨
+        reader.onload = function(e) {
+            previewImage.value = e.target.result
+        }
+        // 컨텐츠를 특정 file에서 읽어옴. 읽는 행위가 종료되면 loadend 이벤트 트리거함 
+        // & base64 인코딩된 스트링 데이터가 result 속성에 담김
+        reader.readAsDataURL(file);
+    }
+}
 
 const today = new Date();
 const year = today.getFullYear();
@@ -38,18 +74,15 @@ const store = useDietStore();
 
 const serveyImage = ref(null);
 
-const props = defineProps({
-    diet: Object,
-})
 
 // 수정할 식단
 let newDiet = ref({
     no: props.diet.no,
     category: props.diet.category,
-    food:'',
-    calorie: '',
-    img: '',
-    orgImg: '',
+    food: props.diet.food,
+    calorie: props.diet.calorie,
+    img: props.diet.img,
+    orgImg: props.diet.orgimg,
     userId: loginUserId
 });
 
@@ -141,5 +174,41 @@ const home = function () {
 .diet-head-category {
     font-size: 40px;
     padding-left: 10px;
+}
+.diet-box-flex {
+    display: flex;
+    height: 260px;
+    margin-top: 20px;
+}
+.diet-box {
+    margin-left: 25px;
+    width: 290px;
+    height: 260px;
+}
+label {
+    font-size: 20px;
+}
+.diet-box-row {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+input {
+    width: 240px;
+    height: 40px;
+}
+.preview {
+    width: 204px;
+    height: 260px;
+    line-height: 260px;
+    border: 1px solid rgb(202, 202, 202);
+    text-align: center;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+.preview-img {
+    width: 180px;
+    margin-left: 10px;
+    margin-right: 10px;
+    vertical-align: middle;
 }
 </style>
