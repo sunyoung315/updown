@@ -2,7 +2,7 @@
     <div class="diet-container">
         <div class="diet-head">
             <div class="diet-title">식단</div>
-            <!-- <div>총 섭취 칼로리 : </div> -->
+            <div class="diet-calorie">총 섭취 칼로리 : {{ totalCalorie }} kcal</div>
         </div>
         <div>
             <div class="diet-box">
@@ -24,6 +24,35 @@ import DietLunch from '@/components/diet/DietLunch.vue';
 import DietDinner from '@/components/diet/DietDinner.vue';
 import DietSnack from '@/components/diet/DietSnack.vue';
 
+import { computed, ref, watchEffect } from 'vue';
+import { useDietStore } from '@/stores/diet';
+
+const store = useDietStore();
+
+const today = new Date();
+const year = today.getFullYear();
+const month = ("0" + (1 + today.getMonth())).slice(-2);
+const day = ("0" + today.getDate()).slice(-2);
+const regDate = year + '-' + month + '-' + day;
+const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
+
+const todayDietList = computed(() => store.todayDietList);
+
+let totalCalorie = ref(0);
+
+const calTotal = function() { 
+    totalCalorie.value = 0;
+    
+    for(let i = 0; i < todayDietList.value.length; i++) {
+        totalCalorie.value += todayDietList.value[i].calorie;
+    }
+}
+
+watchEffect (async () => {
+    await store.todayDietList;
+    await store.getTodayDietList(loginUserId, regDate).then(calTotal)
+})
+
 </script>
 
 <style scoped>
@@ -44,5 +73,8 @@ import DietSnack from '@/components/diet/DietSnack.vue';
 }
 .diet-box {
     display: flex;
+}
+.diet-calorie {
+    font-size: 30px;
 }
 </style>

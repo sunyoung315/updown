@@ -83,10 +83,10 @@ const home = function() {
 input {
     width: 220px;
     height: 120px;
-    font-size: 80px;
+    font-size: 75px;
 }
 .weight-unit {
-    font-size: 80px;
+    font-size: 75px;
 }
 .weight-value {
     text-align: center;

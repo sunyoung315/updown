@@ -102,6 +102,11 @@ const getDietSnack = async function () {
 
 // 이미지 업로드
 const submitForm = async () => {
+    
+    console.log("----upload---")
+    console.log(serveyImage.value)
+    console.log(newDiet.value)
+    console.log(previewImage.value)
     if (serveyImage.value.files[0] == null) {
         if (props.category == '아침') {
             newDiet.value.category = "아침"
