@@ -4,10 +4,10 @@
             <fieldset class="myprofile-modify">
                 <h2>마이프로필</h2><br>
                 <label for="password">비밀번호</label>
-                <input v-model="signupUser.password" autoComplete="off" type="password" id="password" name="password">
+                <input v-model="signupUser.password" autoComplete="off" type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요.">
                 <br><br>
                 <label for="password">비밀번호 확인</label>
-                <input v-model="password2" autoComplete="off" type="password" id="password2" name="password2">
+                <input v-model="password2" autoComplete="off" type="password" id="password2" name="password2" placeholder="비밀번호를 입력해주세요.">
                 <br><br>
                 <label for="nickname">닉네임</label>
                 <input v-model="signupUser.nickname" type="text" id="nickname" name="nickname">
@@ -57,7 +57,7 @@
                 <label>프로필 사진(선택)</label>
                 <div class="input-group flex-nowrap">
                         <input type="file" class="form-control" placeholder="Username" aria-label="Username"
-                            aria-describedby="addon-wrapping =" style="color: #a8a7a7; height: 35px;">
+                            aria-describedby="addon-wrapping =" ref="serveyImage" style="color: #a8a7a7; height: 35px;">
                     </div>
 
 
@@ -86,15 +86,15 @@ const password2 = ref('')
 const signupUser = ref({
     id: loginUser.id,
     password: '',
-    nickname: '',
+    nickname: loginUser.nickname,
     name: loginUser.name,
-    email: '',
-    targetWeight: '',
-    targetTime: '',
-    updown: '',
-    isSecret: '',
-    img: '',
-    orgImg: ''
+    email: loginUser.email,
+    targetWeight: loginUser.targetWeight,
+    targetTime: loginUser.targetTime,
+    updown: loginUser.updown,
+    isSecret: loginUser.isSecret,
+    img: loginUser.img,
+    orgImg: loginUser.orgImg
 })
 
 // 전체 유저
@@ -146,6 +146,7 @@ const submitForm = async () => {
 
 // 프로필 수정
 const goModifyProfile = function () {
+    console.log('11')
     // \W : 공백을 포함한 특수문자
     // /\W/ : 시작기호, 특수문자, 끝기호
     // some() 메서드는 배열 안의 어떤 요소라도 주어진 판별 함수를 적어도 하나라도 통과하는지 테스트함
@@ -164,9 +165,12 @@ const goModifyProfile = function () {
         return;
     }
 
-    if (users.value.some(user => user.nickname === nickname.value)) {
-        alert('이미 존재하는 닉네임입니다.');
-        return;
+    for(let i = 0; i< users.value; i++){
+        if(users.value[i].nickname == loginUser.nickname) continue;
+        else if(user.value[i].nickname == signupUser.nickname){
+            alert('이미 존재하는 닉네임입니다.')
+            return;
+        }
     }
 
     if (signupUser.value.email === null || signupUser.value.email === '') {
@@ -179,9 +183,12 @@ const goModifyProfile = function () {
         return;
     }
 
-    if (users.value.some(user => user.email == email.value)) {
-        alert('이미 존재하는 이메일입니다.');
-        return;
+    for(let i = 0; i< users.value; i++){
+        if(users.value[i].email == loginUser.email) continue;
+        else if(user.value[i].email == signupUser.email){
+            alert('이미 존재하는 이메일입니다.')
+            return;
+        }
     }
 
     if (signupUser.value.targetWeight === null || signupUser.value.targetWeight === '' || signupUser.value.targetWeight <= 0) {
@@ -217,6 +224,12 @@ const goModifyProfile = function () {
             router.push({ name: 'today' })
         })
 }
+
+// beforeRouterEnter(to, from, next){
+//     if(to.path ==='/today'){
+//         localStorage.setItem("loginUser", JSON.stringify(signupUser.value));
+//     }
+// }
 
 getUserList();
 </script>

@@ -5,11 +5,11 @@
             <br>
             <fieldset class="login">
                 <label for="id">아 이 디</label>
-                <input type="text" id="id" name="id" v-model="loginUser.id" placeholder="아이디를 입력해주세요.">
+                <input type="text" id="id" name="id" v-model="loginUser.id" placeholder="아이디를 입력해주세요." @keyup.enter="login">
                 <br>
                 <label for="password">비 밀 번 호</label>
                 <input type="password" id="password" name="password" v-model="loginUser.password"
-                    placeholder="비밀번호를 입력해주세요.">
+                    placeholder="비밀번호를 입력해주세요." @keyup.enter="login">
                 <br>
                 <button @click="login">로그인</button>
             </fieldset>

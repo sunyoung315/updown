@@ -97,8 +97,8 @@ const search = function () {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    /* align-items: center; */
-    width: 100%;
+    width: 1270px;
+    margin-top: 40px;
 }
 
 a {
