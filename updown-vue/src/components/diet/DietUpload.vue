@@ -1,8 +1,12 @@
 <template>
     <div>
-        <h2>{{ category }}</h2>
-        <img @click="submitForm" class="cursor" style="width: 2.5em;" src="../../asset/icon/save.png" alt="저장">
-        <img class="cursor" @click="home" style="width: 2.3em;" src="../../asset/icon/home.png" alt="목록">
+        <div class="diet-head">
+            <span class="diet-head-category">{{ category }}</span>
+            <div>
+                <img class="cursor" @click="submitForm" style="width: 43px; margin: 5px 5px 0px 5px;" src="../../asset/bootstrap-icon/save.svg" alt="저장">
+                <img class="cursor" @click="home" style="width: 50px; margin: 5px 0px 0px 5px;" src="../../asset/bootstrap-icon/house.svg" alt="목록">
+            </div>
+        </div>
         <br>
         <label>음식 이름</label><br>
         <input type="text" v-model="newDiet.food" placeholder='식단을 등록해주세요.'>
@@ -18,7 +22,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, } from 'vue';
+import { ref } from 'vue';
 import { useDietStore } from '@/stores/diet';
 import axios from 'axios';
 
@@ -176,4 +180,13 @@ const home = function() {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+.diet-head {
+    display: flex;
+    justify-content: space-between;
+}
+.diet-head-category {
+    font-size: 40px;
+    padding-left: 10px;
+}
+</style>

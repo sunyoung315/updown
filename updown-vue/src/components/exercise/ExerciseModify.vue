@@ -18,7 +18,12 @@
             </div>
             <div>
                 <label for="calorie">소모 칼로리 : </label><br>
-                <div class="exercise-value">{{ (exerciseInfo.met * (3.5 * weight * newExercise.time) / 1000 * 5).toFixed(1) }} kcal</div>
+                <div v-if="weight">
+                    <div class="exercise-value">{{ (exerciseInfo.met * (3.5 * weight * newExercise.time) / 1000 * 5).toFixed(1) }} kcal</div>
+                </div>
+                <div v-else>
+                    <div class="exercise-value">{{ (exerciseInfo.met * (3.5 * 50 * newExercise.time) / 1000 * 5).toFixed(1) }} kcal</div>
+                </div>
             </div>
         </div>
     </div>
@@ -64,7 +69,9 @@ const emits = defineEmits(["list"]);
 
 const modify = function() {
     newExercise.value.type = props.exercise.type;
-    newExercise.value.calorie = (exerciseInfo.value.met * (3.5 * weight * newExercise.value.time) / 1000 * 5).toFixed(1);
+    if(weight)
+        newExercise.value.calorie = (exerciseInfo.value.met * (3.5 * weight * newExercise.value.time) / 1000 * 5).toFixed(1);
+    newExercise.value.calorie = (exerciseInfo.value.met * (3.5 * 50 * newExercise.value.time) / 1000 * 5).toFixed(1);
     store.modifyExercise(newExercise.value);
     emits("list")
 }

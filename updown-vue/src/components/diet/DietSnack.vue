@@ -47,6 +47,7 @@ const remove = function(diet) {
     background-color: white;
     margin: 15px 0px 15px 15px;
     padding: 15px;
+    height: 380px;
 }
 
 </style>

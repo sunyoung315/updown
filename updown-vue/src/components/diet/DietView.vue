@@ -1,6 +1,9 @@
 <template>
     <div class="diet-container">
-        <h2>식단</h2> 
+        <div class="diet-head">
+            <div class="diet-title">식단</div>
+            <!-- <div>총 섭취 칼로리 : </div> -->
+        </div>
         <div>
             <div class="diet-box">
                 <DietBreakFast />
@@ -29,8 +32,15 @@ import DietSnack from '@/components/diet/DietSnack.vue';
     padding: 32px;
     background-color: rgb(83, 120, 77);
     border-radius: 20px;
-
-    aspect-ratio: 1/1;
+    aspect-ratio: 7/4   ;
+}
+.diet-title {
+    font-size: 50px;
+    color: white;
+}
+.diet-head {
+    display: flex;
+    justify-content: space-between;
 }
 .diet-box {
     display: flex;

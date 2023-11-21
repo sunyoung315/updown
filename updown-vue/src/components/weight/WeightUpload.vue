@@ -2,7 +2,10 @@
     <div class="weight-upload">
         <div class="weight-head">
             <div class="weight-title">체중</div>
-            <img @click="upload" class="cursor" style="width: 43px; margin: 15px 5px 0px 5px;" src="../../asset/bootstrap-icon/save.svg" alt="저장">
+            <div>
+                <img @click="home" class="cursor" style="width: 49px; margin: 13px 5px 0px 5px;" src="../../asset/bootstrap-icon/house.svg" alt="홈으로">
+                <img @click="upload" class="cursor" style="width: 43px; margin: 13px 5px 0px 5px;" src="../../asset/bootstrap-icon/save.svg" alt="저장">
+            </div>
         </div>
         <div class="today-weight-box">
             <p class="today-weight">오늘의 체중은?</p>
@@ -40,6 +43,10 @@ onMounted(async () =>{
 
 const getTodayWeight = async function() {
     await store.getWeight(loginUserId, regDate);
+}
+
+const home = function() {
+    emits("home");
 }
 
 const upload = async function() {
