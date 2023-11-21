@@ -16,6 +16,7 @@
                     <td>{{ diet.food }}</td>
                     <td>{{ diet.calorie }}kcal</td>
                     <td v-if="diet.img"><img :src="`http://localhost:8080/upload/${diet.img}`" alt="식단 사진" style="width: 5em;"></td>
+                    <td v-else="diet.img" ><i class="bi bi-card-image"></i></td>
                 </tr>
             </tbody>
         </table>
@@ -38,5 +39,9 @@ th{
     text-align: center; 
     font-size: large; 
     width: 43em;
+}
+
+.bi-card-image{
+    color:rgb(199, 199, 199);
 }
 </style>

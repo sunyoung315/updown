@@ -1,10 +1,10 @@
 <template>
     <div class="start">
-        <a>
+        <a id="img">
             <img src="../asset/image/healthy-life.jpg">
         </a>
-        <a>
-            <RouterView class="show"/>
+        <a id="show">
+            <RouterView class="show" />
         </a>
     </div>
 </template>
@@ -14,24 +14,31 @@
 </script>
 
 <style scoped>
-.show{   
-    width: 800px;
-    height: 745.775px;
-    padding: 30%
-}
-.start{
-    display: flex;
+.show {
+    padding: 160px;
+    width: 650px;
+    margin-left: 35px;
 }
 
-a{
+.start {
     display: flex;
-    align-content: center;
     justify-content: center;
-    width: 683.65px;
-    
+    height: 931px;
 }
 
-img{
-    width: 683.65px
+#show {
+    display: flex;
+    justify-content: left;
+    padding-top: 80px;
+    height: 931px;
+    width: 750px;
+
+}
+
+
+img {
+    width: 800px;
+    height: 931px;
+
 }
 </style>

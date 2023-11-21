@@ -37,7 +37,7 @@ const login = function () {
 
 <style scoped>
 .login-container {
-    width: 400px;
+    width: 450px;
 }
 
 .login {
@@ -48,6 +48,7 @@ const login = function () {
 
 h2 {
     text-align: center;
+    width: 450px;
 }
 
 
@@ -56,6 +57,8 @@ input {
     /* 테두리 굵기와 색을 변경합니다. */
     border-radius: 7.5px;
     height: 50px;
+    width: 450px;
+    
 }
 
 button {
@@ -65,11 +68,12 @@ button {
     height: 50px;
     background-color: #a9a8a8;
     color: white;
+    width: 450px;
 }
 
 a {
     display: inline-block;
-    width: 400px;
+    width: 450px;
     text-align: right;
     text-decoration: underline;
     color: #a8a7a7;

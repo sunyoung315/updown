@@ -2,8 +2,8 @@
     <div class="signup-container">
         <form @submit.prevent="submitForm">
             <div>
+                <h2>회원가입</h2><br>
                 <fieldset class="signup">
-                    <h2>회원가입</h2><br>
                     <label for="id">아이디</label>
                     <input v-model="signupUser.id" type="text" id="id" name="id" placeholder="아이디를 입력해주세요.">
                     <br>
@@ -28,10 +28,16 @@
                     <label for="targetWeight">목표 체중</label>
                     <input v-model="signupUser.targetWeight" type="number" id="targetWeight" name="targetWeight"
                         placeholder="목표 체중을 입력해주세요.">
+                    <a>
+                        kg
+                    </a>
                     <br>
                     <label for="targetTime">하루 목표 운동 시간</label>
                     <input v-model="signupUser.targetTime" type="number" id="targetTime" name="targetTime"
                         placeholder="하루 목표 운동 시간을 입력해주세요.">
+                    <a>
+                        min
+                    </a>
                     <br>
                     <label>증/감량 희망 여부</label>
                     <div class="radio-container">
@@ -61,7 +67,7 @@
                     <br>
 
                     <label>프로필 사진(선택)</label>
-                    <div class="input-group flex-nowrap">
+                    <div class="input-group flex-nowrap" style="width: 400px;">
                         <input type="file" class="form-control" placeholder="Username" aria-label="Username"
                             aria-describedby="addon-wrapping =" style="color: #a8a7a7; height: 35px;">
                     </div>
@@ -248,8 +254,13 @@ getUserList();
 .signup {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    width: 400px;
+    width: 450px;
+    overflow:  auto;
+    height: 600px;
+}
+
+.signup::-webkit-scrollbar{
+    display: none;
 }
 
 h2 {
@@ -259,7 +270,6 @@ h2 {
 input {
     border: 1px solid #929191;
     border-radius: 7.5px;
-    height: 33px;
     width: 400px;
 }
 
@@ -284,7 +294,9 @@ input {
 }
 
 .signup-container {
-    padding-top: 40px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 740px;
 }
 
 a {
@@ -293,5 +305,9 @@ a {
     text-align: right;
     text-decoration: underline;
     color: #a8a7a7;
+}
+
+h2{
+     width: 400px;
 }
 </style>
