@@ -1,12 +1,17 @@
 <template>
     <header>
         <div class="header-container">
-            <RouterLink to="today"><h2>로고</h2></RouterLink> 
+            <RouterLink to="today"><img class="cursor" style="width: 60px;" src="../../asset/icon/weight-scale.png" alt="로고"></RouterLink> 
             <nav>
-                <RouterLink :to="{name: 'today'}">오늘의 기록</RouterLink> | 
-                <RouterLink :to="{name: 'record'}">과거 기록 조회</RouterLink>
+                <RouterLink :to="{name: 'today'}" style="font-size: 20px; padding-right: 30px;">오늘의 기록</RouterLink>|
+                <RouterLink :to="{name: 'record'}" style="font-size: 20px; padding-left: 30px;">과거 기록 조회</RouterLink>
             </nav>
-            <img class="cursor" @click="logout"  style="width: 3rem;" src="../../asset/icon/out.png" alt="로그아웃">
+            <div>
+                <RouterLink :to="{ name: 'myprofile' }" style="padding-right: 30px;">
+                    <img class="cursor" style="width: 46px;" src="../../asset/bootstrap-icon/person-square.svg" alt="마이프로필">
+                </RouterLink>
+                <img class="cursor" @click="logout"  style="width: 60px;" src="../../asset/bootstrap-icon/box-arrow-right.svg" alt="로그아웃">
+            </div>
         </div>
     </header>
 </template>
@@ -31,12 +36,18 @@ const logout = function() {
     font-family: 'mobiletitle';
     src: url('/font/ONEMobileTitle.ttf')
 }
+
 header {
-    border: 1px solid   rgb(199, 199, 199);
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    border-bottom: 1px solid rgb(199, 199, 199);
 }
 .header-container {
     display: flex;
     justify-content: space-between;
+    padding-left: 200px;
+    padding-right: 180px;
 }
 .cursor {
     cursor: pointer;

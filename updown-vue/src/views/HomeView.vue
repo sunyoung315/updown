@@ -3,9 +3,13 @@
         <TheHeaderNav/>
         <div class="home">
             <TheAside/>
-            <RouterView class="home-container"/>
+            <div>
+                <div class="home-container">
+                    <RouterView/>
+                </div>
+                <TheFooter/>
+            </div>
         </div>
-        <TheFooter/>
     </div>
 </template>
 
@@ -19,5 +23,8 @@ import TheFooter from '@/components/common/TheFooter.vue';
 <style scoped>
 .home {
     display: flex;
+}
+.home-container {
+    min-height: 100vh;
 }
 </style>
