@@ -81,7 +81,7 @@ const graph = function() {
 }
 .weight-scale {
     display: inline-block;
-    font-size: 70px;
+    font-size: 60px;
     background-image: url('../../asset/image/weight-scale.png');
     background-repeat: no-repeat;
     background-size: 400px 400px;

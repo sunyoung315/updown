@@ -1,5 +1,5 @@
-import { nextTick, ref } from 'vue'
-import { defineStore, storeToRefs } from 'pinia';
+import { ref } from 'vue'
+import { defineStore } from 'pinia';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 
@@ -36,6 +36,24 @@ export const useDietStore = defineStore('diet', () => {
     const todayDietLunch = ref([]);
     const todayDietDinner = ref([]);
     const todayDietSnack = ref([]);
+
+    const todayDietList = ref([]);
+
+    // 오늘 전체 식단 기록 조회
+    const getTodayDietList = async function(loginUserId, regDate) {
+        await axios.get(`${REST_DIET_API}`, {
+            params: {
+                loginUserId: loginUserId,
+                regDate: regDate,
+            },
+            headers: {
+                "Content-Type": "application/x-www-form-urlencode"
+            }
+        })
+        .then((res) => {
+            todayDietList.value = res.data;
+        })
+    } 
 
 
     // 아침 식단 기록 조회
@@ -188,30 +206,30 @@ export const useDietStore = defineStore('diet', () => {
                 "Content-Type": "application/json"
             },
         })
-            .then(() => {
-                if (newDiet.category == '아침')
-                    getDietBreakFast(loginUserId, regDate)
-                else if (newDiet.category == '점심')
-                    getDietLunch(loginUserId, regDate)
-                else if (newDiet.category == '저녁')
-                    getDietDinner(loginUserId, regDate)
-                else if (newDiet.category == '간식')
-                    getDietSnack(loginUserId, regDate)
+        .then(() => {
+            if (newDiet.category == '아침')
+                getDietBreakFast(loginUserId, regDate)
+            else if (newDiet.category == '점심')
+                getDietLunch(loginUserId, regDate)
+            else if (newDiet.category == '저녁')
+                getDietDinner(loginUserId, regDate)
+            else if (newDiet.category == '간식')
+                getDietSnack(loginUserId, regDate)
 
-                // 등록 후 초기화
-                newDiet.category = ''
-                newDiet.food = ''
-                newDiet.calorie = ''
-                newDiet.Img = ''
-                newDiet.userId = loginUserId
+            // 등록 후 초기화
+            newDiet.category = ''
+            newDiet.food = ''
+            newDiet.calorie = ''
+            newDiet.Img = ''
+            newDiet.userId = loginUserId
 
-                router.push({ name: 'today' })
-            })
-            .catch((err) => {
-                console.log('오류 : ' + err)
-            })
+            router.push({ name: 'today' })
+        })
+        .catch((err) => {
+            console.log('오류 : ' + err)
+        })
     }
   
 
-    return { today, remove, modifyDiet, breakfastimg, lunchimg, dinnerimg, snackimg, todayDietBreakFast, todayDietLunch, todayDietDinner, todayDietSnack, getDietBreakFast, getDietLunch, getDietDinner, getDietSnack, uploadDiet }
+    return { today, remove, modifyDiet, breakfastimg, lunchimg, dinnerimg, snackimg, todayDietBreakFast, todayDietLunch, todayDietDinner, todayDietSnack, getDietBreakFast, getDietLunch, getDietDinner, getDietSnack, uploadDiet, getTodayDietList, todayDietList }
 })
