@@ -10,6 +10,8 @@ import MyProfile from '@/components/user/MyProfile.vue'
 
 <style scoped>
 aside {
+   display: flex;
+   justify-content: right;
     border: 1px solid rgb(199, 199, 199);
     width: 500px;
 }
