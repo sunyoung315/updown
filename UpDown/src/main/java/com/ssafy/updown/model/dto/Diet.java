@@ -4,7 +4,7 @@ public class Diet {
 	private int no;
 	private String category;
 	private String food;
-	private int calorie;
+	private double calorie;
 	private String regDate;
 	private String img;
 	private String orgImg;	
@@ -15,7 +15,7 @@ public class Diet {
 	
 	
 
-	public Diet(int no, String category, String food, int calorie, String regDate, String userId, String img,
+	public Diet(int no, String category, String food, double calorie, String regDate, String userId, String img,
 			String orgImg) {
 		super();
 		this.no = no;
@@ -66,13 +66,13 @@ public class Diet {
 
 
 
-	public int getCalorie() {
+	public double getCalorie() {
 		return calorie;
 	}
 
 
 
-	public void setCalorie(int calorie) {
+	public void setCalorie(double calorie) {
 		this.calorie = calorie;
 	}
 
