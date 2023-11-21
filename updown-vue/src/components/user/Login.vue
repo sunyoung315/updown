@@ -13,7 +13,9 @@
                 <br>
                 <button @click="login">로그인</button>
             </fieldset>
-            <RouterLink :to="{ name: 'signup' }">회원가입</RouterLink>
+            <div id="gologin">
+                <RouterLink :to="{ name: 'signup' }">회원가입</RouterLink>
+            </div>
         </div>
     </div>
 </template>
@@ -72,10 +74,11 @@ button {
 }
 
 a {
-    display: inline-block;
-    width: 450px;
-    text-align: right;
     text-decoration: underline;
     color: #a8a7a7;
 }
+#gologin{
+    text-align: right;
+}
+
 </style>

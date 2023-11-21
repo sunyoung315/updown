@@ -11,6 +11,7 @@
             <p class="today-weight">오늘의 체중은?</p>
             <div class="weight-value">
                 <input type="number" :placeholder=weight v-model="newWeight.nowWeight"><span class="weight-unit">kg</span>
+                <p id="check" v-if="!newWeight.nowWeight">체중을 등록해주세요.</p>
             </div>
         </div>    
     </div>
@@ -51,6 +52,7 @@ const getTodayWeight = async function() {
 }
 
 const modify = async function() {
+    if(newWeight.value.nowWeight<=0 || !newWeight.value.nowWeight) return;
     await store.modifyWeight(newWeight.value);
     await getTodayWeight();
     emits("home");
@@ -94,5 +96,9 @@ input {
 .today-weight-box {
     position: relative;
     top: 140px
+}
+#check{
+    font-size: 12.3px;
+    color: red;
 }
 </style>
