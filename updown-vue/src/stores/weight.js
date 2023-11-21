@@ -1,4 +1,4 @@
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia';
 import router from '@/router';
 import axios from 'axios';
@@ -16,6 +16,24 @@ export const useWeightStore = defineStore('weight', () => {
     const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
 
     const todayWeight = ref({});
+
+    const weightList = ref([]);
+
+    const getWeightList = async function(loginUserId) {
+        await axios({
+            url: `${REST_WEIGHT_API}/list`,
+            method: 'GET',
+            params: {
+                loginUserId: loginUserId,
+            }
+        })
+        .then((res) => {
+            weightList.value = res.data;
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
 
     const getWeight = async function(loginUserId, regDate) {
         await axios.get(REST_WEIGHT_API, {
@@ -64,5 +82,5 @@ export const useWeightStore = defineStore('weight', () => {
             console.log('오류 : ' + err)
         })
     }
-    return { todayWeight, getWeight, modifyWeight, uploadWeight }
+    return { todayWeight, getWeight, modifyWeight, uploadWeight, getWeightList, weightList }
 })
