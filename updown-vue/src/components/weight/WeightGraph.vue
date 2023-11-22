@@ -4,8 +4,7 @@
             <div class="weight-title">체중</div>
             <img @click="home" class="cursor" style="width: 49px; margin: 15px 5px 5px 5px;" src="../../asset/bootstrap-icon/house.svg" alt="홈으로">
         </div>
-        <h4>7일간의 몸무게 변화</h4>
-        <!-- {{ weights }} -->
+        <h4 style="padding-left: 10px;">7일간의 몸무게 변화</h4>
         <div id="chart">
             <apexchart type="line" height="450" :options="chartOptions" :series="series"></apexchart>
         </div>
@@ -24,10 +23,9 @@ const regDates = computed(() => store.weightList.map((w) => w.regDate));
 const weights = computed(() => store.weightList.map((w) => w.nowWeight));
 
 onMounted(async () => {
-    await store.weightList;
-    await store.getWeightList(loginUserId);
+  await store.weightList;
+  await store.getWeightList(loginUserId);
 })
-
 
 const series = ref([
   {
@@ -37,6 +35,7 @@ const series = ref([
 ]);
 
 const chartOptions = ref({
+  colors: ["#C16060"],
   chart: {
     type: 'line',
     height: 450,
@@ -46,7 +45,9 @@ const chartOptions = ref({
   },
   dataLabels: {
     enabled: false,
-    colors: ['black']
+    style: {
+      fontFamily: 'mobiletitle'
+    }
   },
   stroke: {
     curve: 'straight',
@@ -61,7 +62,8 @@ const chartOptions = ref({
     categories: regDates,
     labels: {
       style: {
-        fontSize: 16,
+        fontSize: 15,
+        fontFamily: 'mobiletitle',
       }
     }
   },
@@ -75,11 +77,17 @@ const chartOptions = ref({
       },
       labels: {
         style: {
-          fontSize: 16
-        }
+          fontSize: 15,
+          fontFamily: 'mobiletitle',
+        },
       }
     }
-  ]
+  ],
+  tooltip: {
+    style: {
+      fontFamily: 'mobiletitle',
+    },
+  }
 });
 
 const emit = defineEmits(["home"]);
@@ -109,9 +117,5 @@ h4 {
 canvas {
     margin-top: 30px;
     height: 420px !important;   
-}
-#chart {
-    color: black !important;
-
 }
 </style>

@@ -13,11 +13,9 @@
     "axios": "^1.6.2",
     "bootstrap": "^5.3.1",
     "bootstrap-icons": "^1.11.1",
-    "chart.js": "^4.4.0",
     "pinia": "^2.1.7",
     "v-calendar": "^3.1.2",
     "vue": "^3.3.8",
-    "vue-chartjs": "^5.2.0",
     "vue-router": "^4.2.5",
     "vue3-apexcharts": "^1.4.4",
     "xml-js": "^1.6.11"
