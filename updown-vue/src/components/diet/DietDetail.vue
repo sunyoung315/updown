@@ -3,7 +3,7 @@
         <div class="diet-head">
             <div>
                 <span class="diet-head-category">{{ category }}</span>
-                <span class="diet-head-calorie">{{ calSum }}kcal</span>
+                <span class="diet-head-calorie">{{ calSum.toFixed(1) }}kcal</span>
             </div>
             <img class="cursor" @click="regist" style="width: 45px; margin: 5px 5px 0px 5px;" src="../../asset/bootstrap-icon/plus-square.svg" alt="등록">
         </div>
@@ -214,7 +214,10 @@ watchEffect (async() => {
 }
 tr {
     height: 50px;
-    border: 0px
+    border: 0px;
+}
+td {
+    text-overflow: clip;
 }
 .table {
     width: 313px;

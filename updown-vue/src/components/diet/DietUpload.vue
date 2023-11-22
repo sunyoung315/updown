@@ -113,7 +113,6 @@ const store = useDietStore();
 
 const search = function () {
     emits("search");
-
 }
 
 const getDietBreakFast = async function () {
@@ -141,7 +140,6 @@ const submitForm = async () => {
     if (serveyImage.value.files[0] == null) {
         if (props.category == '아침') {
             newDiet.value.category = "아침"
-            console.log(newDiet.value)
             upload();
             return;
         }
@@ -241,6 +239,11 @@ const upload = async function () {
         await getDietDinner();
     else if (props.category == '간식')
         await getDietSnack();
+    props.info.food = '';
+    props.info.calorie = 0;
+    gram.value = 0;
+    serveyImage.value = '';
+    previewImage.value = '';
     emits("home");
 }
 

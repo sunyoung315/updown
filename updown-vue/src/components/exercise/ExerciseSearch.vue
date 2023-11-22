@@ -6,7 +6,7 @@
         </div>
         <div class="exercise-search-input">
             <input type="text" placeholder="운동명을 검색해주세요." v-model="word" @keyup.enter="search">
-            <img @click="search" class="cursor" style="width: 2.5em; margin-left: 5px;" src="../../asset/icon/search.png" alt="검색">
+            <img @click="search" class="cursor" style="width: 40px; margin-left: 5px;" src="../../asset/bootstrap-icon/search.svg" alt="검색">
         </div>
         <table class="table">
             <thead>
@@ -17,7 +17,7 @@
             </thead>
         </table>
         <table class="table" id="exercise">
-            <div class="box" style="height: 250px; overflow-y: auto;">
+            <div class="box" style="height: 390px; overflow-y: auto;">
                 <tbody>
                     <tr id="exercise-content" @click="getInfo(info)" class="cursor" v-for="info in exerciseInfoList" :key="info.type">
                         <td class="exercise-type">{{ info.type }}</td>  
@@ -79,7 +79,6 @@ table {
 }
 th {
     font-size: 18px;
-    /* width: 515px; */
 }
 #exercise tr td {
     background-color: transparent !important;
