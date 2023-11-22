@@ -5,76 +5,86 @@
             <img @click="home" class="cursor" style="width: 49px; margin: 15px 5px 5px 5px;" src="../../asset/bootstrap-icon/house.svg" alt="홈으로">
         </div>
         <h4>7일간의 몸무게 변화</h4>
-        <Line id="chart" :data="data" :options="options" />
+        <!-- {{ weights }} -->
+        <div id="chart">
+            <apexchart type="line" height="450" :options="chartOptions" :series="series"></apexchart>
+        </div>
     </div>
 </template>
 
 <script setup>
-import { onMounted, computed } from 'vue';
+import { onMounted, computed, ref } from 'vue';
 import { useWeightStore } from '@/stores/weight';
-
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-} from 'chart.js'
-import { Line } from 'vue-chartjs'
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-  )
-
-const props = defineProps({
-    regDates: [],
-    weights: [],
-})
 
 const store = useWeightStore();
 
 const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
 
+const regDates = computed(() => store.weightList.map((w) => w.regDate));
+const weights = computed(() => store.weightList.map((w) => w.nowWeight));
+
 onMounted(async () => {
-    await store.weihtList;
+    await store.weightList;
     await store.getWeightList(loginUserId);
 })
 
-const data = {
-  labels: props.regDates,
-  datasets: [
-    {
-      data: props.weights,
-      borderColor: 'black', 
-      fontColor: 'black',
-      pointRadius: 5,
-      backgroundColor: '#C16060'
-    }
-  ]
-}
 
-const options = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: {
-      display: false
+const series = ref([
+  {
+    name: "Weight",
+    data: weights,
+  }
+]);
+
+const chartOptions = ref({
+  chart: {
+    type: 'line',
+    height: 450,
+    zoom: {
+      enabled: false
+    },
+  },
+  dataLabels: {
+    enabled: false,
+    colors: ['black']
+  },
+  stroke: {
+    curve: 'straight',
+    width: 5,
+    colors: ["#C16060"]
+  },
+  markers: {
+    size: 5,
+    colors: ["#C16060"]
+  },
+  xaxis: {
+    categories: regDates,
+    labels: {
+      style: {
+        fontSize: 16,
+      }
     }
   },
-}
+  yaxis: [
+    {
+      axisTicks: {
+        show: true,
+      },
+      axisBorder: {
+        show: true,
+      },
+      labels: {
+        style: {
+          fontSize: 16
+        }
+      }
+    }
+  ]
+});
 
 const emit = defineEmits(["home"]);
 const home = function() {
-    emit("home")
+  emit("home")
 }
 </script>
 
