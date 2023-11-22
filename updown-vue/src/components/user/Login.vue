@@ -79,6 +79,7 @@ a {
 }
 #gologin{
     text-align: right;
+    margin-top: 8px;
 }
 
 </style>

@@ -88,7 +88,7 @@ const search = function () {
     flex-direction: column;
     justify-content: space-around;
     width: 1270px;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .record-view {

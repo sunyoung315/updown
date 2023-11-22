@@ -112,8 +112,9 @@ input {
 .exercise-value {
     font-size: 35px;
 }
-p{
-    font-size: 11px;
+p{   
+    font-size: 13px;
     color: red;
+    font-family: 'mobileregular';
 }
 </style>
