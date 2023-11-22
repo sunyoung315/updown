@@ -50,7 +50,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { useDietStore } from '@/stores/diet';
 import axios from 'axios';
 
@@ -109,11 +109,6 @@ const search = function () {
     emits("search");
 
 }
-
-    // onMounted(() => {
-    //     props.info.food = '';
-    //     props.info.calorie = '';
-    // })
 
 const getDietBreakFast = async function () {
     await store.getDietBreakFast(loginUserId, regDate);

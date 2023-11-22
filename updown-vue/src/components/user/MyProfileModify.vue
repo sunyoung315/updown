@@ -1,72 +1,76 @@
 <template>
     <div class="myprofile-modify-container">
         <form @submit.prevent="submitForm">
-            <fieldset class="myprofile-modify">
-                <h2>마이프로필</h2><br>
-                <label for="password">비밀번호</label>
-                <input v-model="signupUser.password" autoComplete="off" type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요.">
-                <br><br>
-                <label for="password">비밀번호 확인</label>
-                <input v-model="password2" autoComplete="off" type="password" id="password2" name="password2" placeholder="비밀번호를 입력해주세요.">
-                <br><br>
-                <label for="nickname">닉네임</label>
-                <input v-model="signupUser.nickname" type="text" id="nickname" name="nickname">
-                <br><br>
-                <label for="email">이메일</label>
-                <input v-model="signupUser.email" type="text" id="email" name="email">
-                <br><br>
-                <label for="targetWeight">목표 체중</label>
-                <input v-model="signupUser.targetWeight" type="number" id="targetWeight" name="targetWeight">
-                <a>
-                    kg
-                </a>
-                <br>
-                <label for="targetTime">하루 목표 운동 시간</label>
-                <input v-model="signupUser.targetTime" type="number" id="targetTime" name="targetTime">
-                <a>
-                    min
-                </a>
-                <br>
-                <label>증/감량 희망 여부</label>
-                <div class="radio-container">
-                    <div class="radio">
-                        <input v-model="signupUser.updown" type="radio" id="up" value="up" style="width: 20px;">
-                        &nbsp;<label for="up">증 &nbsp;&nbsp;&nbsp;량</label>
+            <div>
+                <fieldset class="myprofile-modify">
+                    <h2>나의 프로필</h2><br>
+                    <label for="password">비밀번호</label>
+                    <input v-model="signupUser.password" autoComplete="off" type="password" id="password" name="password"
+                        placeholder="비밀번호를 입력해주세요.">
+                    <br><br>
+                    <label for="password">비밀번호 확인</label>
+                    <input v-model="password2" autoComplete="off" type="password" id="password2" name="password2"
+                        placeholder="비밀번호를 입력해주세요.">
+                    <br><br>
+                    <label for="nickname">닉네임</label>
+                    <input v-model="signupUser.nickname" type="text" id="nickname" name="nickname">
+                    <br><br>
+                    <label for="email">이메일</label>
+                    <input v-model="signupUser.email" type="text" id="email" name="email">
+                    <br><br>
+                    <label for="targetWeight">목표 체중</label>
+                    <input v-model="signupUser.targetWeight" type="number" id="targetWeight" name="targetWeight">
+                    <a>
+                        kg
+                    </a>
+                    <br>
+                    <label for="targetTime">하루 목표 운동 시간</label>
+                    <input v-model="signupUser.targetTime" type="number" id="targetTime" name="targetTime">
+                    <a>
+                        min
+                    </a>
+                    <br>
+                    <label>증/감량 희망 여부</label>
+                    <div class="radio-container">
+                        <div class="radio">
+                            <input v-model="signupUser.updown" type="radio" id="up" value="up" style="width: 20px;">
+                            &nbsp;<label for="up">증 &nbsp;&nbsp;&nbsp;량</label>
+                        </div>
+                        <div class="radio">
+                            <input v-model="signupUser.updown" type="radio" id="down" value="down" style="width: 20px;">
+                            &nbsp;<label for="down">감&nbsp;&nbsp;&nbsp; 량</label>
+                        </div>
                     </div>
-                    <div class="radio">
-                        <input v-model="signupUser.updown" type="radio" id="down" value="down" style="width: 20px;">
-                        &nbsp;<label for="down">감&nbsp;&nbsp;&nbsp; 량</label>
+                    <br>
+                    <label for="isSecret">계정 공개 희망 여부</label>
+                    <div class="radio-container">
+                        <div class="radio">
+                            <input v-model="signupUser.isSecret" type="radio" id="isSecretTrue" :value="true"
+                                style="width: 20px;">
+                            &nbsp;<label for="isSecretTrue">공 &nbsp;&nbsp;&nbsp;개</label>
+                        </div>
+                        <div class="radio">
+                            <input v-model="signupUser.isSecret" type="radio" id="isSecretFalse" :value="false"
+                                style="width: 20px;">
+                            &nbsp;<label for="isSecretFalse">비공개</label>
+                        </div>
                     </div>
-                </div>
-                <br>
-                <label for="isSecret">계정 공개 희망 여부</label>
-                <div class="radio-container">
-                    <div class="radio">
-                        <input v-model="signupUser.isSecret" type="radio" id="isSecretTrue" :value="true"
-                            style="width: 20px;">
-                        &nbsp;<label for="isSecretTrue">공 &nbsp;&nbsp;&nbsp;개</label>
-                    </div>
-                    <div class="radio">
-                        <input v-model="signupUser.isSecret" type="radio" id="isSecretFalse" :value="false"
-                            style="width: 20px;">
-                        &nbsp;<label for="isSecretFalse">비공개</label>
-                    </div>
-                </div>
-                <br>
+                    <br>
 
-                <label>프로필 사진(선택)</label>
-                <div class="input-group flex-nowrap">
+                    <label>프로필 사진(선택)</label>
+                    <div class="input-group flex-nowrap" style="width: 400px;">
                         <input type="file" class="form-control" placeholder="Username" aria-label="Username"
                             aria-describedby="addon-wrapping =" ref="serveyImage" style="color: #a8a7a7; height: 35px;">
                     </div>
 
 
-                <br>
-                <input id="gomodify" type="submit" value="수정">
-                <div id="gohome">
-                    <RouterLink to="/today">홈으로</RouterLink>
-                </div>
-            </fieldset>
+                    <br>
+                    <input id="gomodify" type="submit" value="수정">
+                    <div id="gohome">
+                        <RouterLink to="/today">홈으로</RouterLink>
+                    </div>
+                </fieldset>
+            </div>
         </form>
     </div>
 </template>
@@ -167,9 +171,9 @@ const goModifyProfile = function () {
         return;
     }
 
-    for(let i = 0; i< users.value; i++){
-        if(users.value[i].nickname == loginUser.nickname) continue;
-        else if(user.value[i].nickname == signupUser.nickname){
+    for (let i = 0; i < users.value; i++) {
+        if (users.value[i].nickname == loginUser.nickname) continue;
+        else if (user.value[i].nickname == signupUser.nickname) {
             alert('이미 존재하는 닉네임입니다.')
             return;
         }
@@ -185,9 +189,9 @@ const goModifyProfile = function () {
         return;
     }
 
-    for(let i = 0; i< users.value; i++){
-        if(users.value[i].email == loginUser.email) continue;
-        else if(user.value[i].email == signupUser.email){
+    for (let i = 0; i < users.value; i++) {
+        if (users.value[i].email == loginUser.email) continue;
+        else if (user.value[i].email == signupUser.email) {
             alert('이미 존재하는 이메일입니다.')
             return;
         }
@@ -238,20 +242,29 @@ getUserList();
 
 <style scoped>
 .myprofile-modify {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: 400px;
+    width: 450px;
     text-align: left;
+    line-height: 20px;
+    margin-top: 30px;
+    margin-bottom: 150px;
+
 }
 
 h2 {
     text-align: center;
+    margin-bottom: 40px;   
+    font-size: 40px;
+    margin-top: 20px;
+    margin-right: 30px; 
 }
 
 input {
     border: 1px solid #929191;
     border-radius: 7.5px;
-    height: 33px;
+    height: 35px;
     width: 400px;
 }
 
@@ -276,22 +289,30 @@ input {
 }
 
 .myprofile-modify-container {
-    padding-top: 40px;
-    margin-left: 110px;
+    padding-top: 20px;
+    margin-left: 350px;
     width: 500px;
     text-align: center;
 
 }
 
 a {
+    width: 400px;
+    text-align: right;
     text-decoration: underline;
     color: #a8a7a7;
 }
-#gohome{
+#gohome {
     text-align: right;
+    width: 400px;
 }
 
-#img{
+#img {
     color: #a8a7a7;
+}
+
+label{
+    font-size: 20px;
+    margin-bottom: 8px;
 }
 </style>
