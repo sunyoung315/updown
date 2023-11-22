@@ -12,17 +12,25 @@
         <div class="diet-box-flex">
             <div class="diet-box">
                 <div class="diet-box-row">
-                        <label>음식 검색 </label>
-                        <img @click="search" class="cursor" style="width: 43px; margin: 0px 5px 20px 8px;"
-                            src="../../asset/bootstrap-icon/search.svg" alt="검색">
-                    <input type="text" v-if="props.info && props.info.food" v-model="props.info.food">
-                    <p v-else>식단을 등록해주세요.</p>
+                    <label>음식 검색 </label>
+                    <img @click="search" class="cursor" style="width: 43px; margin: 0px 5px 8px 8px;"
+                        src="../../asset/bootstrap-icon/search.svg" alt="검색">
+                    <input type="text" v-model="props.info.food" placeholder="음식을 직접 입력할 수도 있어요.">
                 </div>
                 <div class="diet-box-row">
-                    <label>음식 칼로리</label><br>
-                    <input type="number" v-if="props.info && props.info.calorie" v-model="props.info.calorie">kcal
+                    <div class="g">
+                        <label>섭취량</label><br>
+                        <input type="number" v-model="gram" placeholder="섭취량을 입력해주세요."> g
+                    </div>
+                    <div class="kcal">
+                        <label>음식 칼로리</label><br>
+                        <div class="cal-Kcal" v-if="props.info.food">{{ (props.info.calorie * gram).toFixed(1) }} kcal</div>
+                        <div v-else>
+                            <input type="text" v-model="inputKcal" placeholder="칼로리를 입력해주세요."> kcal
+                        </div>
+                    </div>
                 </div>
-                <div class="diet-box-row">
+                <div class="diet-box-img">
                     <label>음식사진(선택)</label>
                     <div>
                         <input ref="serveyImage" type="file" accept="image/*" @change="changeImage">
@@ -69,11 +77,13 @@ const props = defineProps({
     info: Object,
 });
 
+const gram = ref('');
 
-
-const serveyImage = ref(null);
+const inputKcal = ref('');
 
 const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
+
+const serveyImage = ref('')
 
 const today = new Date();
 const year = today.getFullYear();
@@ -124,14 +134,18 @@ const getDietSnack = async function () {
 // 이미지 업로드
 const submitForm = async () => {
     newDiet.value.food = props.info.food;
-    newDiet.value.calorie = props.info.calorie;
+    if (props.info.calorie)
+        newDiet.value.calorie = parseFloat((props.info.calorie * gram.value).toFixed(1));
+    else
+        newDiet.value.calorie = inputKcal.value;
+
     console.log("----upload---")
-    console.log(serveyImage.value)
-    console.log(newDiet.value)
-    console.log(previewImage.value)
+    // console.log(serveyImage.value)
+    // console.log(previewImage.value)
     if (serveyImage.value.files[0] == null) {
         if (props.category == '아침') {
             newDiet.value.category = "아침"
+            console.log(newDiet.value)
             upload();
             return;
         }
@@ -243,6 +257,7 @@ const home = function () {
 </script>
 
 <style scoped>
+
 .diet-head {
     display: flex;
     justify-content: space-between;
@@ -260,6 +275,8 @@ const home = function () {
 }
 
 .diet-box {
+    display: flex;
+    flex-direction: column;
     margin-left: 25px;
     width: 290px;
     height: 260px;
@@ -270,23 +287,35 @@ label {
 }
 
 .diet-box-row {
-    margin-top: 5px;
+    margin-top: -8px;
     margin-bottom: 15px;
 }
 
+.g{
+    margin-top: 10px;
+}
+
+.kcal{
+    margin-top:11px;
+    height: 66px;
+}
 input {
     width: 240px;
     height: 40px;
 }
 
+.cal-Kcal{
+    font-size: 20px;
+}
 .preview {
     width: 204px;
-    height: 260px;
-    line-height: 260px;
+    height: 280px;
+    line-height: 280px;
     border: 1px solid rgb(202, 202, 202);
     text-align: center;
     vertical-align: middle;
     margin-left: 10px;
+    margin-top: 30px;
 }
 
 .preview-img {

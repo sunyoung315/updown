@@ -26,12 +26,10 @@ const REST_UPDOWN_API = `http://localhost:8080/updown`;
 
 const attrs = ref([
     {
-        key: 'today',
         highlight: {
             color: 'blue',
             fillMode: 'light',
         },
-        dates: new Date(),
     },
 ]);
 

@@ -14,11 +14,12 @@
             <thead>
                 <tr>
                     <th class="name diet-type">음식 이름</th>
-                    <th class="name th-diet-met">열량(일회제공량 기준)</th>
+                    <th class="name th-diet-met">열량 (1g) </th>
                 </tr>
             </thead>
         </table>
-        <div class="box" style="height: 386px; overflow-y: auto;">
+        <div class="search-find" :class="{find : ok}" v-if="searchList==''">검색 결과가 없습니다.</div>
+        <div v-else class="box" style="height: 386px; overflow-y: auto;">
         <table class="table" id="diet">
                 <tbody>
                     <tr id="diet-content" @click="getInfo(info)" class="cursor" v-for="info in searchList" :key="info.type">
@@ -33,7 +34,7 @@
 
 <script setup>
 import axios from 'axios';
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 
 const props = defineProps({
     category: String
@@ -48,6 +49,8 @@ const searchDiet = ref({
 });
 
 const word = ref('');
+
+let ok = ref(false);
 
 const emits = defineEmits(["getInfo", "search", "regist"]);
 
@@ -69,10 +72,17 @@ const search = function () {
         }
     })
         .then((res) => {
+            if(!res.data.body.items) {
+                ok.value=true;
+                setTimeout(function(){
+                    ok.value=false;
+                },3000)
+                return;
+            }
             const response = res.data.body.items
             for (let i = 0; i < response.length; i++) {
                 searchDiet.value.food = response[i].DESC_KOR;
-                searchDiet.value.calorie = response[i].NUTR_CONT1;
+                searchDiet.value.calorie = response[i].NUTR_CONT1/response[i].SERVING_WT;
                 // 새로운 객체를 생성하여 push
                 searchList.value.push({ food: searchDiet.value.food, calorie: searchDiet.value.calorie });
             }
@@ -97,6 +107,15 @@ const search = function () {
 </script>
 
 <style scoped>
+.find{
+    color: red;
+}
+
+.search-find{
+    margin-left: 40px;
+    margin-top: 25px;
+}
+
 .diet-search {
     padding-bottom: 40px;
     border-radius: 20px;
