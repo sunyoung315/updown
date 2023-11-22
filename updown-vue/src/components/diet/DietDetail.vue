@@ -16,7 +16,7 @@
                                 <tr v-for="diet in store.todayDietBreakFast" key="diet.no">
                                     <td class="diet-col"><img style="width: 20px; margin-right: 6px;" src="../../asset/bootstrap-icon/check-lg.svg" alt="row"></td>  
                                     <td class="diet-food-col">{{ diet.food }}</td>  
-                                    <td class="diet-calorie-col">{{ diet.calorie }}kcal</td>  
+                                    <td class="diet-calorie-col">{{ diet.calorie.toFixed(1) }}kcal</td>  
                                     <td><img class="cursor" @click="modify(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정"></td>
                                     <td><img class="cursor" @click="remove(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/trash3.svg" alt="삭제"></td>
                                 </tr>
@@ -119,7 +119,7 @@
 
 <script setup>
 import { useDietStore } from '@/stores/diet';
-import { ref, watchEffect } from 'vue';
+import { ref, watchEffect} from 'vue';
 
 const store = useDietStore();
 
@@ -135,7 +135,6 @@ const regDate = year + '-' + month + '-' + day;
 const loginUserId = JSON.parse(localStorage.getItem("loginUser")).id;
 
 const emits = defineEmits(["modify", "regist", "graph", "remove"]);
-
 
 const regist = function () {
     emits("regist");
@@ -209,7 +208,7 @@ watchEffect(async() => {
 .diet-table {
     margin-left: 10px;
     margin-right: 10px;
-    margin-top: 20px;
+    margin-top: 25px;
     height: 260px;
     display: flex;
 }
@@ -229,10 +228,11 @@ tr {
 }
 .diet-img{
     width: 200px;
-    height: 260px;
-    line-height: 260px;
+    height: 300px;
+    line-height: 300px;
     margin-left: 5px;
     background-color: rgb(225, 225, 225);
+    margin-top: 10px;
 }
 .food-img {
     width: 180px;
@@ -240,6 +240,7 @@ tr {
     margin-right: 10px;
     vertical-align: middle;
 }
+
 .box::-webkit-scrollbar { 
     width: 5px; 
 }
