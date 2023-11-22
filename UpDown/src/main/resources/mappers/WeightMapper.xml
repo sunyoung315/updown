@@ -23,4 +23,11 @@
 		FROM weight
 		WHERE user_id = #{loginUserId} AND reg_date = #{regDate}
 	</select>
+	
+	<!-- 7일간의 체중 기록 초죄 -->
+	<select id="selectWeightList" parameterType="String" resultType="Weight">
+		SELECT no, now_weight as nowWeight, date_format(reg_date, '%m/%d') as regDate, user_id as userId
+		FROM weight
+		WHERE user_id = #{loginUserId} AND reg_date BETWEEN date_format(DATE_ADD(now(), INTERVAL -6 DAY), '%Y-%m-%d') AND date_format(now(), '%Y-%m-%d');
+	</select>
 </mapper>
