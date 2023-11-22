@@ -58,7 +58,7 @@
                     <br>
 
                     <label>프로필 사진(선택)</label>
-                    <div class="input-group flex-nowrap" style="width: 400px;">
+                    <div class="input-group flex-nowrap" style="width: 540px;">
                         <input type="file" class="form-control" placeholder="Username" aria-label="Username"
                             aria-describedby="addon-wrapping =" ref="serveyImage" style="color: #a8a7a7; height: 35px;">
                     </div>
@@ -245,7 +245,7 @@ getUserList();
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 450px;
+    width: 550px; 
     text-align: left;
     line-height: 20px;
     margin-top: 30px;
@@ -264,8 +264,9 @@ h2 {
 input {
     border: 1px solid #929191;
     border-radius: 7.5px;
-    height: 35px;
-    width: 400px;
+    height: 45px;
+    width: 540px;
+    font-size: 18px;
 }
 
 #gomodify {
@@ -291,20 +292,23 @@ input {
 .myprofile-modify-container {
     padding-top: 20px;
     margin-left: 350px;
-    width: 500px;
+    width: 900px;
     text-align: center;
 
 }
 
 a {
-    width: 400px;
+    width: 540px;
     text-align: right;
     text-decoration: underline;
     color: #a8a7a7;
+    font-size: 17px;
 }
 #gohome {
+    margin-top: 10px;
     text-align: right;
-    width: 400px;
+    width: 540px;
+    font-size: 18px;
 }
 
 #img {

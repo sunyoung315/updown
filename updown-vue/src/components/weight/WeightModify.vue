@@ -98,7 +98,8 @@ input {
     top: 140px
 }
 #check{
-    font-size: 12.3px;
+    font-size: 14px;
     color: red;
+    font-family: 'mobileregular';
 }
 </style>

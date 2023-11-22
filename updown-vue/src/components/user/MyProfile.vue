@@ -6,7 +6,7 @@
                 <div class="img-box">
                     <img v-if="loginUser.img == true || loginUser.img !== null" style="width: 258px;"
                         :src="'http://localhost:8080/upload/' + loginUser.img" alt="프로필 사진1">
-                    <img v-else style="width: 258px" src="../../asset/icon/free-icon-strength-908893.png" alt="프로필 사진">
+                    <img v-else style="width: 258px" src="../../asset/bootstrap-icon/person-square.svg" alt="프로필 사진">
                 </div>
                 <br>
                 <div class="modify">

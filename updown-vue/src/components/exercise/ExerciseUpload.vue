@@ -123,8 +123,9 @@ input {
     color: rgb(100, 100, 100);
 }
 
-p{
-    font-size: 11px;
+p{   
+    font-size: 13px;
     color: red;
+    font-family: 'mobileregular';
 }
 </style>

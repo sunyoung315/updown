@@ -28,13 +28,15 @@ const logout = function() {
 </script>
 
 <style>
-@font-face {
-    font-family: 'mobilepop';
-    src: url('/font/ONEMobilePOP.ttf')
-}
+
 @font-face {
     font-family: 'mobiletitle';
     src: url('/font/ONEMobileTitle.ttf')
+}
+
+@font-face {
+    font-family: 'mobileregular';
+    src: url('/font/ONE Mobile Regular/ONE Mobile Regular.ttf')
 }
 
 header {
