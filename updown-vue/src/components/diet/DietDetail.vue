@@ -119,7 +119,7 @@
 
 <script setup>
 import { useDietStore } from '@/stores/diet';
-import { ref, watchEffect} from 'vue';
+import { ref, watch} from 'vue';
 
 const store = useDietStore();
 
@@ -164,7 +164,7 @@ const sum = function () {
     }
 }
 
-watchEffect(async() => {
+watch(async() => {
     if (props.category == '아침') { 
         await store.todayDietBreakFast
         await store.getDietBreakFast(loginUserId, regDate).then(sum); 

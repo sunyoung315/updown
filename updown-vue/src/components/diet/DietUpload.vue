@@ -54,7 +54,6 @@ import { ref, onMounted } from 'vue';
 import { useDietStore } from '@/stores/diet';
 import axios from 'axios';
 
-
 const previewImage = ref('');
 const changeImage = function (event) {
     const files = event.target.files;
@@ -101,7 +100,6 @@ const newDiet = ref({
     userId: loginUserId
 });
 
-
 const emits = defineEmits(["home", "search"])
 
 const store = useDietStore();
@@ -112,10 +110,10 @@ const search = function () {
 
 }
 
-onMounted(() => {
-    props.info.food = '';
-    props.info.calorie = '';
-})
+    // onMounted(() => {
+    //     props.info.food = '';
+    //     props.info.calorie = '';
+    // })
 
 const getDietBreakFast = async function () {
     await store.getDietBreakFast(loginUserId, regDate);

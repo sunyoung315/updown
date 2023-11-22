@@ -81,6 +81,7 @@ const search = function () {
             }
             const response = res.data.body.items
             for (let i = 0; i < response.length; i++) {
+                if(response[i].SERVING_WT==0) continue;
                 searchDiet.value.food = response[i].DESC_KOR;
                 searchDiet.value.calorie = response[i].NUTR_CONT1/response[i].SERVING_WT;
                 // 새로운 객체를 생성하여 push
