@@ -180,7 +180,7 @@ const home = function () {
 .diet-box-flex {
     display: flex;
     height: 260px;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 .diet-box {
     margin-left: 25px;

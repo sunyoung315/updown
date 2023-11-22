@@ -12,9 +12,11 @@
         <div class="diet-box-flex">
             <div class="diet-box">
                 <div class="diet-box-row">
-                    <label>음식 검색 </label>
-                    <img @click="search" class="cursor" style="width: 43px; margin: 0px 5px 8px 8px;"
-                        src="../../asset/bootstrap-icon/search.svg" alt="검색">
+                    <div class="diet-search">
+                        <label>음식 검색 </label>
+                        <img @click="search" class="cursor" style="width: 43px; padding: 0px 0px 5px 10px;"
+                            src="../../asset/bootstrap-icon/search.svg" alt="검색">
+                    </div>
                     <input type="text" v-model="props.info.food" placeholder="음식을 직접 입력할 수도 있어요.">
                 </div>
                 <div class="diet-box-row">
@@ -22,6 +24,8 @@
                         <label>섭취량</label><br>
                         <input type="number" v-model="gram" placeholder="섭취량을 입력해주세요."> g
                     </div>
+                </div>
+                <div class="diet-box-row">
                     <div class="kcal">
                         <label>음식 칼로리</label><br>
                         <div class="cal-Kcal" v-if="props.info.food">{{ (props.info.calorie * gram).toFixed(1) }} kcal</div>
@@ -30,10 +34,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="diet-box-img">
-                    <label>음식사진(선택)</label>
-                    <div>
-                        <input ref="serveyImage" type="file" accept="image/*" @change="changeImage">
+                <div class="diet-box-row">
+                    <div class="diet-box-img">
+                        <label>음식사진(선택)</label>
+                        <div>
+                            <input ref="serveyImage" type="file" accept="image/*" @change="changeImage">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -132,9 +138,6 @@ const submitForm = async () => {
     else
         newDiet.value.calorie = inputKcal.value;
 
-    console.log("----upload---")
-    // console.log(serveyImage.value)
-    // console.log(previewImage.value)
     if (serveyImage.value.files[0] == null) {
         if (props.category == '아침') {
             newDiet.value.category = "아침"
@@ -260,10 +263,9 @@ const home = function () {
     font-size: 40px;
     padding-left: 10px;
 }
-
 .diet-box-flex {
     display: flex;
-    height: 260px;
+    height: 330px;
     margin-top: 20px;
 }
 
@@ -272,31 +274,26 @@ const home = function () {
     flex-direction: column;
     margin-left: 25px;
     width: 290px;
-    height: 260px;
+    height: 290px;
 }
 
 label {
+    padding-top: 5px;
     font-size: 20px;
 }
-
+.diet-search {
+    display: flex;
+    justify-items: baseline;
+}
 .diet-box-row {
     margin-top: -8px;
     margin-bottom: 15px;
 }
 
-.g{
-    margin-top: 10px;
-}
-
-.kcal{
-    margin-top:11px;
-    height: 66px;
-}
 input {
     width: 240px;
     height: 40px;
 }
-
 .cal-Kcal{
     font-size: 20px;
 }
@@ -308,7 +305,7 @@ input {
     text-align: center;
     vertical-align: middle;
     margin-left: 10px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .preview-img {

@@ -17,7 +17,7 @@
             </thead>
         </table>
         <table class="table" id="exercise">
-            <div class="box" style="height: 386px; overflow-y: auto;">
+            <div class="box" style="height: 250px; overflow-y: auto;">
                 <tbody>
                     <tr id="exercise-content" @click="getInfo(info)" class="cursor" v-for="info in exerciseInfoList" :key="info.type">
                         <td class="exercise-type">{{ info.type }}</td>  
