@@ -35,7 +35,6 @@ public class DietController {
 	// 식단 수정
 	@PutMapping("/diet/modify")
 	public ResponseEntity<?> modifyDiet(@RequestBody Diet diet) {
-		System.out.println(diet);
 		// 만약 식단이 잘 수정되었다면
 		if (dietService.modifyDiet(diet)) {
 			return new ResponseEntity<Diet>(diet, HttpStatus.OK);

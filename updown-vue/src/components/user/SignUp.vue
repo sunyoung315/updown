@@ -259,6 +259,7 @@ getUserList();
     width: 450px;
     overflow:  auto;
     height: 600px;
+    line-height: 33px;
 }
 
 .signup::-webkit-scrollbar{
