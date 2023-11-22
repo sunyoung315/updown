@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { shallowRef, onMounted } from 'vue';
+import { shallowRef, onMounted, onUpdated } from 'vue';
 import { useWeightStore } from '@/stores/weight';
 
 import WeightDetail from '@/components/weight/WeightDetail.vue';
@@ -46,6 +46,11 @@ const store = useWeightStore();
 onMounted(async () => {
     await store.getWeight(loginUserId, regDate);
     await store.getWeightList(loginUserId);
+})
+
+onUpdated(async () => {
+  await store.weightList;
+  await store.getWeightList(loginUserId);
 })
 
 </script>
