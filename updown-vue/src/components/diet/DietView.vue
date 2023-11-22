@@ -2,7 +2,7 @@
     <div class="diet-container">
         <div class="diet-head">
             <div class="diet-title">식단</div>
-            <div class="diet-calorie">총 섭취 칼로리 : {{ totalCalorie }} kcal</div>
+            <div class="diet-calorie">총 섭취 칼로리 : {{ totalCalorie.toFixed(1) }} kcal</div>
         </div>
         <div>
             <div class="diet-box">

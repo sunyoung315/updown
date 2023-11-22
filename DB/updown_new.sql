@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `diet` (
   `no` INT NOT NULL AUTO_INCREMENT,
   `category` VARCHAR(100) NOT NULL,
   `food` VARCHAR(300) NOT NULL,
-  `calorie` DECIMAL(5,1) NOT NULL DEFAULT '0',
+  `calorie` INT NOT NULL DEFAULT '0',
   `reg_date` DATE NOT NULL,
   `img` VARCHAR(100) NULL DEFAULT NULL,
   `org_img` VARCHAR(100) NULL DEFAULT NULL,
@@ -145,4 +145,5 @@ CREATE TABLE IF NOT EXISTS `exercise_info` (
   PRIMARY KEY (`type`))
 ENGINE = InnoDB;
 
-SELECT * FROM diet;
+SELECT * FROM weight;
+DELETE FROM weight WHERE reg_date = '2023-11-21'
