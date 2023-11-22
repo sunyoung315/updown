@@ -1,5 +1,7 @@
 package com.ssafy.updown.model.dao;
 
+import java.util.List;
+
 import com.ssafy.updown.model.dto.Weight;
 
 public interface WeightDao {
@@ -12,5 +14,8 @@ public interface WeightDao {
 
 	// 당일 체중 조회
 	Weight selectWeight(String loginUserId, String regDate);
+	
+	//7일간의 체중 기록 초죄
+	List<Weight> selectWeightList(String loginUserId);
 	
 }

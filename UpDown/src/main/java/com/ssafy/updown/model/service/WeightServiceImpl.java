@@ -1,5 +1,7 @@
 package com.ssafy.updown.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,13 @@ public class WeightServiceImpl implements WeightService {
 	public Weight getWeight(String loginUserId, String regDate) {
 		Weight weight = weightDao.selectWeight(loginUserId, regDate);
 		return weight;
+	}
+
+	//7일간의 체중 기록 초죄
+	@Override
+	public List<Weight> getWeightList(String loginUserId) {
+		List<Weight> wList = weightDao.selectWeightList(loginUserId);
+		return wList;
 	}
 
 }
