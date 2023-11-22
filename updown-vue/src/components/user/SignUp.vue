@@ -28,9 +28,9 @@
                     <label for="targetWeight">목표 체중</label>
                     <input v-model="signupUser.targetWeight" type="number" id="targetWeight" name="targetWeight"
                         placeholder="목표 체중을 입력해주세요.">
-                    <a>
-                        kg
-                    </a>
+                            <a>
+                                kg
+                            </a>
                     <br>
                     <label for="targetTime">하루 목표 운동 시간</label>
                     <input v-model="signupUser.targetTime" type="number" id="targetTime" name="targetTime"
@@ -74,9 +74,9 @@
 
                     <br>
                     <input id="gosignup" type="submit" value="회원가입">
-                    <a id="signup">
+                    <div id="signup">
                         <RouterLink to="/">홈으로</RouterLink>
-                    </a>
+                    </div>
                     <br><br>
                 </fieldset>
             </div>
@@ -266,6 +266,10 @@ getUserList();
     display: none;
 }
 
+#signup{
+    text-align: right;
+    width: 400px;
+}
 h2 {
     text-align: center;
 }
