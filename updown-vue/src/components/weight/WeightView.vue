@@ -1,13 +1,13 @@
 <template>
     <div class="container ratio ratio-1x1">
         <KeepAlive>
-            <component :is="choose" :regDates="regDates" :weights="weights" @regist="regist" @modify="modify" @home="home" @graph="graph"/>
+            <component :is="choose" @regist="regist" @modify="modify" @home="home" @graph="graph"/>
         </KeepAlive>
     </div>
 </template>
 
 <script setup>
-import { shallowRef, onMounted, computed } from 'vue';
+import { shallowRef, onMounted } from 'vue';
 import { useWeightStore } from '@/stores/weight';
 
 import WeightDetail from '@/components/weight/WeightDetail.vue';
@@ -47,9 +47,6 @@ onMounted(async () => {
     await store.getWeight(loginUserId, regDate);
     await store.getWeightList(loginUserId);
 })
-
-const regDates = computed(() => store.weightList.map((w) => w.regDate));
-const weights = computed(() => store.weightList.map((w) => w.nowWeight));
 
 </script>
 
