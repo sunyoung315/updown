@@ -11,7 +11,7 @@
             <div>
                 <div class="diet-table" v-if="store.todayDietBreakFast.length !== 0">
                     <table class="table">
-                        <div class="box" style="height: 260px; overflow-y: auto;">
+                        <div class="box">
                             <tbody>
                                 <tr v-for="diet in store.todayDietBreakFast" key="diet.no">
                                     <td class="diet-col"><img style="width: 20px; margin-right: 6px;" src="../../asset/bootstrap-icon/check-lg.svg" alt="row"></td>  
@@ -38,7 +38,7 @@
             <div>
                 <div class="diet-table" v-if="store.todayDietLunch.length !== 0">
                     <table class="table">
-                        <div class="box" style="height: 260px; overflow-y: auto;">
+                        <div class="box">
                             <tbody>
                                 <tr v-for="diet in store.todayDietLunch" key="diet.no">
                                     <td class="diet-col"><img style="width: 20px; margin-right: 6px;" src="../../asset/bootstrap-icon/check-lg.svg" alt="row"></td>  
@@ -65,7 +65,7 @@
             <div>
                 <div class="diet-table" v-if="store.todayDietDinner.length !== 0">
                     <table class="table">
-                        <div class="box" style="height: 260px; overflow-y: auto;">
+                        <div class="box">
                             <tbody>
                                 <tr v-for="diet in store.todayDietDinner" key="diet.no">
                                     <td class="diet-col"><img style="width: 20px; margin-right: 6px;" src="../../asset/bootstrap-icon/check-lg.svg" alt="row"></td>  
@@ -119,7 +119,7 @@
 
 <script setup>
 import { useDietStore } from '@/stores/diet';
-import { ref, watch} from 'vue';
+import { ref, watchEffect} from 'vue';
 
 const store = useDietStore();
 
@@ -164,7 +164,7 @@ const sum = function () {
     }
 }
 
-watch(async() => {
+watchEffect (async() => {
     if (props.category == '아침') { 
         await store.todayDietBreakFast
         await store.getDietBreakFast(loginUserId, regDate).then(sum); 
@@ -208,8 +208,8 @@ watch(async() => {
 .diet-table {
     margin-left: 10px;
     margin-right: 10px;
-    margin-top: 25px;
-    height: 260px;
+    margin-top: 20px;
+    height: 320px;
     display: flex;
 }
 tr {
@@ -218,7 +218,6 @@ tr {
 }
 .table {
     width: 313px;
-    height: 260px;
 }
 .diet-food-col {
     width: 130px;
@@ -240,7 +239,11 @@ tr {
     margin-right: 10px;
     vertical-align: middle;
 }
-
+.box {
+    height: 300px; 
+    overflow-y: auto;
+    margin-top: 10px;
+}
 .box::-webkit-scrollbar { 
     width: 5px; 
 }
