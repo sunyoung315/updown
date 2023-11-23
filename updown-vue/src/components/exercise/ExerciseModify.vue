@@ -10,24 +10,24 @@
         <div class="exercise-modify-box">
             <div>
                 <label for="type">운동 종류 : </label><br>
-                <div class="exercise-value">{{ props.exercise.type }}</div>
+                <div class="exercise-fix">{{ props.exercise.type }}</div>
             </div>
             <div>
                 <label for="time">운동 시간 : </label><br>
-                <div class="exercise-value"><input type="number" id="time" v-model="props.exercise.time">min</div>
+                <div class="exercise-value"><input type="number" id="time" v-model="newExercise.time">min</div>
                 <p v-if="!newExercise.time">운동 시간을 등록해주세요.</p>
             </div>
             <div>
                 <label for="calorie">소모 칼로리 : </label><br>
                 <div v-if="!exerciseInfo.met">
-                    <div class="exercise-value"><input type="number" id="time" v-model="props.exercise.calorie">kcal</div>
+                    <div class="exercise-value"><input type="number" id="time" v-model="newExercise.calorie">kcal</div>
                 </div>
                 <div v-else>
                     <div v-if="weight">
-                        <div class="exercise-value">{{ (exerciseInfo.met * (3.5 * weight * newExercise.time) / 1000 * 5).toFixed(1) }} kcal</div>
+                        <div class="exercise-fix">{{ (exerciseInfo.met * (3.5 * weight * newExercise.time) / 1000 * 5).toFixed(1) }} kcal</div>
                     </div>
                     <div v-else>
-                        <div class="exercise-value">{{ (exerciseInfo.met * (3.5 * 50 * newExercise.time) / 1000 * 5).toFixed(1) }} kcal</div>
+                        <div class="exercise-fix">{{ (exerciseInfo.met * (3.5 * 50 * newExercise.time) / 1000 * 5).toFixed(1) }} kcal</div>
                     </div>
                 </div>
             </div>
@@ -82,10 +82,12 @@ const modify = function() {
         }else {
             newExercise.value.calorie = (exerciseInfo.value.met * (3.5 * 50 * newExercise.value.time) / 1000 * 5).toFixed(1);
         }
-    } else {
-        newExercise.value.calorie = props.exercise.calorie;
     }
     store.modifyExercise(newExercise.value);
+    props.exercise.type = ''
+    props.exercise.time = 0;
+    props.exercise.calorie = 0;
+    props.exercise.no = 0;
     emits("list")
 }
 
@@ -111,7 +113,7 @@ const list = function() {
     justify-content: space-between;
 }
 .exercise-modify-box {
-    margin-top: 0.7rem;
+    margin-top: 2rem;
     margin-left: 2rem;
     margin-right: 2rem;
 }
@@ -127,6 +129,10 @@ input {
 }
 .exercise-value {
     font-size: 1.5rem;
+}
+.exercise-fix {
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 p{   
     font-size: 0.7rem;

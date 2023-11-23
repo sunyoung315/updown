@@ -132,7 +132,7 @@ const search = async function() {
     justify-content: space-between;
 }
 .exercise-upload-box {
-    margin-top: 0.7rem;
+    margin-top: 2rem;
     margin-left: 2rem;
     margin-right: 2rem;
 }
@@ -158,7 +158,7 @@ p{
 input {
     width: 14rem;
     height: 2.5rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 input::placeholder {
     font-size: 0.9rem;
