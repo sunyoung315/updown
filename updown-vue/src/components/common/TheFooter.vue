@@ -25,7 +25,6 @@
 footer {
     width: 100%;
     height: 100px;
-    background-color: white;
     line-height: 100px;
 }
 div {

@@ -1,7 +1,7 @@
 <template>
     <header>
         <div class="header-container">
-            <RouterLink to="today"><img class="cursor" style="width: 60px;" src="../../asset/icon/weight-scale.png" alt="로고"></RouterLink> 
+            <RouterLink to="today"><img class="cursor" style="width: 60px;" src="../../asset/image/표지이미지.png" alt="로고"></RouterLink> 
             <nav>
                 <RouterLink :to="{name: 'today'}" style="font-size: 20px; padding-right: 30px;">오늘의 기록</RouterLink>|
                 <RouterLink :to="{name: 'record'}" style="font-size: 20px; padding-left: 30px;">과거 기록 조회</RouterLink>
