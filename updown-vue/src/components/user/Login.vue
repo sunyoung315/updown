@@ -1,7 +1,10 @@
 <template>
     <div>
         <div class="login-container">
-            <h2>로그인</h2>
+            <div class="logo-img">
+                <img style="width: 150px;" src="../../asset/image/updown-logo.jpg" alt="로고">
+            </div>
+                <div class="login-title">로그인</div>
             <br>
             <fieldset class="login">
                 <label for="id">아 이 디</label>
@@ -41,11 +44,20 @@ const login = function () {
 .login-container {
     width: 450px;
 }
-
 .login {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}
+.logo-img{
+    text-align: center;
+}
+img {
+    margin: 20px;
+}
+.login-title {
+    font-size: 40px;
+    text-align: center;
 }
 
 h2 {

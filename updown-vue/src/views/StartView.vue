@@ -15,7 +15,8 @@
 
 <style scoped>
 .show {
-    padding: 160px;
+    padding-left: 160px;
+    padding-top: 100px;
     width: 650px;
     margin-left: 35px;
 }

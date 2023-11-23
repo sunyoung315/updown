@@ -1,7 +1,7 @@
 <template>
     <header>
         <div class="header-container">
-            <RouterLink to="today"><img class="cursor" style="width: 60px;" src="../../asset/image/표지이미지.png" alt="로고"></RouterLink> 
+            <RouterLink to="today"><img class="cursor" style="width: 150px;" src="../../asset/image/updown-logo.jpg" alt="로고"></RouterLink> 
             <nav>
                 <RouterLink :to="{name: 'today'}" style="font-size: 20px; padding-right: 30px;">오늘의 기록</RouterLink>|
                 <RouterLink :to="{name: 'record'}" style="font-size: 20px; padding-left: 30px;">과거 기록 조회</RouterLink>
@@ -38,11 +38,15 @@ const logout = function() {
     font-family: 'mobileregular';
     src: url('/font/ONE Mobile Regular/ONE Mobile Regular.ttf')
 }
+nav {
+    margin-top: 20px;
+    /* margin-right: 500px; */
+}
 
 header {
     width: 100%;
-    height: 100px;
-    line-height: 100px;
+    height: 140px;
+    line-height: 140px;
     border-bottom: 1px solid rgb(199, 199, 199);
 }
 .header-container {
