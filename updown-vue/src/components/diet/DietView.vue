@@ -57,21 +57,16 @@ watchEffect (async () => {
 
 <style scoped>
 
-.diet-container {
-    /* border: 1rem solid; */
-
-    width: 80%;
-    /* margin: 0.2rem auto; */
-
-    /* margin: 20px;
-    aspect-ratio: 7/4; */
-    /* border: 1rem solid; */
+#diet-container {
+    width: 81.5%;
     border-radius: 1rem;
     padding: 2rem;
     background-color: rgb(83, 120, 77);
+    margin: 1rem;
 }
 .diet-title {
-    font-size: 50px;
+    font-size: xx-large;
+    font-weight: bolder;
     color: white;
 }
 .diet-head {
@@ -82,8 +77,9 @@ watchEffect (async () => {
     display: flex;
 }
 .diet-calorie {
-    font-size: 30px;
-    padding-top: 20px;
-    padding-right: 20px;
+    font-size: x-large;
+    font-weight: 600;
+    padding-top: 0.5rem;
+    padding-right: 1.6rem;
 }
 </style>

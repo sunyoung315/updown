@@ -53,12 +53,12 @@ const remove = function(diet) {
 <style scoped>
 .container {
     display: inline-block;
-    width: 33rem;
-    height: 22rem;
-    border-radius: 1rem;
+    width: 35rem;
+    height: 20rem;
+    border-radius: 0.5rem;
     background-color: white;
     margin: 1em 0.5em 0 0;
-    padding: 1em;
+    padding: 0.7em;
 }
 
 </style>

@@ -3,9 +3,9 @@
         <div class="diet-head">
             <span class="diet-head-category">{{ category }}</span>
             <div>
-                <img class="cursor" @click="submitForm" style="width: 43px; margin: 5px 5px 0px 5px;"
+                <img class="cursor" @click="submitForm"
                     src="../../asset/bootstrap-icon/save.svg" alt="저장">
-                <img class="cursor" @click="home" style="width: 50px; margin: 5px 0px 0px 5px;"
+                <img class="cursor" @click="home" id="home-btn"
                     src="../../asset/bootstrap-icon/house.svg" alt="목록">
             </div>
         </div>
@@ -13,11 +13,10 @@
             <div class="diet-box">
                 <div class="diet-box-row">
                     <div class="diet-search">
-                        <label>음식 검색 </label>
-                        <img @click="search" class="cursor" style="width: 43px; padding: 0px 0px 5px 10px;"
-                            src="../../asset/bootstrap-icon/search.svg" alt="검색">
+                        <label>음식명 </label>
+                        <img @click="search" id="search-btn" class="cursor" src="../../asset/bootstrap-icon/search.svg" alt="검색">
                     </div>
-                    <div v-if="props.info.food"> {{ props.info.food }}</div>
+                    <div class="value" v-if="props.info.food"> {{ props.info.food }}</div>
                     <div v-else>
                         <input type="text" :class="{input : !foodName}" v-model="foodName" placeholder="음식을 직접 입력할 수도 있어요.">
                     </div>
@@ -25,21 +24,21 @@
                 <div class="diet-box-row">
                     <div class="g">
                         <label>섭취량</label><br>
-                        <input type="number" :class="{input : !gram}" v-model="gram" placeholder="섭취량을 입력해주세요."> g
+                        <input type="number" :class="{input : !gram}" v-model="gram" placeholder="섭취량을 입력해주세요.">g
                     </div>
                 </div>
                 <div class="diet-box-row">
                     <div class="kcal">
                         <label>음식 칼로리</label><br>
-                        <div class="cal-Kcal" v-if="props.info.food">{{ (props.info.calorie * gram).toFixed(1) }} kcal</div>
+                        <div class="value" v-if="props.info.food">{{ (props.info.calorie * gram).toFixed(1) }}kcal</div>
                         <div v-else>
-                            <input type="text" :class="{input : !inputKcal}" v-model="inputKcal" placeholder="칼로리를 입력해주세요."> kcal
+                            <input type="text" :class="{input : !inputKcal}" v-model="inputKcal" placeholder="칼로리를 입력해주세요.">kcal
                         </div>
                     </div>
                 </div>
                 <div class="diet-box-row">
                     <div class="diet-box-img">
-                        <label>음식사진(선택)</label>
+                        <label>음식 사진(선택)</label>
                         <div>
                             <input ref="serveyImage" type="file" accept="image/*" @change="changeImage">
                         </div>
@@ -291,68 +290,85 @@ const home = function () {
 
 <style scoped>
 .input {
-    border: 4px solid rgb(83, 120, 77);
-    border-radius: 5px;
+    border: 0.2rem solid rgb(83, 120, 77);
+    border-radius: 0.2rem;
 }
+
 .diet-head {
     display: flex;
+    width: 26rem;
     justify-content: space-between;
+    margin-top: 0.3em;
 }
 
 .diet-head-category {
-    font-size: 40px;
-    padding-left: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-left: 0.3em;
 }
 .diet-box-flex {
     display: flex;
-    height: 330px;
-    margin-top: 20px;
+    height: 8em; 
+    margin-top: 0.5rem;
 }
-
+.value {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
 .diet-box {
     display: flex;
     flex-direction: column;
-    margin-left: 25px;
-    width: 290px;
-    height: 290px;
+    margin-left: 0.5rem;
+    width: 14.5rem;
+    height: 14.3em;
 }
 
 label {
-    padding-top: 5px;
-    font-size: 20px;
+    padding-top: 0.5rem;
+    font-size: 0.8rem;
 }
 .diet-search {
     display: flex;
     justify-items: baseline;
 }
-.diet-box-row {
-    margin-top: -8px;
-    margin-bottom: 15px;
-}
 
 input {
-    width: 240px;
-    height: 40px;
+    width: 11rem;
+    height: 1.6rem;
+    font-size: 0.7rem;
+    margin-bottom: 0.15rem;
 }
 .cal-Kcal{
-    font-size: 20px;
+    font-size: 0.7rem;
 }
 .preview {
-    width: 204px;
-    height: 280px;
-    line-height: 280px;
-    border: 1px solid rgb(202, 202, 202);
-    text-align: center;
+    width: 10.5em;
+    height: 14.3em;
+    background-color: rgb(225, 225, 225);
+    margin-top: 0.1em;
+    line-height: 14.3em;
     vertical-align: middle;
-    margin-left: 10px;
-    margin-top: 10px;
+    text-align: center;
 }
 
 .preview-img {
-    width: 180px;
-    margin-left: 10px;
-    margin-right: 10px;
-    vertical-align: middle;
+    width: 9.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+.cursor {
+    width: 2rem;
+    margin: 0rem 0 0.25rem 1rem;
+}
+#home-btn {
+    width: 2.3rem;
+    margin: 0rem 0.5rem 0.25rem 0.7rem;
+}
+#search-btn {
+    width: 2rem;
+    padding-left: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin: 0;
 }
 
 </style>

@@ -3,14 +3,14 @@
         <div class="diet-head">
             <span class="diet-head-category">{{ props.diet.category }}</span>
             <div>
-                <img class="cursor" @click="submitForm" style="width: 43px; margin: 5px 5px 0px 5px;" src="../../asset/bootstrap-icon/save.svg" alt="저장">
-                <img class="cursor" @click="home" style="width: 50px; margin: 5px 0px 0px 5px;" src="../../asset/bootstrap-icon/house.svg" alt="목록">
+                <img class="cursor" @click="submitForm" src="../../asset/bootstrap-icon/save.svg" alt="저장">
+                <img class="cursor" @click="home" id="home-btn" src="../../asset/bootstrap-icon/house.svg" alt="목록">
             </div>
         </div>
         <div class="diet-box-flex">
             <div class="diet-box">
                 <div class="diet-box-row">
-                    <label>음식 이름</label><br>
+                    <label>음식명</label><br>
                     <input type="text" id="food" v-model="newDiet.food">
                     <p v-if="!newDiet.food">식단을 등록해주세요.</p>
                 </div>
@@ -19,7 +19,7 @@
                     <input type="number" id="calorie" v-model="newDiet.calorie">kcal
                 </div>
                 <div class="diet-box-row">
-                    <label>음식사진(선택)</label>
+                    <label>음식 사진(선택)</label>
                     <div>
                         <input ref="serveyImage" type="file" accept="image/*" @change="changeImage">
                     </div>
@@ -171,51 +171,72 @@ const home = function () {
 <style scoped>
 .diet-head {
     display: flex;
+    width: 26rem;
     justify-content: space-between;
+    margin-top: 0.3em;
 }
 .diet-head-category {
-    font-size: 40px;
-    padding-left: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-left: 0.3em;
 }
 .diet-box-flex {
     display: flex;
-    height: 260px;
-    margin-top: 50px;
+    height: 8em; 
+    margin-top: 0.5rem;
 }
 .diet-box {
-    margin-left: 25px;
-    width: 290px;
-    height: 260px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.5rem;
+    width: 14.5rem;
+    height: 14.3em;
 }
 label {
     font-size: 20px;
 }
 .diet-box-row {
-    margin-top: 5px;
-    margin-bottom: 15px;
+    padding-top: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+label {
+    padding-top: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
 }
 input {
-    width: 240px;
-    height: 40px;
+    width: 11rem;
+    height: 1.6rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.15rem;
 }
 .preview {
-    width: 204px;
-    height: 260px;
-    line-height: 260px;
-    border: 1px solid rgb(202, 202, 202);
-    text-align: center;
+    width: 10.5em;
+    height: 14.3em;
+    background-color: rgb(225, 225, 225);
+    margin-top: 0.1em;
+    line-height: 14.3em;
     vertical-align: middle;
-    margin-left: 10px;
+    text-align: center;
 }
 .preview-img {
-    width: 180px;
-    margin-left: 10px;
-    margin-right: 10px;
-    vertical-align: middle;
+    width: 9.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
-p{
-    font-size: 11px;
-    color: red;
+.cursor {
+    width: 2rem;
+    margin: 0rem 0 0.25rem 1rem;
 }
-
+#home-btn {
+    width: 2.3rem;
+    margin: 0rem 0.5rem 0.25rem 0.7rem;
+}
+#search-btn {
+    width: 2rem;
+    padding-left: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin: 0;
+}
 </style>

@@ -6,7 +6,7 @@
         </div>
         <p>7일간의 몸무게 변화</p>
         <div id="chart">
-            <apexchart type="line" height="320" :options="chartOptions" :series="series"></apexchart>
+            <apexchart type="line" height="290" :options="chartOptions" :series="series"></apexchart>
         </div>
     </div>
 </template>
@@ -38,7 +38,7 @@ const chartOptions = ref({
   colors: ["#C16060"],
   chart: {
     type: 'line',
-    height: 320,
+    height: 290,
     zoom: {
       enabled: false
     },
@@ -101,6 +101,7 @@ const home = function() {
   background-color: rgb(193, 96, 96, 0.5);
   padding: 2rem;
   border-radius: 1rem;
+  margin: 1rem;
 }
 .weight-title {
   font-size: xx-large;
@@ -115,7 +116,7 @@ p {
   font-size: medium;
   font-weight: bold;
   padding-top: 0.5rem;
-  padding-left: 1rem;
+  padding-left: 2rem;
   margin-bottom: 0;
 }
 canvas {

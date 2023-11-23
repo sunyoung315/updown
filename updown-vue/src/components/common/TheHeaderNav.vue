@@ -3,14 +3,14 @@
         <div class="header-container">
             <RouterLink to="today"><img class="cursor" style="width: 150px;" src="../../asset/image/updown-logo.jpg" alt="로고"></RouterLink> 
             <nav>
-                <RouterLink :to="{name: 'today'}" style="font-size: 20px; padding-right: 30px;">오늘의 기록</RouterLink>|
-                <RouterLink :to="{name: 'record'}" style="font-size: 20px; padding-left: 30px;">과거 기록 조회</RouterLink>
+                <RouterLink :to="{name: 'today'}">오늘의 기록</RouterLink>
+                <RouterLink :to="{name: 'record'}">과거 기록 조회</RouterLink>
             </nav>
             <div>
                 <RouterLink :to="{ name: 'myprofile' }" style="padding-right: 30px;">
-                    <img class="cursor" style="width: 46px;" src="../../asset/bootstrap-icon/person-square.svg" alt="마이프로필">
+                    <img class="cursor" style="width: 2.2rem;" src="../../asset/bootstrap-icon/person-square.svg" alt="마이프로필">
                 </RouterLink>
-                <img class="cursor" @click="logout"  style="width: 60px;" src="../../asset/bootstrap-icon/box-arrow-right.svg" alt="로그아웃">
+                <img class="cursor" @click="logout"  style="width: 3rem;" src="../../asset/bootstrap-icon/box-arrow-right.svg" alt="로그아웃">
             </div>
         </div>
     </header>
@@ -29,14 +29,19 @@ const logout = function() {
 
 <style>
 nav {
-    margin-top: 20px;
-    /* margin-right: 500px; */
+    width: 17rem;
+    margin-top: 2rem;
+    margin-right: 27rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
 }
 
 header {
     width: 100%;
-    height: 140px;
-    line-height: 140px;
+    height: 9rem;
+    line-height: 9rem;
     border-bottom: 1px solid rgb(199, 199, 199);
 }
 .header-container {

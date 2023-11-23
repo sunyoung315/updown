@@ -24,7 +24,8 @@
 .start {
     display: flex;
     justify-content: center;
-    height: 1021px;
+    height: 57rem;
+    margin: 0;
 }
 
 #img{
