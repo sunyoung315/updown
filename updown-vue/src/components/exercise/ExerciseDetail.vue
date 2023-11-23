@@ -2,7 +2,7 @@
     <div class="exercise-detail">
         <div class="exercise-head">
             <div class="exercise-title">운동</div>
-            <img class="cursor" @click="list" style="width: 46px; height: 46px; margin: 15px 5px 0px 5px;" src="../../asset/bootstrap-icon/table.svg" alt="목록">
+            <img class="cursor" @click="list" src="../../asset/bootstrap-icon/table.svg" alt="목록">
         </div>
         <div class="today-exercise-box">
             <p class="today-exercise-key">총 운동 시간</p>
@@ -58,11 +58,13 @@ const list = function() {
 <style scoped>
 .exercise-detail {
     background-color: rgb(91, 94, 151);
-    padding: 40px;
-    border-radius: 20px;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 1rem;
 }
 .exercise-title {
-    font-size: 50px;
+    font-size: xx-large;
+    font-weight: bolder;
     color: white;
 }
 .exercise-head {
@@ -71,15 +73,25 @@ const list = function() {
 }
 .today-exercise-box {
     position: relative;
-    top: 60px
+    top: 3.5rem
 }
 .today-exercise-key {
-    font-size: 30px;
+    font-size: 1rem;
     text-align: center;
+    font-weight: 600;
 }
 .today-exercise-value {
-    font-size: 80px;
+    font-size: 2.8rem;
+    font-weight: 600;
     text-align: center;
+    margin-bottom: 1.5rem;
     color: white;
+}
+.cursor {
+    width: 2.1rem;
+    margin: 0.5rem 0 0.25rem 1rem;
+}
+p {
+    margin-bottom: 0;
 }
 </style>

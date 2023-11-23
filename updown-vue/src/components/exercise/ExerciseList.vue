@@ -3,8 +3,8 @@
         <div class="exercise-head">
             <div class="exercise-title">운동</div>
             <div>
-                <img class="cursor" @click="regist" style="width: 43px; height: 43px; margin: 15px 5px 0px 5px;" src="../../asset/bootstrap-icon/plus-square.svg" alt="등록">
-                <img class="cursor" @click="home" style="width: 49px; margin: 15px 5px 0px 5px;" src="../../asset/bootstrap-icon/house.svg" alt="홈으로">
+                <img class="cursor" @click="regist" src="../../asset/bootstrap-icon/plus-square.svg" alt="등록">
+                <img class="cursor" @click="home" id="home-icon" src="../../asset/bootstrap-icon/house.svg" alt="홈으로">
             </div>
         </div>
         <div class="exercise-date">{{ regDate }}</div>
@@ -22,8 +22,8 @@
                     <td>{{ exercise.type }}</td>
                     <td>{{ exercise.time }}min</td>
                     <td>{{ exercise.calorie.toFixed(1) }}kcal</td>
-                    <img class="cursor" @click="modify(exercise)" style="width: 40px;" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정">
-                    <img class="cursor" @click="remove(exercise)" style="width: 40px;" src="../../asset/bootstrap-icon/trash3.svg" alt="삭제">
+                    <img class="cursor" id="tb-btn" @click="modify(exercise)" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정">
+                    <img class="cursor" id="tb-btn" @click="remove(exercise)" src="../../asset/bootstrap-icon/trash3.svg" alt="삭제">
                 </tr>
             </tbody>
         </table>
@@ -73,50 +73,71 @@ const remove = function(exercise) {
 <style scoped>
 .exercise-list {
     background-color: rgb(91, 94, 151, 0.5);
-    padding: 40px;
-    border-radius: 20px;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 1rem;
 }
 .exercise-title {
-    font-size: 50px;
+    font-size: xx-large;
+    font-weight: bolder;
 }
 .exercise-head {
     display: flex;
     justify-content: space-between;
 }
 .exercise-date {
-    margin-top: 20px;
-    font-size: 18px;
+    margin-top: 0.5rem;
+    margin-left: 0.1rem;
+    font-size: 0.9rem;
 }
 .exercise-list-name {
-    font-size: 25px;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 0.2rem;
+    margin-bottom: 0.4rem;
 }
 table {
-    margin-top: 0px;
+    margin-top: 0;
 }
 th {
-    font-size: 16px;
+    font-size: 0.9rem;
 }
 #exercise tr td {
     background-color: transparent !important;
-    font-size: 18px;
+    font-size: 0.9rem;
     text-overflow: clip;
 }
 img {
     background-color: transparent;
 }
 .exercise-type {
-    width: 220px;
+    width: 9rem;
 }
 .exercise-time {
-    width: 100px;
+    width: 6.7rem;
 }
 .exercise-calorie {
-    width: 120px;
+    width: 6.7rem;
 }
 .no-exercise {
-    font-size: 18px;
-    margin-top: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+.cursor {
+    width: 2rem;
+    margin: 0.4rem 0.08rem 0.25rem 1rem;
+}
+#home-icon {
+    width: 2.35rem;
+    margin: 0.4rem 0 0.25rem 0.7rem;
+}
+#tb-btn {
+    width: 1.5rem;
+    margin: 0.52rem 0.2rem 0.52rem;
+    padding: 0;
+}
+img {
+    margin: 0;
 }
 </style>

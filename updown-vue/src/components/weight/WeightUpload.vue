@@ -64,6 +64,7 @@ const upload = async function() {
     background-color: rgb(193, 96, 96, 0.5);
     padding: 2rem;
     border-radius: 1rem;
+    margin: 1rem;
 }
 .weight-title {
     font-size: xx-large;

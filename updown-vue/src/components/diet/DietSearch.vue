@@ -2,15 +2,15 @@
     <div class="diet-search">
         <div class="diet-head">
             <div class="diet-head-category">{{ props.category }}</div>
-            <img class="cursor" @click="cancel" style="width: 43px; margin: 0px 5px 0px 5px;"
+            <img class="cursor" @click="cancel" 
                 src="../../asset/bootstrap-icon/x-lg.svg" alt="검색취소">
         </div>
         <div class="diet-search-input">
             <input type="text" placeholder="음식 이름을 검색해주세요." v-model="word" @keyup.enter="search">
-            <img @click="search" class="cursor" style="width: 40px; margin-left: 5px;" src="../../asset/bootstrap-icon/search.svg"
+            <img @click="search" id="search-btn" class="cursor" src="../../asset/bootstrap-icon/search.svg"
                 alt="검색">
         </div>
-        <table class="table">
+        <table class="table" id="table-head">
             <thead>
                 <tr>
                     <th class="diet-type">음식명</th>
@@ -19,7 +19,7 @@
             </thead>
         </table>
         <div class="search-find" :class="{find : ok}" v-if="searchList==''">검색 결과가 없습니다.</div>
-        <div v-else class="box" style="height: 250px; overflow-y: auto; overflow-x: hidden;">
+        <div v-else class="box" style="height: 11rem; overflow-y: auto; overflow-x: hidden;">
             <table class="table" id="diet">
                 <tbody>
                     <tr id="diet-content" @click="getInfo(info)" class="cursor" v-for="info in searchList" :key="info.type">
@@ -97,90 +97,106 @@ const search = function () {
 }
 
 .search-find{
-    margin-left: 40px;
-    margin-top: 25px;
-}
-
-.diet-search {
-    padding-bottom: 40px;
-    border-radius: 20px;
-    height: 380px;
+    font-size: 0.8rem;
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
 }
 
 .diet-head-category {
-    font-size: 40px;
-    padding-left: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-left: 0.3em;
 }
-
 
 .diet-head {
     display: flex;
+    width: 26rem;
     justify-content: space-between;
+    margin-top: 0.3em;
 }
 
 .diet-search-input {
     text-align: right;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-right: 13px;
+    margin-top: 0.2rem;
+    margin-bottom: 0.1rem;
+}
+input {
+    height: 1.5rem;
+    font-size: 0.8rem;
+    width: 11rem;
+}
+input::placeholder {
+    font-size: 0.8rem;
 }
 
 .table {
-    padding-left: 15px;
-    padding-right: 15px;
-    width: 500px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 0px;
+    width: 24rem;
+    margin-left: 1rem;
+    margin-bottom: 0;
 }
 tr {
-    height: 30px;
+    font-size: 0.9rem;
+    height: 1rem;
+    border-bottom: 0.12em solid #dddcdc;
 }
 td {
-    height: 30px;
+    font-size: 0.7rem;
+    height: 1rem;
 }
 th {
-    font-size: 18px;
+    font-size: 0.7rem;
+    background-color: #dddcdc;
 }
 
-#diet tr td {
-    background-color: transparent !important;
-    font-size: 18px;
+#diet td {
+    font-size: 0.7rem;
 }
 
 .diet-type {
-    width: 220px;
+    width: 8rem;
+    font-size: 0.8rem;
     text-overflow: ellipsis;
     overflow: hidden;
     word-break: break-word;
 }
 
 .diet-met {
-    width: 220px;
+    font-size: 0.8rem;
+    width: 8rem;
 }
 
 #diet-content {
     background-color: transparent !important;
-    height: 30px;
+    height: 1rem;
 }
-
-.box::-webkit-scrollbar {
-    width: 5px;
+.box {
+    width: 25rem;
 }
-
-.box::-webkit-scrollbar-thumb {
-    background-color: #666;
+.box::-webkit-scrollbar { 
+    width: 5px; 
+}
+.box::-webkit-scrollbar-thumb { 
+    background-color: #666; 
     border-radius: 10px;
 }
-
-.box::-webkit-scrollbar-track {
-    background-color: #dcdcdc;
+.box::-webkit-scrollbar-track { 
+    background-color: #dcdcdc;  
     border-radius: 10px;
     box-shadow: inset 0px 0px 5px white;
 }
-
 .table>:not(caption)>*>* {
     border-bottom-width: var(--bs-border-width);
-    border-bottom-color: rgb(226, 226, 226);
+    border-bottom-color: white;
+}
+.cursor {
+    width: 2rem;
+    margin: 0rem 0.5rem 0.25rem 1rem;
+}
+#search-btn {
+    width: 2rem;
+    padding-left: 0.4rem;
+    padding-bottom: 0.4rem;
+    margin: 0;
+    margin-right: 1rem;
 }
 </style>

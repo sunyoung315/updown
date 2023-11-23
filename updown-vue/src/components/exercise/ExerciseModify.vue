@@ -3,8 +3,8 @@
         <div class="exercise-head">
             <div class="exercise-title">운동</div>
             <div>
-                <img @click="modify" class="cursor" style="width: 43px; margin: 18px 8px 0px 5px;" src="../../asset/bootstrap-icon/save.svg" alt="저장">
-                <img @click="list" class="cursor" style="width: 43px; margin: 18px 5px 0px 8px;" src="../../asset/bootstrap-icon/table.svg" alt="목록">
+                <img @click="modify" class="cursor" src="../../asset/bootstrap-icon/save.svg" alt="저장">
+                <img @click="list" id="list-btn" class="cursor" src="../../asset/bootstrap-icon/table.svg" alt="목록">
             </div>
         </div>
         <div class="exercise-modify-box">
@@ -14,16 +14,21 @@
             </div>
             <div>
                 <label for="time">운동 시간 : </label><br>
-                <div class="exercise-value"><input type="number" id="time" v-model="newExercise.time">min</div>
+                <div class="exercise-value"><input type="number" id="time" v-model="props.exercise.time">min</div>
                 <p v-if="!newExercise.time">운동 시간을 등록해주세요.</p>
             </div>
             <div>
                 <label for="calorie">소모 칼로리 : </label><br>
-                <div v-if="weight">
-                    <div class="exercise-value">{{ (exerciseInfo.met * (3.5 * weight * newExercise.time) / 1000 * 5).toFixed(1) }} kcal</div>
+                <div v-if="!exerciseInfo.met">
+                    <div class="exercise-value"><input type="number" id="time" v-model="props.exercise.calorie">kcal</div>
                 </div>
                 <div v-else>
-                    <div class="exercise-value">{{ (exerciseInfo.met * (3.5 * 50 * newExercise.time) / 1000 * 5).toFixed(1) }} kcal</div>
+                    <div v-if="weight">
+                        <div class="exercise-value">{{ (exerciseInfo.met * (3.5 * weight * newExercise.time) / 1000 * 5).toFixed(1) }} kcal</div>
+                    </div>
+                    <div v-else>
+                        <div class="exercise-value">{{ (exerciseInfo.met * (3.5 * 50 * newExercise.time) / 1000 * 5).toFixed(1) }} kcal</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,9 +76,15 @@ const emits = defineEmits(["list"]);
 const modify = function() {
     if(newExercise.value.time <= 0 || !newExercise.value.time) return;
     newExercise.value.type = props.exercise.type;
-    if(weight)
-        newExercise.value.calorie = (exerciseInfo.value.met * (3.5 * weight * newExercise.value.time) / 1000 * 5).toFixed(1);
-    newExercise.value.calorie = (exerciseInfo.value.met * (3.5 * 50 * newExercise.value.time) / 1000 * 5).toFixed(1);
+    if(exerciseInfo.value.met) {
+        if(weight) {
+            newExercise.value.calorie = (exerciseInfo.value.met * (3.5 * weight * newExercise.value.time) / 1000 * 5).toFixed(1);
+        }else {
+            newExercise.value.calorie = (exerciseInfo.value.met * (3.5 * 50 * newExercise.value.time) / 1000 * 5).toFixed(1);
+        }
+    } else {
+        newExercise.value.calorie = props.exercise.calorie;
+    }
     store.modifyExercise(newExercise.value);
     emits("list")
 }
@@ -87,33 +98,54 @@ const list = function() {
 <style scoped>
 .exercise-modify {
     background-color: rgb(91, 94, 151, 0.5);
-    padding: 40px;
-    border-radius: 20px;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 1rem;
 }
 .exercise-title {
-    font-size: 50px;
+    font-size: xx-large;
+    font-weight: bolder;
 }
 .exercise-head {
     display: flex;
     justify-content: space-between;
 }
 .exercise-modify-box {
-    margin-top: 35px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-top: 0.7rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
 label {
-    font-size: 25px;
-    margin-top: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 0.9rem;
 }
 input {
-    width: 150px;
+    width: 14rem;
+    height: 2.5rem;
+    font-size: 0.9rem;
 }
 .exercise-value {
-    font-size: 35px;
+    font-size: 1.5rem;
 }
 p{   
-    font-size: 13px;
+    font-size: 0.7rem;
     color: rgb(43, 45, 84);
+    margin-top: 0.15rem;
+    margin-bottom: 0;
+}
+.cursor {
+    width: 2rem;
+    margin: 0.5rem 0 0.25rem 1rem;
+}
+#list-btn {
+    width: 2.1rem;
+    margin: 0.5rem 0 0.25rem 1rem;
+}
+#search-btn {
+    width: 2rem;
+    padding-left: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin: 0;
 }
 </style>

@@ -2,11 +2,11 @@
     <div class="exercise-search">
         <div class="exercise-head">
             <div class="exercise-title">운동</div>
-            <img class="cursor" @click="cancel" style="width: 43px; margin: 0px 5px 0px 5px;" src="../../asset/bootstrap-icon/x-lg.svg" alt="검색취소">
+            <img class="cursor" @click="cancel" src="../../asset/bootstrap-icon/x-lg.svg" alt="검색취소">
         </div>
         <div class="exercise-search-input">
             <input type="text" placeholder="운동명을 검색해주세요." v-model="word" @keyup.enter="search">
-            <img @click="search" class="cursor" style="width: 40px; margin-left: 5px;" src="../../asset/bootstrap-icon/search.svg" alt="검색">
+            <img @click="search" id="search-btn" class="cursor" src="../../asset/bootstrap-icon/search.svg" alt="검색">
         </div>
         <table class="table">
             <thead>
@@ -17,11 +17,11 @@
             </thead>
         </table>
         <table class="table" id="exercise">
-            <div class="box" style="height: 390px; overflow-y: auto;">
+            <div class="box" style="height: 15.5rem; overflow-y: auto;">
                 <tbody>
                     <tr id="exercise-content" @click="getInfo(info)" class="cursor" v-for="info in exerciseInfoList" :key="info.type">
-                        <td class="exercise-type">{{ info.type }}</td>  
-                        <td class="exercise-met">{{ info.met }}kcal/min/kg</td>  
+                        <td class="exercise-type" id="exercise-value">{{ info.type }}</td>  
+                        <td class="exercise-met" id="exercise-value">{{ info.met }}kcal/min/kg</td>  
                     </tr>
                 </tbody>
             </div>
@@ -59,11 +59,13 @@ const getInfo = function(info) {
 <style scoped>
 .exercise-search {
     background-color: rgb(91, 94, 151, 0.5);
-    padding: 40px;
-    border-radius: 20px;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 1rem;
 }
 .exercise-title {
-    font-size: 50px;
+    font-size: xx-large;
+    font-weight: bolder;
 }
 .exercise-head {
     display: flex;
@@ -71,49 +73,56 @@ const getInfo = function(info) {
 }
 .exercise-search-input {
     text-align: right;
-    margin-top: 15px;
-    margin-bottom: 10px;
+    margin-top: 0.3rem;
+    margin-bottom: 0.1rem;
 }
 table {
     margin: 0px;
 }
 th {
-    font-size: 18px;
+    font-size: 0.9rem;
 }
 #exercise tr td {
     background-color: transparent !important;
-    font-size: 18px;
+    font-size: 0.9rem;
     text-overflow: clip;
 }
 .exercise-type {
-    width: 250px;
-    padding-left: 10px;
-    padding-right: 10px;
+    width: 12.3rem;
 }
 .exercise-met {
-    width: 300px;
-    padding-left: 25px;
-    padding-right: 10px;
+    width: 12rem;
+}
+#exercise-value {
+    padding-left: 0.5rem;
 }
 #exercise-content {
     background-color: transparent !important;
-    height: 55px;
+    height: 2.6rem;
 }
 .box::-webkit-scrollbar { 
-    width: 5px; 
+    width: 0.35rem; 
 }
 .box::-webkit-scrollbar-thumb { 
     background-color: #666; 
-    border-radius: 10px;
+    border-radius: 1rem;
 }
 .box::-webkit-scrollbar-track { 
     background-color: #dcdcdc;  
-    border-radius: 10px;
+    border-radius: 1rem;
     box-shadow: inset 0px 0px 5px white;
 }
 .table>:not(caption)>*>* {
     border-bottom-width: var(--bs-border-width);
     border-bottom-color: white;
 }
-
+input {
+    height: 1.7rem;
+}
+#search-btn {
+    width: 2rem;
+    padding-left: 0.4rem;
+    padding-bottom: 0.4rem;
+    margin: 0;
+}
 </style>

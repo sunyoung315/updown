@@ -1,5 +1,5 @@
 <template>
-    <div class="container ratio ratio-1x1" style="margin: 0">
+    <div class="container ratio ratio-1x1">
         <KeepAlive>
             <component :is="choose" @regist="regist" @modify="modify" @home="home" @graph="graph"/>
         </KeepAlive>
@@ -57,13 +57,7 @@ onUpdated(async () => {
 
 <style scoped>
 .container {
-    /* border: 1rem solid; */
     width: 40%;
-    margin: 0.2rem auto;
-
-    /* width: 650px;
-    height: 650px;
-    margin: 20px 20px 0px 20px;
-    padding: 20px; */
+    margin: 0 1rem 0 0;
 }
 </style>

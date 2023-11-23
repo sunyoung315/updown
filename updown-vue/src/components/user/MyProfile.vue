@@ -1,18 +1,18 @@
 <template>
     <div class="myprofile">
         <div>
-            <h3>&nbsp;&nbsp;나의 프로필</h3>
+            <p id="title">나의 프로필</p>
             <div class="profile-container">
                 <div class="img-box">
-                    <img v-if="loginUser.img == true || loginUser.img !== null" style="width: 258px;"
+                    <img v-if="loginUser.img == true || loginUser.img !== null"
                         :src="'http://localhost:8080/upload/' + loginUser.img" alt="프로필 사진1">
-                    <img v-else style="width: 258px" src="../../asset/bootstrap-icon/person-square.svg" alt="프로필 사진">
+                    <img v-else src="../../asset/bootstrap-icon/person-square.svg" alt="프로필 사진">
                 </div>
                 <br>
                 <div class="modify">
-                    <div style="font-size: 30px;"> &nbsp;"{{ loginUser.nickname }}" 님</div>
+                    <div class="user-name"> &nbsp;"{{ loginUser.nickname }}" 님</div>
                     <RouterLink :to="{ name: 'myprofile' }">
-                        <img id="icon" class="cursor" style="width: 40px; margin: 15px 5px 0px 5px;"
+                        <img id="icon" class="cursor"
                             src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정">
                     </RouterLink>
                 </div>
@@ -35,13 +35,29 @@ const loginUser = computed(() => JSON.parse(localStorage.getItem("loginUser")));
 </script>
 
 <style scoped>
+#title {
+    font-size: x-large;
+    font-weight: 600;
+    margin-left: 1rem;
+    margin-bottom: 0;
+    margin-top: 1.5rem;
+}
+.user-name {
+    font-size: x-large;
+    font-weight: 600;
+    padding-bottom: 0.6rem;
+}
+.cursor {
+    width: 2rem;
+    margin: 0.1rem 0.5rem 0.25rem 1rem;
+}
 .myprofile {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
-    width: 369px;
-    margin-right: 20px;
+    padding-top: 2rem;
+    width: 25rem;
+    margin-right: 1rem;
 
 }
 
@@ -51,20 +67,28 @@ const loginUser = computed(() => JSON.parse(localStorage.getItem("loginUser")));
 
 .profile-container {
     border: solid 1px rgb(197, 197, 197);
-    padding: 25px;
-    width: 320px;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    width: 20rem;
     margin-top: 15px;
 }
-
+img {
+    display: inline-block;
+    width: 15rem;
+}
 
 .img-box {
-    width: 270px;
+    width: 15rem;
+    height: 15rem;
     text-align: center;
     border: solid 1px rgb(197, 197, 197);
+    margin: 1rem;
+    display: flex;
+    vertical-align: middle;
 }
 
 #info {
-    font-size: 19px;
+    font-size: large;
     margin-top: 8px;
 }
 
