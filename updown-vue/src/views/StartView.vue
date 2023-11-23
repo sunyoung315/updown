@@ -1,11 +1,11 @@
 <template>
     <div class="start">
-        <a id="img">
+        <div id="img">
                 <img src="../asset/image/표지이미지.png" style="height: 600px;">
-        </a>
-        <a id="show">
+        </div>
+        <div id="show">
             <RouterView class="show" />
-        </a>
+        </div>
     </div>
 </template>
 
@@ -24,7 +24,7 @@
 .start {
     display: flex;
     justify-content: center;
-    height: 931px;
+    height: 1021px;
 }
 
 #img{
