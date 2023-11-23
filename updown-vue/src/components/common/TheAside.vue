@@ -14,5 +14,6 @@ aside {
     justify-content: right;
     border-right: 1px solid rgb(199, 199, 199);
     width: 500px;
+    background-color: white;
 }
 </style>

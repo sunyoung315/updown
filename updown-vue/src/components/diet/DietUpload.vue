@@ -242,12 +242,17 @@ const upload = async function () {
     props.info.food = '';
     props.info.calorie = 0;
     gram.value = 0;
-    serveyImage.value = '';
+    // 첨부파일 초기화가 안됨...
+    // serveyImage.value = '';
     previewImage.value = '';
     emits("home");
 }
 
 const home = function () {
+    props.info.food = '';
+    props.info.calorie = 0;
+    gram.value = 0;
+    // serveyImage.value = '';
     previewImage.value = '';
     emits("home");
 }

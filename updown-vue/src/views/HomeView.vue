@@ -23,6 +23,7 @@ import TheFooter from '@/components/common/TheFooter.vue';
 <style scoped>
 .home {
     display: flex;
+    background-color: rgb(235, 235, 235);
 }
 .home-container {
     min-height: 100vh;

@@ -2,7 +2,7 @@
     <div class="record">
         <div class="record-title">과거 기록 조회</div>
         <div class="calendar">
-            <VCalendar expanded :attributes='attrs' @dayclick="showRecord" v-model="date" view="weekly"></VCalendar>
+            <VCalendar expanded :attributes='attrs' @dayclick="showRecord" view="weekly"></VCalendar>
         </div>
         <RecordWeight :weightRecord="weightRecord" class="record-view"/>
         <RecordExercise :exerciseRecord="exerciseRecord" class="record-view"/>
@@ -88,7 +88,13 @@ const search = function () {
     flex-direction: column;
     justify-content: space-around;
     width: 1270px;
-    margin-top: 50px;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-top: 45px;
+    padding-bottom: 100px;
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid rgb(199, 199, 199);
 }
 
 .record-view {

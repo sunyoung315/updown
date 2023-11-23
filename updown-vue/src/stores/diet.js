@@ -67,19 +67,18 @@ export const useDietStore = defineStore('diet', () => {
                 "Content-Type": "application/x-www-form-urlencode"
             }
         })
-            .then((res) => {
-                todayDietBreakFast.value = Array.isArray(res.data) ? res.data : [];
-            })
-            .then(() => {
-                for (let i = todayDietBreakFast.value.length - 1; i >= 0; i--) {
-                    if (!todayDietBreakFast.value[i] || todayDietBreakFast.value[i].img == null || todayDietBreakFast.value[i].img == '') continue;
-                    else if (todayDietBreakFast.value[i] && todayDietBreakFast.value[i].img !== null) {
-                        breakfastimg.value = todayDietBreakFast.value[i].img;
-                        break;
-                    }
+        .then((res) => {
+            todayDietBreakFast.value = Array.isArray(res.data) ? res.data : [];
+        })
+        .then(() => {
+            for (let i = todayDietBreakFast.value.length - 1; i >= 0; i--) {
+                if (!todayDietBreakFast.value[i] || todayDietBreakFast.value[i].img == null || todayDietBreakFast.value[i].img == '') continue;
+                else if (todayDietBreakFast.value[i] && todayDietBreakFast.value[i].img !== null) {
+                    breakfastimg.value = todayDietBreakFast.value[i].img;
+                    break;
                 }
-
-            })
+            }
+        })
     }
 
     // 점심 식단 기록 조회
@@ -198,7 +197,6 @@ export const useDietStore = defineStore('diet', () => {
 
     // 식단 등록
     const uploadDiet = async function (newDiet) {
-        console.log(newDiet)
         await axios({
             url: `${REST_DIET_API}/upload`,
             method: 'POST',
@@ -216,7 +214,6 @@ export const useDietStore = defineStore('diet', () => {
                     getDietDinner(loginUserId, regDate)
                 else if (newDiet.category == '간식')
                     getDietSnack(loginUserId, regDate)
-                console.log(newDiet)
 
                 // 등록 후 초기화
                 newDiet.category = ''

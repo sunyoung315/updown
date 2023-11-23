@@ -144,6 +144,7 @@ const modify = function (diet) {
 }
 
 const remove = function (diet) {
+    store.breakfastimg = ''
     emits("remove", diet)
 }
 
@@ -168,6 +169,7 @@ watchEffect (async() => {
     if (props.category == '아침') { 
         await store.todayDietBreakFast
         await store.getDietBreakFast(loginUserId, regDate).then(sum); 
+        await store.breakfastimg;
     }
     else if (props.category == '점심') {
         await store.todayDietLunch

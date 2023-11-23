@@ -128,7 +128,7 @@ const search = function () {
 .table {
     padding-left: 15px;
     padding-right: 15px;
-    width: 520px;
+    width: 500px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 0px;
