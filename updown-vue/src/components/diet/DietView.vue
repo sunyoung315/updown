@@ -59,7 +59,7 @@ watchEffect (async () => {
 .diet-container {
     border: 1rem solid;
     width: 80%;
-    margin: 0.2rem auto;
+    /* margin: 0.2rem auto; */
 
     /* margin: 20px;
     padding: 32px;
