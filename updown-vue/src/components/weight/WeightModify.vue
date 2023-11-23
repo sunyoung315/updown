@@ -99,6 +99,7 @@ input {
 }
 #check{
     font-size: 14px;
-    color: rgb(133, 47, 47);
+    color: rgb(169, 65, 65);
+    margin-top: 3px;
 }
 </style>

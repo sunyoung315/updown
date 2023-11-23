@@ -94,5 +94,6 @@ input {
 #check{
     font-size: 14px;
     color: rgb(133, 47, 47);
+    margin-top: 3px;
 }
 </style>

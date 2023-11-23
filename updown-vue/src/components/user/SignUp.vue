@@ -3,81 +3,80 @@
         <form @submit.prevent="submitForm">
             <div>
                 <h2>회원가입</h2><br>
-                <fieldset class="signup">
-                    <label for="id">아이디</label>
-                    <input v-model="signupUser.id" type="text" id="id" name="id" placeholder="아이디를 입력해주세요.">
-                    <br>
-                    <label for="password">비밀번호</label>
-                    <input v-model="signupUser.password" autoComplete="off" type="password" id="password" name="password"
-                        placeholder="비밀번호를 입력해주세요.">
-                    <br>
-                    <label for="password">비밀번호 확인</label>
-                    <input v-model="password2" autoComplete="off" type="password" id="password2" name="password2"
-                        placeholder="비밀번호를 입력해주세요.">
-                    <br>
-                    <label for="nickname">닉네임</label>
-                    <input v-model="signupUser.nickname" type="text" id="nickname" name="nickname"
-                        placeholder="닉네임을 입력해주세요.">
-                    <br>
-                    <label for="name">이름</label>
-                    <input v-model="signupUser.name" type="text" id="name" name="name" placeholder="이름을 입력해주세요.">
-                    <br>
-                    <label for="email">이메일</label>
-                    <input v-model="signupUser.email" type="text" id="email" name="email" placeholder="이메일을 입력해주세요.">
-                    <br>
-                    <label for="targetWeight">목표 체중</label>
-                    <input v-model="signupUser.targetWeight" type="number" id="targetWeight" name="targetWeight"
-                        placeholder="목표 체중을 입력해주세요.">
-                            <a>
-                                kg
-                            </a>
-                    <br>
-                    <label for="targetTime">하루 목표 운동 시간</label>
-                    <input v-model="signupUser.targetTime" type="number" id="targetTime" name="targetTime"
-                        placeholder="하루 목표 운동 시간을 입력해주세요.">
-                    <a>
-                        min
-                    </a>
-                    <br>
-                    <label>증/감량 희망 여부</label>
-                    <div class="radio-container">
-                        <div class="radio">
-                            <input v-model="signupUser.updown" type="radio" id="up" value="up" style="width: 20px;">
-                            &nbsp;<label for="up">증 &nbsp;&nbsp;&nbsp;량</label>
+                <fieldset>
+                    <div class="signup">
+                        <label for="id">아이디</label>
+                        <input v-model="signupUser.id" type="text" id="id" name="id" placeholder="아이디를 입력해주세요.">
+                        <br>
+                        <label for="password">비밀번호</label>
+                        <input v-model="signupUser.password" autoComplete="off" type="password" id="password" name="password"
+                            placeholder="비밀번호를 입력해주세요.">
+                        <br>
+                        <label for="password">비밀번호 확인</label>
+                        <input v-model="password2" autoComplete="off" type="password" id="password2" name="password2"
+                            placeholder="비밀번호를 입력해주세요.">
+                        <br>
+                        <label for="nickname">닉네임</label>
+                        <input v-model="signupUser.nickname" type="text" id="nickname" name="nickname"
+                            placeholder="닉네임을 입력해주세요.">
+                        <br>
+                        <label for="name">이름</label>
+                        <input v-model="signupUser.name" type="text" id="name" name="name" placeholder="이름을 입력해주세요.">
+                        <br>
+                        <label for="email">이메일</label>
+                        <input v-model="signupUser.email" type="text" id="email" name="email" placeholder="이메일을 입력해주세요.">
+                        <br>
+                        <label for="targetWeight">목표 체중</label>
+                        <input v-model="signupUser.targetWeight" type="number" id="targetWeight" name="targetWeight"
+                            placeholder="목표 체중을 입력해주세요.">
+                                <a>
+                                    kg
+                                </a>
+                        <label for="targetTime">하루 목표 운동 시간</label>
+                        <input v-model="signupUser.targetTime" type="number" id="targetTime" name="targetTime"
+                            placeholder="하루 목표 운동 시간을 입력해주세요.">
+                        <a>
+                            min
+                        </a>
+                        <!-- <label>증/감량 희망 여부</label>
+                        <div class="radio-container">
+                            <div class="radio">
+                                <input v-model="signupUser.updown" type="radio" id="up" value="up" style="width: 20px;">
+                                &nbsp;<label for="up">증 &nbsp;&nbsp;&nbsp;량</label>
+                            </div>
+                            <div class="radio">
+                                <input v-model="signupUser.updown" type="radio" id="down" value="down" style="width: 20px;">
+                                &nbsp;<label for="down">감&nbsp;&nbsp;&nbsp; 량</label>
+                            </div>
                         </div>
-                        <div class="radio">
-                            <input v-model="signupUser.updown" type="radio" id="down" value="down" style="width: 20px;">
-                            &nbsp;<label for="down">감&nbsp;&nbsp;&nbsp; 량</label>
+                        <br>
+                        <label for="isSecret">계정 공개 희망 여부</label>
+                        <div class="radio-container">
+                            <div class="radio">
+                                <input v-model="signupUser.isSecret" type="radio" id="isSecretTrue" :value="true"
+                                    style="width: 20px;">
+                                &nbsp;<label for="isSecretTrue">공 &nbsp;&nbsp;&nbsp;개</label>
+                            </div>
+                            <div class="radio">
+                                <input v-model="signupUser.isSecret" type="radio" id="isSecretFalse" :value="false"
+                                    style="width: 20px;">
+                                &nbsp;<label for="isSecretFalse">비공개</label>
+                            </div>
+                        </div>
+                        <br> -->
+    
+                        <label>프로필 사진(선택)</label>
+                        <div class="input-group flex-nowrap" style="width: 400px;">
+                            <input type="file" class="form-control" placeholder="Username" aria-label="Username" ref="serveyImage"
+                                aria-describedby="addon-wrapping =" style="color: #a8a7a7; height: 35px;">
+                        </div>
+    
+                        <br>
+                        <input id="gosignup" type="submit" value="회원가입">
+                        <div id="signup">
+                            <RouterLink to="/">홈으로</RouterLink>
                         </div>
                     </div>
-                    <br>
-                    <label for="isSecret">계정 공개 희망 여부</label>
-                    <div class="radio-container">
-                        <div class="radio">
-                            <input v-model="signupUser.isSecret" type="radio" id="isSecretTrue" :value="true"
-                                style="width: 20px;">
-                            &nbsp;<label for="isSecretTrue">공 &nbsp;&nbsp;&nbsp;개</label>
-                        </div>
-                        <div class="radio">
-                            <input v-model="signupUser.isSecret" type="radio" id="isSecretFalse" :value="false"
-                                style="width: 20px;">
-                            &nbsp;<label for="isSecretFalse">비공개</label>
-                        </div>
-                    </div>
-                    <br>
-
-                    <label>프로필 사진(선택)</label>
-                    <div class="input-group flex-nowrap" style="width: 400px;">
-                        <input type="file" class="form-control" placeholder="Username" aria-label="Username" ref="serveyImage"
-                            aria-describedby="addon-wrapping =" style="color: #a8a7a7; height: 35px;">
-                    </div>
-
-                    <br>
-                    <input id="gosignup" type="submit" value="회원가입">
-                    <div id="signup">
-                        <RouterLink to="/">홈으로</RouterLink>
-                    </div>
-                    <br><br>
                 </fieldset>
             </div>
         </form>
@@ -256,14 +255,27 @@ getUserList();
 .signup {
     display: flex;
     flex-direction: column;
-    width: 450px;
-    overflow:  auto;
+    width: 500px;
+    overflow: auto;
     height: 600px;
     line-height: 33px;
 }
 
 .signup::-webkit-scrollbar{
-    display: none;
+    width: 10px; 
+}
+.signup::-webkit-scrollbar-thumb { 
+    background-color: #666; 
+    border-radius: 10px;
+}
+.signup::-webkit-scrollbar-track { 
+    background-color: #dcdcdc;  
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+.signup>:not(caption)>*>* {
+    border-bottom-width: var(--bs-border-width);
+    border-bottom-color: white;
 }
 
 #signup{

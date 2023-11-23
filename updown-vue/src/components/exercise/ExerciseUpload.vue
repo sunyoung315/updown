@@ -11,7 +11,10 @@
             <div>
                 <label for="type">운동 종류 : </label>
                 <img @click="search" class="cursor" style="width: 43px; margin: 0px 5px 20px 8px;" src="../../asset/bootstrap-icon/search.svg" alt="검색"><br>
-                <span class="exercise-value" v-if="props.info.type">{{ ' ' + props.info.type }}</span>
+                <div class="exercise-value" v-if="props.info.type">{{ ' ' + props.info.type }}</div>
+                <div v-else>
+                    <input type="text" v-model="exerciseType" placeholder="운동을 직접 입력할 수도 있어요.">
+                </div>
             </div>
             <div>
                 <label for="time">운동 시간 : </label><br>
@@ -28,6 +31,11 @@
                         <p class="cal-desc">(체중이 입력되지 않아 50kg 기준으로 계산됩니다.)</p>
                     </div>
                 </div>
+            </div>
+            <div v-else>
+                <label for="calorie">소모 칼로리 : </label><br>
+                <div class="exercise-value"><input type="number" id="time" v-model="newExercise.calorie">kcal</div>
+                <p v-if="!newExercise.calorie">운동 시간을 등록해주세요.</p>
             </div>
         </div>
     </div>
@@ -59,6 +67,8 @@ const newExercise = ref({
     userId: loginUserId,
 });
 
+const exerciseType = ref('');
+
 const weightStore = useWeightStore();
 const weight = computed(() => weightStore.todayWeight.nowWeight);
 
@@ -66,7 +76,9 @@ const emits = defineEmits(["list", "search"])
 
 const list = function() {
     emits("list");
-    newExercise.time = 0;
+    exerciseType.value = 0;
+    newExercise.value.time = 0;
+    newExercise.value.calorie = 0;
 }
 
 onMounted(async () => {
@@ -74,13 +86,21 @@ onMounted(async () => {
 })
 
 const upload = async function() {
+    if(props.info.type)
+        newExercise.value.type = props.info.type;
+    else
+        newExercise.value.type = exerciseType.value;
     if(newExercise.value.time <= 0 || !newExercise.value.time) return;
-    newExercise.value.type = props.info.type;
-    if(props.info.weight)
-        newExercise.value.calorie = (props.info.met * (3.5 * weight.value * newExercise.value.time) / 1000 * 5).toFixed(1);
-    newExercise.value.calorie = (props.info.met * (3.5 * 50 * newExercise.value.time) / 1000 * 5).toFixed(1);
+    if(props.info.met) {
+        if(props.info.weight)
+            newExercise.value.calorie = (props.info.met * (3.5 * weight.value * newExercise.value.time) / 1000 * 5).toFixed(1);
+        newExercise.value.calorie = (props.info.met * (3.5 * 50 * newExercise.value.time) / 1000 * 5).toFixed(1);
+    }
+    if(newExercise.value.calorie <= 0 || !newExercise.value.calorie) return;
     await store.uploadExercise(newExercise.value);
     await store.getExerciseList(loginUserId, regDate);
+    exerciseType.value = '';
+    newExercise.value.calorie = 0;
     emits("list");
 }
 
@@ -112,9 +132,6 @@ label {
     font-size: 25px;
     margin-top: 25px;
 }
-input {
-    width: 150px;
-}
 .exercise-value {
     font-size: 35px;
 }
@@ -124,7 +141,16 @@ input {
 }
 
 p{   
-    font-size: 13px;
+    font-size: 14px;
     color: rgb(43, 45, 84);
+    margin-top: 3px;
+}
+input {
+    width: 240px;
+    height: 60px;
+    font-size: 30px;
+}
+input::placeholder {
+    font-size: 16px;
 }
 </style>
