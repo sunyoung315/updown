@@ -19,13 +19,13 @@
                     </div>
                     <div v-if="props.info.food"> {{ props.info.food }}</div>
                     <div v-else>
-                        <input type="text" v-model="foodName" placeholder="음식을 직접 입력할 수도 있어요.">
+                        <input type="text" :class="{input : !foodName}" v-model="foodName" placeholder="음식을 직접 입력할 수도 있어요.">
                     </div>
                 </div>
                 <div class="diet-box-row">
                     <div class="g">
                         <label>섭취량</label><br>
-                        <input type="number" v-model="gram" placeholder="섭취량을 입력해주세요."> g
+                        <input type="number" :class="{input : !gram}" v-model="gram" placeholder="섭취량을 입력해주세요."> g
                     </div>
                 </div>
                 <div class="diet-box-row">
@@ -33,7 +33,7 @@
                         <label>음식 칼로리</label><br>
                         <div class="cal-Kcal" v-if="props.info.food">{{ (props.info.calorie * gram).toFixed(1) }} kcal</div>
                         <div v-else>
-                            <input type="text" v-model="inputKcal" placeholder="칼로리를 입력해주세요."> kcal
+                            <input type="text" :class="{input : !inputKcal}" v-model="inputKcal" placeholder="칼로리를 입력해주세요."> kcal
                         </div>
                     </div>
                 </div>
@@ -251,7 +251,8 @@ const submitForm = async () => {
 
 const upload = async function () {
     clearFileInput(); // 파일 인풋 초기화
-    if (!newDiet.value.food) return;
+    if (!newDiet.value.food) return; //음식명 입력 안하면 등록 막기
+    if (!newDiet.value.calorie) return; //칼로리 0일 때 등록 막기
     await store.uploadDiet(newDiet.value);
     if (props.category == '아침')
         await getDietBreakFast();
@@ -274,7 +275,14 @@ const upload = async function () {
 }
 
 const home = function () {
+    props.info.food = '';
+    foodName.value = '';
+    props.info.calorie = 0;
+    inputKcal.value = '';
+    gram.value = 0;
     previewImage.value = '';
+    newDiet.value.img='';
+    newDiet.value.orgImg='';
     emits("home");
 }
 
@@ -282,7 +290,10 @@ const home = function () {
 </script>
 
 <style scoped>
-
+.input {
+    border: 4px solid rgb(83, 120, 77);
+    border-radius: 5px;
+}
 .diet-head {
     display: flex;
     justify-content: space-between;
@@ -344,8 +355,4 @@ input {
     vertical-align: middle;
 }
 
-p {
-    font-size: 11px;
-    color: red;
-}
 </style>

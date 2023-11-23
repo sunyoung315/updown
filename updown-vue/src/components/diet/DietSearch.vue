@@ -150,6 +150,9 @@ th {
 
 .diet-type {
     width: 220px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-word;
 }
 
 .diet-met {
