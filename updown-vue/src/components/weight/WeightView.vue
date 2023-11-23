@@ -56,11 +56,8 @@ onUpdated(async () => {
 </script>
 
 <style scoped>
-.container ratio ratio-1x1{
- margin: 0;
-}
 .container {
-    border: 1rem solid;
+    /* border: 1rem solid; */
     width: 40%;
     margin: 0.2rem auto;
 

@@ -3,8 +3,8 @@
         <div class="weight-head">
             <div class="weight-title">체중</div>
             <div>
-                <img @click="home" class="cursor" style="width: 49px; margin: 13px 5px 0px 5px;" src="../../asset/bootstrap-icon/house.svg" alt="홈으로">
-                <img @click="upload" class="cursor" style="width: 43px; margin: 13px 5px 0px 5px;" src="../../asset/bootstrap-icon/save.svg" alt="저장">
+                <img @click="home" class="cursor" id="home-icon" src="../../asset/bootstrap-icon/house.svg" alt="홈으로">
+                <img @click="upload" class="cursor" src="../../asset/bootstrap-icon/save.svg" alt="저장">
             </div>
         </div>
         <div class="today-weight-box">
@@ -62,38 +62,49 @@ const upload = async function() {
 <style scoped>
 .weight-upload {
     background-color: rgb(193, 96, 96, 0.5);
-    padding: 40px;
-    border-radius: 20px;
+    padding: 2rem;
+    border-radius: 1rem;
 }
 .weight-title {
-    font-size: 50px;
+    font-size: xx-large;
+    font-weight: bolder;
 }
 .weight-head {
     display: flex;
     justify-content: space-between;
 }
 .today-weight {
-    font-size: 30px;
+    font-size: larger;
     text-align: center;
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 0.2rem;
 }
 input {
-    width: 220px;
-    height: 120px;
-    font-size: 75px;
+    width: 12rem;
+    height: 6rem;
+    font-size: 4rem;
 }
 .weight-unit {
-    font-size: 75px;
+    font-size: 4rem;
 }
 .weight-value {
     text-align: center;
 }
 .today-weight-box {
     position: relative;
-    top: 140px
+    top: 6rem;
 }
 #check{
-    font-size: 14px;
-    color: rgb(133, 47, 47);
-    margin-top: 3px;
+    font-size: small;
+    color: rgb(169, 65, 65);
+}
+.cursor {
+    width: 2rem;
+    margin: 0.5rem 0 0.25rem 1rem;
+}
+#home-icon {
+    width: 2.25rem;
+    margin: 0.25rem 0 0 1rem;
 }
 </style>

@@ -4,11 +4,11 @@
             <div class="weight-title">체중</div>
             <div>
                 <div v-if="todayWeight && todayWeight.nowWeight">
-                    <img class="cursor" @click="modify" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정">
+                    <img class="cursor" id="modify-icon" @click="modify" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정">
                     <img class="cursor" @click="graph" src="../../asset/bootstrap-icon/graph-down-arrow.svg" alt="그래프">
                 </div>
                 <div v-else>
-                    <img class="cursor" @click="regist" style="width: 45px; margin: 15px 5px 0px 5px;" src="../../asset/bootstrap-icon/plus-square.svg" alt="등록">
+                    <img class="cursor" @click="regist" src="../../asset/bootstrap-icon/plus-square.svg" alt="등록">
                 </div>
             </div>
         </div>
@@ -60,11 +60,12 @@ const graph = function() {
 <style scoped>
 .weight-detail {
     background-color: rgb(193, 96, 96);
-    padding: 40px;
-    border-radius: 20px;
+    padding: 2rem;
+    border-radius: 1rem;
 }
 .weight-title {
     font-size: xx-large;
+    font-weight: bolder;
     color: white;
 }
 .weight-head {
@@ -75,35 +76,38 @@ const graph = function() {
     text-align: center;
 }
 .weight-target {
-    line-height: 70px;
-    font-size: 25px;
+    font-size: medium;
+    font-weight: 510;
     text-align: center;
 }
 .weight-scale {
     display: inline-block;
-    font-size: 60px;
+    font-size: 2.5rem;
+    font-weight: bolder;
     background-image: url('../../asset/image/weight-scale.png');
     background-repeat: no-repeat;
-    background-size: 20rem; 
-    width: 400px;
-    height: 400px;
-    margin-top: 30px;
-    margin-bottom: 0px;
+    background-size: 17rem; 
+    width: 17rem;
+    height: 17rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 .weight-scale-number {
     text-align: center;
-    margin-bottom: 0px;
-    line-height: 550px;
+    margin-bottom: 0;
+    line-height: 23rem;
     color: white;
 }
 .weight-value {
     color: white;
+    font-weight: 550;
 }
-
-/* <!-- style="width: 43px; margin: 15px 5px 0px 5px;" --> */
 
 .cursor {
     width: 2rem;
-    margin: 1.2rem 1rem 0 1rem;
+    margin: 0.5rem 0 0.25rem 1rem;
+}
+#modify-icon {
+    width: 2.2rem;
 }
 </style>

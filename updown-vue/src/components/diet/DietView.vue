@@ -1,5 +1,5 @@
 <template>
-    <div class="diet-container">
+    <div id="diet-container">
         <div class="diet-head">
             <div class="diet-title">식단</div>
             <div class="diet-calorie">총 섭취 칼로리 : {{ totalCalorie.toFixed(1) }} kcal</div>
@@ -56,8 +56,10 @@ watchEffect (async () => {
 </script>
 
 <style scoped>
+
 .diet-container {
     /* border: 1rem solid; */
+
     width: 80%;
     /* margin: 0.2rem auto; */
 
