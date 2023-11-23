@@ -211,6 +211,7 @@ watchEffect (async() => {
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 20px;
+    width: 518px;
     height: 320px;
     display: flex;
 }
@@ -219,13 +220,19 @@ tr {
     border: 0px;
 }
 td {
-    text-overflow: clip;
 }
 .table {
     width: 313px;
 }
 .diet-food-col {
+    line-height: 50px;
     width: 130px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical
 }
 .diet-calorie-col {
     width: 90px;
