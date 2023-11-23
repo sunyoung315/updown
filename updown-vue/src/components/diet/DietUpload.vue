@@ -59,7 +59,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useDietStore } from '@/stores/diet';
 import axios from 'axios';
 
@@ -79,6 +79,10 @@ const changeImage = function (event) {
         reader.readAsDataURL(file);
     }
 }
+
+onMounted(()=>{
+    clearFileInput(); // 파일 인풋 초기화
+})
 
 const props = defineProps({
     category: String,
@@ -120,6 +124,7 @@ const search = function () {
     emits("search");
 }
 
+
 const getDietBreakFast = async function () {
     await store.getDietBreakFast(loginUserId, regDate);
 }
@@ -154,6 +159,7 @@ const submitForm = async () => {
 
     if (serveyImage.value.files[0] == null) {
         if (props.category == '아침') {
+            clearFileInput(); // 파일 인풋 초기화
             newDiet.value.category = "아침"
             upload();
             return;
@@ -261,6 +267,8 @@ const upload = async function () {
     inputKcal.value = '';
     gram.value = 0;
     previewImage.value = '';
+    newDiet.value.img='';
+    newDiet.value.orgImg='';
   
     emits("home");
 }
