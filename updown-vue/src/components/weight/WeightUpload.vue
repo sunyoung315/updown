@@ -93,7 +93,6 @@ input {
 }
 #check{
     font-size: 14px;
-    color: red;
-    font-family: 'mobileregular';
+    color: rgb(133, 47, 47);
 }
 </style>
