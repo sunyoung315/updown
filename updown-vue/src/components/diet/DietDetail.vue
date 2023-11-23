@@ -5,7 +5,7 @@
                 <span class="diet-head-category">{{ category }}</span>
                 <span class="diet-head-calorie">{{ calSum.toFixed(1) }}kcal</span>
             </div>
-            <img class="cursor" @click="regist" style="width: 45px; margin: 5px 5px 0px 5px;" src="../../asset/bootstrap-icon/plus-square.svg" alt="등록">
+            <img class="cursor" @click="regist" src="../../asset/bootstrap-icon/plus-square.svg" alt="등록">
         </div>
         <div v-if="category == '아침'">
             <div>
@@ -14,11 +14,11 @@
                         <div class="box">
                             <tbody>
                                 <tr v-for="diet in store.todayDietBreakFast" key="diet.no">
-                                    <td class="diet-col"><img style="width: 20px; margin-right: 6px;" src="../../asset/bootstrap-icon/check-lg.svg" alt="row"></td>  
+                                    <td class="diet-col"><img src="../../asset/bootstrap-icon/check-lg.svg" alt="row"></td>  
                                     <td class="diet-food-col">{{ diet.food }}</td>  
                                     <td class="diet-calorie-col">{{ diet.calorie.toFixed(1) }}kcal</td>  
-                                    <td><img class="cursor" @click="modify(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정"></td>
-                                    <td><img class="cursor" @click="remove(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/trash3.svg" alt="삭제"></td>
+                                    <td><img class="cursor-small" @click="modify(diet)" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정"></td>
+                                    <td><img class="cursor-small" @click="remove(diet)" src="../../asset/bootstrap-icon/trash3.svg" alt="삭제"></td>
                                 </tr>
                             </tbody>
                         </div>
@@ -41,11 +41,11 @@
                         <div class="box">
                             <tbody>
                                 <tr v-for="diet in store.todayDietLunch" key="diet.no">
-                                    <td class="diet-col"><img style="width: 20px; margin-right: 6px;" src="../../asset/bootstrap-icon/check-lg.svg" alt="row"></td>  
+                                    <td class="diet-col"><img src="../../asset/bootstrap-icon/check-lg.svg" alt="row"></td>  
                                     <td class="diet-food-col">{{ diet.food }}</td>  
                                     <td class="diet-calorie-col">{{ diet.calorie }}kcal</td>  
-                                    <td><img class="cursor" @click="modify(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정"></td>
-                                    <td><img class="cursor" @click="remove(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/trash3.svg" alt="삭제"></td>
+                                    <td><img class="cursor-small" @click="modify(diet)" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정"></td>
+                                    <td><img class="cursor-small" @click="remove(diet)" src="../../asset/bootstrap-icon/trash3.svg" alt="삭제"></td>
                                 </tr>
                             </tbody>
                         </div>
@@ -68,11 +68,11 @@
                         <div class="box">
                             <tbody>
                                 <tr v-for="diet in store.todayDietDinner" key="diet.no">
-                                    <td class="diet-col"><img style="width: 20px; margin-right: 6px;" src="../../asset/bootstrap-icon/check-lg.svg" alt="row"></td>  
+                                    <td class="diet-col"><img src="../../asset/bootstrap-icon/check-lg.svg" alt="row"></td>  
                                     <td class="diet-food-col">{{ diet.food }}</td>  
                                     <td class="diet-calorie-col">{{ diet.calorie }}kcal</td>  
-                                    <td><img class="cursor" @click="modify(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정"></td>
-                                    <td><img class="cursor" @click="remove(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/trash3.svg" alt="삭제"></td>
+                                    <td><img class="cursor-small" @click="modify(diet)" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정"></td>
+                                    <td><img class="cursor-small" @click="remove(diet)" src="../../asset/bootstrap-icon/trash3.svg" alt="삭제"></td>
                                 </tr>
                             </tbody>
                         </div>
@@ -95,11 +95,11 @@
                         <div class="box" style="height: 260px; overflow-y: auto;">
                             <tbody>
                                 <tr v-for="diet in store.todayDietSnack" key="diet.no">
-                                    <td class="diet-col"><img style="width: 20px; margin-right: 6px;" src="../../asset/bootstrap-icon/check-lg.svg" alt="row"></td>  
+                                    <td class="diet-col"><img src="../../asset/bootstrap-icon/check-lg.svg" alt="row"></td>  
                                     <td class="diet-food-col">{{ diet.food }}</td>  
                                     <td class="diet-calorie-col">{{ diet.calorie }}kcal</td>  
-                                    <td><img class="cursor" @click="modify(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정"></td>
-                                    <td><img class="cursor" @click="remove(diet)" style="width: 25px;" src="../../asset/bootstrap-icon/trash3.svg" alt="삭제"></td>
+                                    <td><img class="cursor-small" @click="modify(diet)" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정"></td>
+                                    <td><img class="cursor-small-delete" @click="remove(diet)" src="../../asset/bootstrap-icon/trash3.svg" alt="삭제"></td>
                                 </tr>
                             </tbody>
                         </div>
@@ -192,41 +192,47 @@ watchEffect (async() => {
 <style scoped>
 .diet-head {
     display: flex;
+    width: 20em;
     justify-content: space-between;
+    margin-top: 0.3em;
 }
 .diet-head-category {
-    font-size: 40px;
-    padding-left: 10px;
+    font-size: x-large;
+    font-weight: 540;
+    padding-left: 0.3em;
 }
 .diet-head-calorie {
-    font-size: 30px;
-    padding-left: 20px;
+    font-size: large;
+    padding-left: 1em;
 }
 .no-diet {
     padding-top: 20px;
     padding-left: 20px;
     font-size: 20px;
 }
+
+.cursor{
+    width: 2em; 
+    margin: 5px 5px 0px 5px;
+}
 .diet-table {
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 20px;
-    width: 518px;
-    height: 320px;
+    margin-top: 1em;
     display: flex;
 }
 tr {
-    height: 50px;
-    border: 0px;
+    display: flex;
+    height: 3em;
 }
-td {
+
+.cursor-small{
+    width: 1.3em;
 }
 .table {
-    width: 313px;
+    width: 3em;
+    margin-right: 0.2em;
 }
 .diet-food-col {
-    line-height: 50px;
-    width: 130px;
+    width: 5em;
     text-overflow: ellipsis;
     overflow: hidden;
     word-break: break-word;
@@ -235,26 +241,26 @@ td {
     -webkit-box-orient: vertical
 }
 .diet-calorie-col {
-    width: 90px;
+    width: 2.7em;
 }
 .diet-img{
-    width: 200px;
-    height: 300px;
-    line-height: 300px;
-    margin-left: 5px;
+    width: 11em;
+    height: 16em;
     background-color: rgb(225, 225, 225);
-    margin-top: 10px;
-}
-.food-img {
-    width: 180px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-top: 0.1em;
+    line-height: 16em;
     vertical-align: middle;
 }
+.food-img {
+    width: 10em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
 .box {
-    height: 300px; 
+    height: 15em; 
     overflow-y: auto;
-    margin-top: 10px;
+    overflow-x: hidden;
+    margin-right: 0.3em
 }
 .box::-webkit-scrollbar { 
     width: 5px; 
