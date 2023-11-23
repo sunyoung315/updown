@@ -43,6 +43,7 @@
                         <div>
                             <input ref="serveyImage" type="file" accept="image/*" @change="changeImage">
                         </div>
+                        <button @click="resetFileInput">취소</button>
                     </div>
                 </div>
             </div>
@@ -137,6 +138,13 @@ const getDietSnack = async function () {
 const clearFileInput = () => {
   if (serveyImage.value) {
     serveyImage.value.value = '';
+  }
+};
+
+const resetFileInput = () => {
+  if (serveyImage.value) {
+    serveyImage.value.value = '';
+    previewImage.value = '';
   }
 };
 
