@@ -43,8 +43,8 @@ header {
     font-family: 'IBM Plex Sans', sans-serif;
     display: flex;
     justify-content: space-between;
-    padding-left: 280px;
-    padding-right: 320px;
+    padding-left:15rem;
+    padding-right: 15rem;
 }
 .cursor {
     cursor: pointer;

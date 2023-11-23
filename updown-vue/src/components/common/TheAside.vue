@@ -12,8 +12,9 @@ import MyProfile from '@/components/user/MyProfile.vue'
 aside {
     display: flex;
     justify-content: right;
-    border-right: 1px solid rgb(199, 199, 199);
-    width: 600px;
+    border-right: 0.1rem solid rgb(199, 199, 199);
+    /* width: 600px; */
+    width: 30%;
     background-color: white;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="container ratio ratio-1x1">
+    <div class="container ratio ratio-1x1" style="margin: 0">
         <KeepAlive>
             <component :is="choose" @getInfo="getInfo" :info="info" @regist="regist" @modify="modify" :exercise="exercise" @remove="remove" @list="list" @search="search" @home="home"></component>
         </KeepAlive>
