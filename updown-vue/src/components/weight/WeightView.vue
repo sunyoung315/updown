@@ -58,10 +58,13 @@ onUpdated(async () => {
 <style scoped>
 
 .container {
-    display: inline;
-    width: 650px;
+    border: 1rem solid;
+    width: 40%;
+    margin: 0.2rem auto;
+
+    /* width: 650px;
     height: 650px;
     margin: 20px 20px 0px 20px;
-    padding: 20px;
+    padding: 20px; */
 }
 </style>
