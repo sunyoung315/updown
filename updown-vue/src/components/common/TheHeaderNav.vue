@@ -52,8 +52,8 @@ header {
 .header-container {
     display: flex;
     justify-content: space-between;
-    padding-left: 200px;
-    padding-right: 180px;
+    padding-left: 280px;
+    padding-right: 320px;
 }
 .cursor {
     cursor: pointer;

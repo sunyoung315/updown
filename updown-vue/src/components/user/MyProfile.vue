@@ -41,6 +41,7 @@ const loginUser = computed(() => JSON.parse(localStorage.getItem("loginUser")));
     align-items: center;
     padding-top: 50px;
     width: 369px;
+    margin-right: 20px;
 
 }
 

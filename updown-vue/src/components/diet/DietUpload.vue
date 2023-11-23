@@ -256,7 +256,9 @@ const upload = async function () {
     else if (props.category == '간식')
         await getDietSnack();
     props.info.food = '';
+    foodName.value = '';
     props.info.calorie = 0;
+    inputKcal.value = '';
     gram.value = 0;
     previewImage.value = '';
   

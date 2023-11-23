@@ -166,6 +166,12 @@ export const useDietStore = defineStore('diet', () => {
         });
         breakfastimg.value = ''; // 이미지 초기화
         await getDietBreakFast(loginUserId, regDate); // 식단 목록 다시 불러오기
+        lunchimg.value = '';
+        await getDietLunch(loginUserId, regDate);
+        dinnerimg.value = '';
+        await getDietDinner(loginUserId, regDate);
+        snackimg.value = '';
+        await getDietSnack(loginUserId, regDate);
     }
 
     // 식단 수정

@@ -29,7 +29,7 @@
                     <a>
                         min
                     </a>
-                    <br>
+                    <!-- <br>
                     <label>증/감량 희망 여부</label>
                     <div class="radio-container">
                         <div class="radio">
@@ -54,7 +54,7 @@
                                 style="width: 20px;">
                             &nbsp;<label for="isSecretFalse">비공개</label>
                         </div>
-                    </div>
+                    </div> -->
                     <br>
 
                     <label>프로필 사진(선택)</label>
