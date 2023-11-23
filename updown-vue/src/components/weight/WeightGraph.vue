@@ -2,11 +2,11 @@
     <div class="weight-graph">
         <div class="weight-head">
             <div class="weight-title">체중</div>
-            <img @click="home" class="cursor" style="width: 49px; margin: 15px 5px 5px 5px;" src="../../asset/bootstrap-icon/house.svg" alt="홈으로">
+            <img @click="home" class="cursor" src="../../asset/bootstrap-icon/house.svg" alt="홈으로">
         </div>
-        <h4 style="padding-left: 10px;">7일간의 몸무게 변화</h4>
+        <p>7일간의 몸무게 변화</p>
         <div id="chart">
-            <apexchart type="line" height="450" :options="chartOptions" :series="series"></apexchart>
+            <apexchart type="line" height="320" :options="chartOptions" :series="series"></apexchart>
         </div>
     </div>
 </template>
@@ -38,7 +38,7 @@ const chartOptions = ref({
   colors: ["#C16060"],
   chart: {
     type: 'line',
-    height: 450,
+    height: 320,
     zoom: {
       enabled: false
     },
@@ -62,7 +62,7 @@ const chartOptions = ref({
     categories: regDates,
     labels: {
       style: {
-        fontSize: 15,
+        fontSize: 11,
         fontFamily: 'mobiletitle',
       }
     }
@@ -77,7 +77,7 @@ const chartOptions = ref({
       },
       labels: {
         style: {
-          fontSize: 15,
+          fontSize: 11,
           fontFamily: 'mobiletitle',
         },
       }
@@ -98,24 +98,31 @@ const home = function() {
 
 <style scoped>
 .weight-graph {
-    background-color: rgb(193, 96, 96, 0.5);
-    padding: 40px;
-    border-radius: 20px;
+  background-color: rgb(193, 96, 96, 0.5);
+  padding: 2rem;
+  border-radius: 1rem;
 }
 .weight-title {
-    font-size: 50px;
+  font-size: xx-large;
+  font-weight: bolder;
+  color: white;
 }
 .weight-head {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
-h4 {
-    margin-top: 15px;
-    margin-left: 10px;
-    margin-bottom: 15px;
+p {
+  font-size: medium;
+  font-weight: bold;
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+  margin-bottom: 0;
 }
 canvas {
-    margin-top: 30px;
-    height: 420px !important;   
+  margin-top: 0.5rem;
+}
+.cursor {
+  width: 2.25rem;
+  margin: 0.25rem 0 0 1rem;
 }
 </style>
