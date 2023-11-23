@@ -4,7 +4,7 @@
             <div class="weight-title">체중</div>
             <img @click="home" class="cursor" src="../../asset/bootstrap-icon/house.svg" alt="홈으로">
         </div>
-        <p>7일간의 몸무게 변화</p>
+        <p>7일간의 체중 변화</p>
         <div id="chart">
             <apexchart type="line" height="290" :options="chartOptions" :series="series"></apexchart>
         </div>

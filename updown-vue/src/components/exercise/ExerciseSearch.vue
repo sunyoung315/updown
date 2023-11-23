@@ -17,7 +17,7 @@
             </thead>
         </table>
         <table class="table" id="exercise">
-            <div class="box" style="height: 15.5rem; overflow-y: auto;">
+            <div class="box" style="height: 17.5rem; overflow-y: auto;">
                 <tbody>
                     <tr id="exercise-content" @click="getInfo(info)" class="cursor" v-for="info in exerciseInfoList" :key="info.type">
                         <td class="exercise-type" id="exercise-value">{{ info.type }}</td>  
@@ -91,7 +91,7 @@ th {
     width: 12.3rem;
 }
 .exercise-met {
-    width: 12rem;
+    width: 15rem;
 }
 #exercise-value {
     padding-left: 0.5rem;
