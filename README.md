@@ -79,7 +79,7 @@
 
 <br>
 
-### ✔기술 스택
+<div><h3>📚 STACKS</h3></div> <div><img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"><img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"><img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"><img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"><img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white"><br><img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white"><img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"><img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white"><img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
 
 
 
@@ -288,7 +288,7 @@
      - 체중을 등록하면 메인 페이지에서 오늘의 체중을 바로 확인할 수 있다.
      - '그래프' 아이콘을 누르면 지난 일주일 간의 체중 변동을 한눈에 볼 수 있다.
 
-
+<br>
 
 
 
@@ -306,7 +306,7 @@
 
 
 
-
+<br>
 
 
 
@@ -316,7 +316,7 @@
 
 - 등록한 운동 기록을 수정할 수 있다.
 
- 
+ <br>
 
 
 
@@ -330,9 +330,7 @@
 
 
 
-
-
-
+<br>
 
 ![식단-등록](essets/식단-등록.gif)
 
@@ -350,7 +348,7 @@
 
 
 
-
+<br>
 
 
 
@@ -362,7 +360,7 @@
 
 
 
-
+<br>
 
 
 
@@ -374,7 +372,7 @@
 
 
 
-
+<br>
 
 
 
@@ -387,7 +385,7 @@
 
 
 
-
+<br>
 
 #### 🔹일반 기능
 
@@ -400,7 +398,7 @@
 
 
 
-
+<br>
 
 ![내-정보-수정](essets/내-정보-수정.gif)
 
@@ -408,3 +406,5 @@
 
 - 사용자 정보를 수정할 수 있다.
 - id를 제외한 모든 정보을 수정할 수 있다.
+
+<br>
