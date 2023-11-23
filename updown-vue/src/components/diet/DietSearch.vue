@@ -93,7 +93,7 @@ const search = function () {
 
 <style scoped>
 .find{
-    color: red;
+    color: rgb(189, 0, 0);
 }
 
 .search-find{
@@ -110,7 +110,7 @@ const search = function () {
 
 .diet-head {
     display: flex;
-    width: 26rem;
+    width: 27rem;
     justify-content: space-between;
     margin-top: 0.3em;
 }
@@ -159,7 +159,6 @@ th {
     overflow: hidden;
     word-break: break-word;
 }
-
 .diet-met {
     font-size: 0.8rem;
     width: 8rem;

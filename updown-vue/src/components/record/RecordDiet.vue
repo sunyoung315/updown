@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>식단</h3>
+        <p class="title">식단</p>
         <table class="table" id="diet" v-if="props.dietRecord.length">
             <thead class="table-light">
                 <tr>
@@ -29,10 +29,14 @@ const props = defineProps({
     dietRecord: Object,
 })
 </script>
-
 <style scoped>
+.title {
+    font-size: x-large;
+    font-weight: bold;
+    padding-left: 0.5rem;
+}
 th{
-    background-color: rgb(83,120,77, 0.3)
+    background-color: rgb(83,120,77, 0.3);
 }
 
 #diet{

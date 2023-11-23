@@ -3,7 +3,7 @@
         <form @submit.prevent="submitForm">
             <div>
                 <fieldset class="myprofile-modify">
-                    <h2>나의 프로필</h2><br>
+                    <p class="title">나의 프로필</p>
                     <label for="password">비밀번호</label>
                     <input v-model="signupUser.password" autoComplete="off" type="password" id="password" name="password"
                         placeholder="비밀번호를 입력해주세요.">
@@ -29,33 +29,6 @@
                     <a>
                         min
                     </a>
-                    <!-- <br>
-                    <label>증/감량 희망 여부</label>
-                    <div class="radio-container">
-                        <div class="radio">
-                            <input v-model="signupUser.updown" type="radio" id="up" value="up" style="width: 20px;">
-                            &nbsp;<label for="up">증 &nbsp;&nbsp;&nbsp;량</label>
-                        </div>
-                        <div class="radio">
-                            <input v-model="signupUser.updown" type="radio" id="down" value="down" style="width: 20px;">
-                            &nbsp;<label for="down">감&nbsp;&nbsp;&nbsp; 량</label>
-                        </div>
-                    </div>
-                    <br>
-                    <label for="isSecret">계정 공개 희망 여부</label>
-                    <div class="radio-container">
-                        <div class="radio">
-                            <input v-model="signupUser.isSecret" type="radio" id="isSecretTrue" :value="true"
-                                style="width: 20px;">
-                            &nbsp;<label for="isSecretTrue">공 &nbsp;&nbsp;&nbsp;개</label>
-                        </div>
-                        <div class="radio">
-                            <input v-model="signupUser.isSecret" type="radio" id="isSecretFalse" :value="false"
-                                style="width: 20px;">
-                            &nbsp;<label for="isSecretFalse">비공개</label>
-                        </div>
-                    </div> -->
-                    <br>
 
                     <label>프로필 사진(선택)</label>
                     <div class="input-group flex-nowrap" style="width: 540px;">
@@ -241,6 +214,13 @@ getUserList();
 </script>
 
 <style scoped>
+.title {
+    font-size: 2.1rem;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    font-weight: bold;
+}
 .myprofile-modify {
     display: flex;
     flex-direction: column;
@@ -316,7 +296,8 @@ a {
 }
 
 label{
-    font-size: 20px;
-    margin-bottom: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 </style>

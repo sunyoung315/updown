@@ -2,7 +2,7 @@
     <div class="signup-container">
         <form @submit.prevent="submitForm">
             <div>
-                <h2>회원가입</h2><br>
+                <p class="title">회원가입</p>
                 <fieldset>
                     <div class="signup">
                         <label for="id">아이디</label>
@@ -38,33 +38,6 @@
                         <a>
                             min
                         </a>
-                        <!-- <label>증/감량 희망 여부</label>
-                        <div class="radio-container">
-                            <div class="radio">
-                                <input v-model="signupUser.updown" type="radio" id="up" value="up" style="width: 20px;">
-                                &nbsp;<label for="up">증 &nbsp;&nbsp;&nbsp;량</label>
-                            </div>
-                            <div class="radio">
-                                <input v-model="signupUser.updown" type="radio" id="down" value="down" style="width: 20px;">
-                                &nbsp;<label for="down">감&nbsp;&nbsp;&nbsp; 량</label>
-                            </div>
-                        </div>
-                        <br>
-                        <label for="isSecret">계정 공개 희망 여부</label>
-                        <div class="radio-container">
-                            <div class="radio">
-                                <input v-model="signupUser.isSecret" type="radio" id="isSecretTrue" :value="true"
-                                    style="width: 20px;">
-                                &nbsp;<label for="isSecretTrue">공 &nbsp;&nbsp;&nbsp;개</label>
-                            </div>
-                            <div class="radio">
-                                <input v-model="signupUser.isSecret" type="radio" id="isSecretFalse" :value="false"
-                                    style="width: 20px;">
-                                &nbsp;<label for="isSecretFalse">비공개</label>
-                            </div>
-                        </div>
-                        <br> -->
-    
                         <label>프로필 사진(선택)</label>
                         <div class="input-group flex-nowrap" style="width: 400px;">
                             <input type="file" class="form-control" placeholder="Username" aria-label="Username" ref="serveyImage"
@@ -252,6 +225,12 @@ getUserList();
 </script>
 
 <style scoped>
+.title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    margin-left: 7.5rem;
+}
 .signup {
     display: flex;
     flex-direction: column;
@@ -285,7 +264,11 @@ getUserList();
 h2 {
     text-align: center;
 }
-
+label{
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
 input {
     border: 1px solid #929191;
     border-radius: 7.5px;

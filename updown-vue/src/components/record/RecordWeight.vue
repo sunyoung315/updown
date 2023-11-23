@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>체중</h3>
+        <p class="title">체중</p>
         <table class="table" id="weight" v-if="weightRecord.nowWeight" >
             <thead class="table-light">
                 <tr>
@@ -26,7 +26,11 @@ const props = defineProps({
 
 
 <style scoped>
-
+.title {
+    font-size: x-large;
+    font-weight: bold;
+    padding-left: 0.5rem;
+}
 
 th{
     background-color: rgb(193,96,96, 0.3)

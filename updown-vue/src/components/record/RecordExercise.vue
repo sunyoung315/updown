@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>운동</h3>
+        <p class="title">운동</p>
         <table class="table" id="exercise" v-if="props.exerciseRecord.length">
             <thead class="table-light">
                 <tr>
@@ -28,7 +28,11 @@ const props = defineProps({
 </script>
 
 <style scoped>
-
+.title {
+    font-size: x-large;
+    font-weight: bold;
+    padding-left: 0.5rem;
+}
 th{
     background-color: rgb(91,94,151, 0.3)
 }
