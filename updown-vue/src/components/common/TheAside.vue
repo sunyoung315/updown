@@ -13,7 +13,7 @@ aside {
     display: flex;
     justify-content: right;
     border-right: 1px solid rgb(199, 199, 199);
-    width: 500px;
+    width: 600px;
     background-color: white;
 }
 </style>
