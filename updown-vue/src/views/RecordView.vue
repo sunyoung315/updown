@@ -114,7 +114,7 @@ const search = function () {
 
 .record-view {
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 1rem;
     margin-left: 80px;
 }
 
@@ -127,10 +127,11 @@ section {
 }
 
 .record-title {
-    font-size: 40px;
-    margin-top: 20px;
-    margin-left: 110px;
-    margin-bottom: 20px;
+    font-size: 2.1rem;
+    margin-top: 1rem;
+    margin-left: 6rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
 }
 
 .calendar {

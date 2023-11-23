@@ -40,7 +40,7 @@ const loginUser = computed(() => JSON.parse(localStorage.getItem("loginUser")));
     font-weight: 600;
     margin-left: 1rem;
     margin-bottom: 0;
-    margin-top: 1.5rem;
+    margin-top: 0.8rem;
 }
 .user-name {
     font-size: x-large;

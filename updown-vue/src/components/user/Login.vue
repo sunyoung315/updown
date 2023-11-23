@@ -56,7 +56,9 @@ img {
     margin: 20px;
 }
 .login-title {
-    font-size: 40px;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
     text-align: center;
 }
 
@@ -93,5 +95,9 @@ a {
     text-align: right;
     margin-top: 8px;
 }
-
+label{
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
 </style>

@@ -92,7 +92,7 @@
             <div>
                 <div class="diet-table" v-if="store.todayDietSnack.length !== 0">
                     <table class="table">
-                        <div class="box" style="height: 14.3em; overflow-y: auto;">
+                        <div class="box" style="height: 100em; overflow-y: auto;">
                             <tbody>
                                 <tr v-for="diet in store.todayDietSnack" key="diet.no">
                                     <td class="diet-col"><img src="../../asset/bootstrap-icon/check-lg.svg" alt="row"></td>  
@@ -192,7 +192,7 @@ watchEffect (async() => {
 <style scoped>
 .diet-head {
     display: flex;
-    width: 26rem;
+    width: 27rem;
     justify-content: space-between;
     margin-top: 0.3em;
 }
@@ -229,13 +229,13 @@ tr {
 
 #cursor-small{
     width: 1.3em;
-    margin: 0.1rem;
+    margin: 0.2rem;
 }
 .table {
     width: 14.5em;
 }
 .diet-food-col {
-    width: 7.6em;
+    width: 8em;
     text-overflow: ellipsis;
     overflow: hidden;
     word-break: break-word;
@@ -244,7 +244,7 @@ tr {
     -webkit-box-orient: vertical
 }
 .diet-calorie-col {
-    width: 5.3em;
+    width: 6em;
 }
 .diet-img{
     width: 10.5em;
@@ -260,7 +260,7 @@ tr {
     margin-right: 0.5em;
 }
 .box {
-    height: 8em; 
+    height: 14.3em; 
     overflow-y: auto;
     overflow-x: hidden;
     margin-right: 0.3em

@@ -171,7 +171,7 @@ const home = function () {
 <style scoped>
 .diet-head {
     display: flex;
-    width: 26rem;
+    width: 27.2rem;
     justify-content: space-between;
     margin-top: 0.3em;
 }
@@ -189,18 +189,15 @@ const home = function () {
     display: flex;
     flex-direction: column;
     margin-left: 0.5rem;
-    width: 14.5rem;
+    width: 15.6rem;
     height: 14.3em;
 }
 label {
-    font-size: 20px;
-}
-.diet-box-row {
     padding-top: 0.5rem;
     font-size: 0.8rem;
     font-weight: 600;
 }
-label {
+.diet-box-row {
     padding-top: 0.5rem;
     font-size: 0.8rem;
     font-weight: 600;
@@ -215,7 +212,8 @@ input {
     width: 10.5em;
     height: 14.3em;
     background-color: rgb(225, 225, 225);
-    margin-top: 0.1em;
+    margin-top: 0.34em;
+    margin-left: 0.35rem;
     line-height: 14.3em;
     vertical-align: middle;
     text-align: center;
