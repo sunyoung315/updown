@@ -128,6 +128,13 @@ const getDietSnack = async function () {
     await store.getDietSnack(loginUserId, regDate);
 }
 
+// 파일 초기화
+const clearFileInput = () => {
+  if (serveyImage.value) {
+    serveyImage.value.value = '';
+  }
+};
+
 
 // 이미지 업로드
 const submitForm = async () => {
@@ -229,6 +236,7 @@ const submitForm = async () => {
 };
 
 const upload = async function () {
+    clearFileInput(); // 파일 인풋 초기화
     if (!newDiet.value.food) return;
     await store.uploadDiet(newDiet.value);
     if (props.category == '아침')
@@ -242,17 +250,12 @@ const upload = async function () {
     props.info.food = '';
     props.info.calorie = 0;
     gram.value = 0;
-    // 첨부파일 초기화가 안됨...
-    // serveyImage.value = '';
     previewImage.value = '';
+  
     emits("home");
 }
 
 const home = function () {
-    props.info.food = '';
-    props.info.calorie = 0;
-    gram.value = 0;
-    // serveyImage.value = '';
     previewImage.value = '';
     emits("home");
 }

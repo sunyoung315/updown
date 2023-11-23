@@ -158,13 +158,14 @@ export const useDietStore = defineStore('diet', () => {
             })
     }
 
-    // 식단 삭제
     const remove = async function (diet) {
         await axios({
             url: `${REST_DIET_API}/remove/${diet.no}`,
             method: 'DELETE',
             data: diet.no
-        })
+        });
+        breakfastimg.value = ''; // 이미지 초기화
+        await getDietBreakFast(loginUserId, regDate); // 식단 목록 다시 불러오기
     }
 
     // 식단 수정
