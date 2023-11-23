@@ -20,7 +20,7 @@ import com.ssafy.updown.model.service.UserService;
 
 @RestController
 @RequestMapping("/updown")
-public class UserFileController {
+public class FileController {
 
 	@Autowired
 	UserService uService;

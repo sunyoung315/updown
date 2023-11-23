@@ -31,12 +31,12 @@ public class UserController {
 		return new ResponseEntity<List<User>>(uList, HttpStatus.OK);
 	}
 	
-	// 계정 공개를 희망하는 사용자만 가져오기
-	@GetMapping("/user/open")
-	public ResponseEntity<List<User>> getNoSecretUsers() {
-		List<User> uList = uService.getNoSecretUsers();
-		return new ResponseEntity<List<User>>(uList, HttpStatus.OK);
-	}
+//	// 계정 공개를 희망하는 사용자만 가져오기
+//	@GetMapping("/user/open")
+//	public ResponseEntity<List<User>> getNoSecretUsers() {
+//		List<User> uList = uService.getNoSecretUsers();
+//		return new ResponseEntity<List<User>>(uList, HttpStatus.OK);
+//	}
 	
 	@PostMapping("user/login")
 	public ResponseEntity<?> login(@RequestBody User user) {
