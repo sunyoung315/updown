@@ -228,7 +228,6 @@ export const useDietStore = defineStore('diet', () => {
                 newDiet.calorie = ''
                 newDiet.Img = ''
                 newDiet.userId = loginUserId
-
                 router.push({ name: 'today' })
             })
             .catch((err) => {
