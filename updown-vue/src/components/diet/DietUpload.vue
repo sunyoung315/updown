@@ -17,7 +17,10 @@
                         <img @click="search" class="cursor" style="width: 43px; padding: 0px 0px 5px 10px;"
                             src="../../asset/bootstrap-icon/search.svg" alt="검색">
                     </div>
-                    <input type="text" v-model="props.info.food" placeholder="음식을 직접 입력할 수도 있어요.">
+                    <div v-if="props.info.food"> {{ props.info.food }}</div>
+                    <div v-else>
+                        <input type="text" v-model="foodName" placeholder="음식을 직접 입력할 수도 있어요.">
+                    </div>
                 </div>
                 <div class="diet-box-row">
                     <div class="g">
@@ -82,6 +85,8 @@ const props = defineProps({
     info: Object,
 });
 
+const foodName = ref('');
+
 const gram = ref('');
 
 const inputKcal = ref('');
@@ -138,7 +143,10 @@ const clearFileInput = () => {
 
 // 이미지 업로드
 const submitForm = async () => {
-    newDiet.value.food = props.info.food;
+    if(props.info.food)
+        newDiet.value.food = props.info.food;
+    else
+        newDiet.value.food = foodName.value;
     if (props.info.calorie)
         newDiet.value.calorie = parseFloat((props.info.calorie * gram.value).toFixed(1));
     else
