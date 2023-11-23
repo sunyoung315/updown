@@ -4,14 +4,14 @@
         <div class="calendar">
             <VCalendar expanded :attributes='attrs' @dayclick="showRecord" view="weekly"></VCalendar>
         </div>
-        <RecordWeight :weightRecord="weightRecord" class="record-view"/>
-        <RecordExercise :exerciseRecord="exerciseRecord" class="record-view"/>
-        <RecordDiet :dietRecord="dietRecord" class="record-view"/>
+        <RecordWeight :weightRecord="weightRecord" class="record-view" />
+        <RecordExercise :exerciseRecord="exerciseRecord" class="record-view" />
+        <RecordDiet :dietRecord="dietRecord" class="record-view" />
     </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 import RecordWeight from '@/components/record/RecordWeight.vue'
 import RecordExercise from '@/components/record/RecordExercise.vue'
@@ -26,12 +26,26 @@ const REST_UPDOWN_API = `http://localhost:8080/updown`;
 
 const attrs = ref([
     {
+        key: 'today',
         highlight: {
             color: 'blue',
             fillMode: 'light',
         },
+        dates: new Date(),
     },
 ]);
+
+const today = new Date();
+const year = today.getFullYear();
+const month = ("0" + (1 + today.getMonth())).slice(-2);
+const day = ("0" + today.getDate()).slice(-2);
+regDate.value = year + '-' + month + '-' + day;
+
+
+onMounted(() => {
+    regDate.value = regDate.value
+    search();
+})
 
 const weightRecord = ref({});
 const exerciseRecord = ref([]);
@@ -41,6 +55,7 @@ const showRecord = (day) => {
     regDate.value = day.id;
     search();
 }
+
 
 const search = function () {
     axios({
@@ -118,7 +133,7 @@ section {
     margin-bottom: 20px;
 }
 
-.calendar{
+.calendar {
     width: 1000px;
     margin-left: 70px;
     margin-bottom: 20px;
