@@ -14,7 +14,7 @@
     <tr align="center">
         <td style="min-width: 220px;">
             <a href="https://github.com/sunyoung315">
-              <img src="https://github.com/byunghyunkim0.png" width="100">
+              <img src="https://github.com/sunyoung315.png" width="100">
               <br />
               <b>김선영(팀장) </b>
             </a>
@@ -79,31 +79,46 @@
 
 <br>
 
-<div><h3>📚 STACKS</h3></div> <div><img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"><img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"><img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"><img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"><img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white"><br><img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white"><img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"><img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white"><img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
+<div><h3>📚 STACKS</h3></div> 
+<div align=center> 
+  <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java logoColor=white"> 
+  <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> 
+  <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> 
+  <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white">
+  <br>
+  <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
+  <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
+  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> 
+  <br>
 
 
+  <img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white"> 
+  <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
+  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+  <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+</div>
 
 <br><br>
 
 ### ✔UI 설계
 
-<img src="essets/최종PJT.png">
+<img src="assets/최종PJT.png">
 
 <br><br>
 
 ### ✔ERD (Entity-Relationship Digram)
 
-<img src="essets/erd.png">
+<img src="assets/erd.png">
 
 <br><br>
 
 ### ✔요구사항 명세서
 
-<img src="essets/명세서1.png">
+<img src="assets/명세서1.png">
 
-<img src="essets/명세서2.png">
+<img src="assets/명세서2.png">
 
-<img src="essets/명세서3.png">
+<img src="assets/명세서3.png">
 
 <br><br>
 
@@ -274,7 +289,7 @@
 
 #### 🔹주요 기능
 
-![체중](essets/체중.gif)
+![체중](assets/체중.gif)
 
 ##### • 체중 등록/ 수정/ 조회
 
@@ -294,7 +309,7 @@
 
 
 
-![운동-등록](essets/운동-등록.gif)
+![운동-등록](assets/운동-등록.gif)
 
 ##### • 운동 등록 및 조회
 
@@ -310,7 +325,7 @@
 
 
 
-![운동-수정](essets/운동-수정.gif)
+![운동-수정](assets/운동-수정.gif)
 
 ##### • 운동 수정
 
@@ -322,7 +337,7 @@
 
 
 
-![운동-삭제](essets/운동-삭제.gif)
+![운동-삭제](assets/운동-삭제.gif)
 
 ##### • 운동 삭제
 
@@ -332,7 +347,7 @@
 
 <br><br><br>
 
-![식단-등록](essets/식단-등록.gif)
+![식단-등록](assets/식단-등록.gif)
 
 ##### • 식단 등록 및 조회
 
@@ -352,7 +367,7 @@
 
 
 
-![식단-수정](essets/식단-수정.gif)
+![식단-수정](assets/식단-수정.gif)
 
 ##### • 식단 수정
 
@@ -364,7 +379,7 @@
 
 
 
-![식단-삭제](essets/식단-삭제.gif)
+![식단-삭제](assets/식단-삭제.gif)
 
 ##### • 식단 삭제
 
@@ -376,7 +391,7 @@
 
 
 
-![과거-기록-조회](essets/과거-기록-조회.gif)
+![과거-기록-조회](assets/과거-기록-조회.gif)
 
 ##### • 과거 기록 조회
 
@@ -389,7 +404,7 @@
 
 #### 🔹일반 기능
 
-![회원가입](essets/회원가입.gif)
+![회원가입](assets/회원가입.gif)
 
 ##### • 회원가입 및 로그인
 
@@ -400,7 +415,7 @@
 
 <br><br><br>
 
-![내-정보-수정](essets/내-정보-수정.gif)
+![내-정보-수정](assets/내-정보-수정.gif)
 
 ##### • 프로필 수정
 
