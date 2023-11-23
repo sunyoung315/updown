@@ -57,15 +57,15 @@ watchEffect (async () => {
 
 <style scoped>
 .diet-container {
-    border: 1rem solid;
+    /* border: 1rem solid; */
     width: 80%;
     /* margin: 0.2rem auto; */
 
     /* margin: 20px;
-    padding: 32px;
-    border-radius: 20px;
     aspect-ratio: 7/4; */
-    border: 1rem solid;
+    /* border: 1rem solid; */
+    border-radius: 1rem;
+    padding: 2rem;
     background-color: rgb(83, 120, 77);
 }
 .diet-title {
