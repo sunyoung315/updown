@@ -8,7 +8,6 @@
                         :src="'http://localhost:8080/upload/' + loginUser.img" alt="프로필 사진1">
                     <img v-else src="../../asset/bootstrap-icon/person-square.svg" alt="프로필 사진">
                 </div>
-                <br>
                 <div class="modify">
                     <div class="user-name"> &nbsp;"{{ loginUser.nickname }}" 님</div>
                     <RouterLink :to="{ name: 'myprofile' }">
@@ -43,7 +42,7 @@ const loginUser = computed(() => JSON.parse(localStorage.getItem("loginUser")));
     margin-top: 0.8rem;
 }
 .user-name {
-    font-size: x-large;
+    font-size: 1.3rem;
     font-weight: 600;
     padding-bottom: 0.6rem;
 }
@@ -88,7 +87,8 @@ img {
 }
 
 #info {
-    font-size: large;
+    font-size: medium;
+    font-weight: 600;
     margin-top: 8px;
 }
 
