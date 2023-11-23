@@ -198,14 +198,6 @@ const goSignup = function () {
         return;
     }
 
-    if (signupUser.value.updown === null || signupUser.value.updown === '') {
-        alert('증감량 희망 여부를 선택해주시기 바랍니다.')
-        return;
-    }
-    if (signupUser.value.isSecret === null || signupUser.value.isSecret === '') {
-        alert('계정 공개 희망 여부를 선택주시기 바랍니다.')
-        return;
-    }
 
 
     axios({

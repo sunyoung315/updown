@@ -1,5 +1,5 @@
-INSERT INTO user(id, password, nickname, name, email, target_weight, target_time, updown, is_secret) VALUES
-('ssafy', 'ssafy1234!!', '김싸피', '김싸피', 'ssafy2@ssafy.com', 50, 120, 'down', false);
+INSERT INTO user(id, password, nickname, name, email, target_weight, target_time) VALUES
+('ssafy', 'ssafy1234!!', '김싸피', '김싸피', 'ssafy2@ssafy.com', 50, 120);
 
 INSERT INTO diet(category, food, calorie, reg_date, user_id) VALUES
 ('아침', '계란후라이', 100, '2023-11-14', 'ssafy'),

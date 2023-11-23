@@ -24,7 +24,8 @@
 .start {
     display: flex;
     justify-content: center;
-    height: 57rem;
+    /* height: 57rem; */
+    height: 59.66rem;
     margin: 0;
 }
 
