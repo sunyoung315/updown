@@ -4,8 +4,8 @@
             <div class="weight-title">체중</div>
             <div>
                 <div v-if="todayWeight && todayWeight.nowWeight">
-                    <img class="cursor" @click="modify" style="width: 50px; margin: 15px 5px 0px 5px;" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정">
-                    <img class="cursor" @click="graph" style="width: 43px; margin: 15px 5px 0px 5px;" src="../../asset/bootstrap-icon/graph-down-arrow.svg" alt="그래프">
+                    <img class="cursor" @click="modify" src="../../asset/bootstrap-icon/pencil-square.svg" alt="수정">
+                    <img class="cursor" @click="graph" src="../../asset/bootstrap-icon/graph-down-arrow.svg" alt="그래프">
                 </div>
                 <div v-else>
                     <img class="cursor" @click="regist" style="width: 45px; margin: 15px 5px 0px 5px;" src="../../asset/bootstrap-icon/plus-square.svg" alt="등록">
@@ -64,7 +64,7 @@ const graph = function() {
     border-radius: 20px;
 }
 .weight-title {
-    font-size: 50px;
+    font-size: xx-large;
     color: white;
 }
 .weight-head {
@@ -84,7 +84,7 @@ const graph = function() {
     font-size: 60px;
     background-image: url('../../asset/image/weight-scale.png');
     background-repeat: no-repeat;
-    background-size: 400px 400px;
+    background-size: 20rem; 
     width: 400px;
     height: 400px;
     margin-top: 30px;
@@ -98,5 +98,12 @@ const graph = function() {
 }
 .weight-value {
     color: white;
+}
+
+/* <!-- style="width: 43px; margin: 15px 5px 0px 5px;" --> */
+
+.cursor {
+    width: 2rem;
+    margin: 1.2rem 1rem 0 1rem;
 }
 </style>

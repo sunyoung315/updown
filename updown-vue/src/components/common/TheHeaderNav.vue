@@ -28,16 +28,6 @@ const logout = function() {
 </script>
 
 <style>
-
-@font-face {
-    font-family: 'mobiletitle';
-    src: url('/font/ONEMobileTitle.ttf')
-}
-
-@font-face {
-    font-family: 'mobileregular';
-    src: url('/font/ONE Mobile Regular/ONE Mobile Regular.ttf')
-}
 nav {
     margin-top: 20px;
     /* margin-right: 500px; */
@@ -50,6 +40,7 @@ header {
     border-bottom: 1px solid rgb(199, 199, 199);
 }
 .header-container {
+    font-family: 'IBM Plex Sans', sans-serif;
     display: flex;
     justify-content: space-between;
     padding-left: 280px;
