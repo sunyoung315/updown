@@ -64,7 +64,6 @@ public class ExerciseController {
 	@GetMapping("/exercise/searchDetail/{type}")
 	public ResponseEntity<ExerciseInfo> getExerciseInfo(@PathVariable String type) {
 		ExerciseInfo eInfo = eService.getExerciseInfo(type);
-		System.out.println(eInfo.toString());
 		return new ResponseEntity<ExerciseInfo>(eInfo, HttpStatus.OK);
 	}
 	
