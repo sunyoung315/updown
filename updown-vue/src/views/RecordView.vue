@@ -127,7 +127,7 @@ section {
 }
 
 .record-title {
-    font-size: 2.1rem;
+    font-size: 1.9rem;
     margin-top: 1rem;
     margin-left: 6rem;
     margin-bottom: 1.5rem;

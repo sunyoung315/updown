@@ -11,11 +11,11 @@
             <div>
                 <label for="type">운동 종류 : </label>
                 <img @click="search" id="search-btn" class="cursor" src="../../asset/bootstrap-icon/search.svg" alt="검색"><br>
-                <div class="exercise-value" v-if="props.info.type">{{ ' ' + props.info.type }}</div>
+                <div class="exercise-fix" v-if="props.info.type">{{ ' ' + props.info.type }}</div>
                 <div v-else>
                     <input type="text" v-model="exerciseType" placeholder="운동을 직접 입력할 수도 있어요.">
+                    <p v-if="!exerciseType">운동 종류을 등록해주세요.</p>
                 </div>
-                <p v-if="!exerciseType">운동 시간을 등록해주세요.</p>
             </div>
             <div>
                 <label for="time">운동 시간 : </label><br>
@@ -24,7 +24,7 @@
             </div>
             <div v-if="props.info.met">
                 <label for="calorie">소모 칼로리 : </label><br>
-                <div class="exercise-value">
+                <div class="exercise-fix">
                     <div v-if="weight">
                         {{ (props.info.met * (3.5 * weight * newExercise.time) / 1000 * 5).toFixed(1) }} kcal
                     </div>
@@ -38,7 +38,7 @@
             <div v-else>
                 <label for="calorie">소모 칼로리 : </label><br>
                 <div class="exercise-value"><input type="number" id="time" v-model="newExercise.calorie">kcal</div>
-                <p v-if="!newExercise.calorie">운동 시간을 등록해주세요.</p>
+                <p v-if="!newExercise.calorie">소모 칼로리를 등록해주세요.</p>
             </div>
         </div>
     </div>
@@ -143,6 +143,10 @@ label {
 }
 .exercise-value {
     font-size: 1.5rem;
+}
+.exercise-fix {
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 .cal-desc {
     font-size: 0.9rem;

@@ -49,7 +49,7 @@ header {
     display: flex;
     justify-content: space-between;
     padding-left:15rem;
-    padding-right: 15rem;
+    padding-right: 21rem;
 }
 .cursor {
     cursor: pointer;
