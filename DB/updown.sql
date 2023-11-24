@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `exercise_info` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-
+SELECT * FROM user;
 -- -----------------------------------------------------
 -- Table `updown`.`weight`
 -- -----------------------------------------------------
